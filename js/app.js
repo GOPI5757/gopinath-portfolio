@@ -12,7 +12,7 @@ import { eyebrow, renderCarousel, renderChip, renderDocumentGroup, renderImage, 
 const site = first(siteSettings) || {};
 const root = document.querySelector("#site-shell");
 let projectQuickBarCollapsed = false;
-let contactRailCollapsed = window.matchMedia("(max-width: 1599px)").matches;
+let contactRailCollapsed = false;
 
 function applyPortfolioTheme() {
   const theme = first(portfolioThemes);
@@ -507,11 +507,13 @@ function renderContactRail() {
     attrs: { type: "button", "aria-label": "Next contact details" },
     on: { click: () => scrollMobileTrack(1) },
   });
+  const mobileToggleIcon = el("span", { className: "contact-rail-mobile-toggle-icon", attrs: { "aria-hidden": "true" } });
+  const mobileToggle = el("button", {
+    className: "contact-rail-mobile-toggle",
+    attrs: { type: "button", "aria-controls": mobileTrackId },
+  }, [mobileToggleIcon, el("span", { text: config.label || "Contact" })]);
   const mobileStrip = el("div", { className: "contact-rail-mobile-strip" }, [
-    el("div", { className: "contact-rail-mobile-label" }, [
-      el("span", { text: config.label || "Contact" }),
-      el("span", { className: "contact-rail-mobile-hint", text: "↔" }),
-    ]),
+    mobileToggle,
     mobilePrevious,
     mobileTrack,
     mobileNext,
@@ -520,11 +522,15 @@ function renderContactRail() {
     rail.classList.toggle("is-collapsed", contactRailCollapsed);
     toggle.setAttribute("aria-expanded", String(!contactRailCollapsed));
     icon.textContent = contactRailCollapsed ? "⌃" : "⌄";
+    mobileToggle.setAttribute("aria-expanded", String(!contactRailCollapsed));
+    mobileToggleIcon.textContent = contactRailCollapsed ? "⌃" : "⌄";
   };
-  toggle.addEventListener("click", () => {
+  const toggleContactRail = () => {
     contactRailCollapsed = !contactRailCollapsed;
     updateCollapsedState();
-  });
+  };
+  toggle.addEventListener("click", toggleContactRail);
+  mobileToggle.addEventListener("click", toggleContactRail);
   updateCollapsedState();
   rail.append(panel, toggle, mobileStrip);
   return rail;

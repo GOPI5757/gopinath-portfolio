@@ -22,7 +22,7 @@ export const introWidgets = [
       "assets/images/intro/intro_12.png",
       "assets/images/intro/intro_13.png",
     ],
-    title: "Gopi",
+    title: "Gopinath S",
     subtitle: "Gameplay Programmer;",
     kicker: "SYSTEM INITIALIZING",
     style: {
