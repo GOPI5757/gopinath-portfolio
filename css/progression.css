@@ -1,0 +1,136 @@
+/* Progression technical blocks only. */
+.technical-progression-block {
+  display: grid;
+  gap: 1.4rem;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid color-mix(in srgb, var(--project-accent) 30%, var(--line));
+  background: color-mix(in srgb, var(--project-surface) 88%, transparent);
+}
+
+.technical-progression-copy {
+  min-width: 0;
+}
+
+.technical-progression {
+  --progression-columns: 3;
+  --progression-column-gap: clamp(2.5rem, 4vw, 4rem);
+  --progression-row-gap: clamp(3.25rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--progression-row-gap);
+  width: 100%;
+  min-width: 0;
+}
+
+.technical-progression-row {
+  display: grid;
+  grid-template-columns: repeat(var(--progression-columns), minmax(0, 1fr));
+  column-gap: var(--progression-column-gap);
+  align-items: start;
+  min-width: 0;
+}
+
+.technical-progression-row > .technical-progression-step {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+.technical-progression-item {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--project-accent) 10%, var(--project-background));
+}
+
+.technical-progression-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.technical-progression-row > .technical-progression-step::after {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  color: var(--project-accent);
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Odd rows run left to right. */
+.technical-progression-row:nth-child(odd) > .technical-progression-step:not(:last-child)::after {
+  content: "→";
+  top: 50%;
+  right: calc(var(--progression-column-gap) / -2);
+  transform: translate(50%, -50%);
+}
+
+/* Even rows run right to left. */
+.technical-progression-row:nth-child(even) > .technical-progression-step:not(:last-child)::after {
+  content: "←";
+  top: 50%;
+  left: calc(var(--progression-column-gap) / -2);
+  transform: translate(-50%, -50%);
+}
+
+.technical-progression-row:nth-child(even) > .technical-progression-step:nth-child(1) {
+  grid-column: var(--progression-columns);
+  grid-row: 1;
+}
+
+.technical-progression-row:nth-child(even) > .technical-progression-step:nth-child(2) {
+  grid-column: calc(var(--progression-columns) - 1);
+  grid-row: 1;
+}
+
+.technical-progression-row:nth-child(even) > .technical-progression-step:nth-child(3) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* The last image in every non-final row points to the next row. */
+.technical-progression-row:not(:last-child) > .technical-progression-step:last-child::after {
+  content: "↓";
+  top: calc(100% + (var(--progression-row-gap) / 2));
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Tablet rows contain two images. */
+@media (min-width: 640px) and (max-width: 899px) {
+  .technical-progression {
+    --progression-columns: 2;
+    --progression-column-gap: clamp(2.5rem, 6vw, 4rem);
+  }
+}
+
+/* Phones use one image per row and vertical connectors only. */
+@media (max-width: 639px) {
+  .technical-progression {
+    --progression-columns: 1;
+    --progression-row-gap: 4rem;
+  }
+
+  .technical-progression-row > .technical-progression-step {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .technical-progression-row > .technical-progression-step:not(:last-child)::after {
+    content: "↓";
+    top: calc(100% + (var(--progression-row-gap) / 2));
+    right: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

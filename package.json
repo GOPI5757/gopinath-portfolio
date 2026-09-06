@@ -1,0 +1,7 @@
+{
+  "name": "configurable-game-programmer-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A static, configuration-driven game programmer portfolio."
+}
