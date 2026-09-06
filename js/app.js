@@ -536,6 +536,10 @@ function renderContactRail() {
   return rail;
 }
 
+function mountContactRail() {
+  document.querySelector("#contact-rail-root")?.replaceChildren(...[renderContactRail()].filter(Boolean));
+}
+
 function renderContactSection() {
   const widget = first(contactWidgets);
   if (!enabled(widget)) return null;
@@ -602,7 +606,8 @@ function renderHome() {
     renderCertificateSection(),
     renderContactSection(),
   ]);
-  root.replaceChildren(...[renderHeader(), renderProjectQuickBar(), main, renderContactRail(), renderFooter()].filter(Boolean));
+  root.replaceChildren(...[renderHeader(), renderProjectQuickBar(), main, renderFooter()].filter(Boolean));
+  mountContactRail();
 }
 
 function renderEngineWorkVideos(project) {
@@ -854,7 +859,8 @@ function renderProjectDetail(project) {
   });
 
   jumpToTopImmediately();
-  root.replaceChildren(...[renderHeader(), renderProjectQuickBar(), main, renderContactRail(), renderFooter()].filter(Boolean));
+  root.replaceChildren(...[renderHeader(), renderProjectQuickBar(), main, renderFooter()].filter(Boolean));
+  mountContactRail();
   document.title = `${project.title} | ${site.name || "Portfolio"}`;
   requestAnimationFrame(() => main.focus({ preventScroll: true }));
 }
@@ -866,7 +872,8 @@ function renderNotFoundProject() {
     el("p", { className: "section-description", text: "It may be disabled or the link may no longer exist." }),
     el("a", { className: "button button--primary", text: "Return to projects", attrs: { href: "#projects" } }),
   ]);
-  root.replaceChildren(...[renderHeader(), renderProjectQuickBar(), main, renderContactRail(), renderFooter()].filter(Boolean));
+  root.replaceChildren(...[renderHeader(), renderProjectQuickBar(), main, renderFooter()].filter(Boolean));
+  mountContactRail();
   jumpToTopImmediately();
 }
 
