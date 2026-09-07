@@ -37,7 +37,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+html { overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 html.intro-pending,
 html.intro-pending body,
 html.intro-active,
