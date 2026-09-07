@@ -822,17 +822,62 @@ export const projectItems = [
     description:
       "Players compete in a 2D arena. One player begins with the tag, and the goal is to pass it to the opponent before the final second; the tag holder loses.",
     coverImage: "assets/images/projects/coverImages/tagCoverImg.webp",
-    theme: { background: "#181125", surface: "#2d1b4a", text: "#f9f3ff", muted: "#d1bce6", accent: "#b597ff", signal: "#80e8cf" },
+    theme: { background: [
+      "#566872", "#5a5672", "#566872", "#5a5672"], backgroundAngle: "180deg",surface: "#21303f", text: "#cce8ff", muted: "#d9e8f4", accent: "#e8f7ff", signal: "#80b1e8" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
       { id: "language", enabled: true, label: "Language", value: "C#" },
       { id: "format", enabled: true, label: "Format", value: "2D local multiplayer" },
       { id: "status", enabled: true, label: "Status", value: "Completed" },
-      { id: "Genre", enabled: true, label: "Genre", value: "Beat em' up" },
+      { id: "Genre", enabled: true, label: "Genre", value: "Casual, Co-op" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
     ],
     technicalBlocks: [],
-    ...emptyMedia,
+    images: [
+      {
+        id: "tag-gi-01",
+        enabled: true,
+        src: "assets/images/projects/tag/2p_gi_1.webp",
+        alt: "The digging area in the game",
+        caption: "Countdown View"
+      },
+      {
+        id: "tag-gi-02",
+        enabled: true,
+        src: "assets/images/projects/tag/2p_gi_2.webp",
+        alt: "The digging area in the game",
+        caption: "Gameplay View"
+      },
+      {
+        id: "tag-gi-03",
+        enabled: true,
+        src: "assets/images/projects/tag/2p_gi_3.webp",
+        alt: "The digging area in the game",
+        caption: "Gameplay View"
+      },
+      {
+        id: "tag-gi-04",
+        enabled: true,
+        src: "assets/images/projects/tag/2p_gi_4.webp",
+        alt: "The digging area in the game",
+        caption: "Teleporter View"
+      },
+      {
+        id: "tag-gi-05",
+        enabled: true,
+        src: "assets/images/projects/tag/2p_gi_5.webp",
+        alt: "The digging area in the game",
+        caption: "Win & Lose condition"
+      },
+    ],
+    gameplayVideos: [
+      {
+        id: "tag-gameplay-01",
+        enabled: true,
+        youtube: "https://youtu.be/pwxsrynqhJk",
+        title: "Two Player Tag Gameplay"
+      },
+    ],
   },
   {
     id: "think-try-treasure",
@@ -874,7 +919,8 @@ export const projectItems = [
     description:
       "Built for Global Game Jam 2026 with the theme ‘mask.’ The player is trapped in dreams and changes between yellow (happy), purple (sad) and red (anger) masks, using their abilities in the right places to progress.",
     coverImage: "assets/images/projects/coverImages/ltCoverImg.webp",
-    theme: { background: "#20122c", surface: "#422355", text: "#fff7ff", muted: "#d8bfdf", accent: "#e07ee1", signal: "#f6d562" },
+    theme: { background: 
+      ["#585858", "#3c3923", "#28233c", "#3c2323", "#110b0b"], backgroundAngle: "0deg", surface: "#403a43", text: "#fff7ff", muted: "#b1a3b4", accent: "#ecd0ed", signal: "#aaa48e" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
       { id: "language", enabled: true, label: "Language", value: "C#" },
@@ -882,6 +928,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Completed · GGJ 2026" },
       { id: "Genre", enabled: true, label: "Genre", value: "Beat em' up" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
+      { id: "jam-theme", enabled: true, label: "GAME JAM THEME", value: "Mask" },
     ],
     technicalBlocks: [
       {
@@ -894,7 +941,100 @@ export const projectItems = [
         layout: "image-right",
       },
     ],
-    ...emptyMedia,
+    images: [
+      {
+        id: "lt-gi-01",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_1.webp",
+        alt: "The digging area in the game",
+        caption: "Menu View"
+      },
+      {
+        id: "lt-gi-02",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_2.webp",
+        alt: "The digging area in the game",
+        caption: "Credits"
+      },
+      {
+        id: "lt-gi-03",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_3.webp",
+        alt: "The digging area in the game",
+        caption: "Tutorial View"
+      },
+      {
+        id: "lt-gi-04",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_4.webp",
+        alt: "The digging area in the game",
+        caption: "Mini Tutorial View"
+      },
+      {
+        id: "lt-gi-05",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_5.webp",
+        alt: "The digging area in the game",
+        caption: "Gameplay View"
+      },
+      {
+        id: "lt-gi-06",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_6.webp",
+        alt: "The digging area in the game",
+        caption: "Swing View"
+      },
+      {
+        id: "lt-gi-07",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_7.webp",
+        alt: "The digging area in the game",
+        caption: "Mask Interaction View"
+      },
+      {
+        id: "lt-gi-08",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_8.webp",
+        alt: "The digging area in the game",
+        caption: "Mask Selection View"
+      },
+      {
+        id: "lt-gi-09",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_9.webp",
+        alt: "The digging area in the game",
+        caption: "Dash View"
+      },
+      {
+        id: "lt-gi-10",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_10.webp",
+        alt: "The digging area in the game",
+        caption: "Slow Time View"
+      },
+      {
+        id: "lt-gi-11",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_11.webp",
+        alt: "The digging area in the game",
+        caption: "Wall Jump View"
+      },
+      {
+        id: "lt-gi-12",
+        enabled: true,
+        src: "assets/images/projects/lt/lt_gi_12.webp",
+        alt: "The digging area in the game",
+        caption: "Ladder View"
+      },
+    ],
+    gameplayVideos: [
+      {
+        id: "tag-gameplay-01",
+        enabled: true,
+        youtube: "https://youtu.be/XGzpZdOmXcQ",
+        title: "Two Player Tag Gameplay"
+      },
+    ],
   },
   {
     id: "ben-3",
@@ -910,14 +1050,16 @@ export const projectItems = [
     description:
       "Built for BYOG 2025 around the ‘Re:Think, Re:Mix and Re:Make’ theme. Inspired by Ben 10 powers, the player earns jump, dash and shrink abilities from a watch by completing mini-games of different genres, then reaches the end.",
     coverImage: "assets/images/projects/coverImages/benCoverImg.webp",
-    theme: { background: "#102318", surface: "#1d4327", text: "#f4fff3", muted: "#c0dfbd", accent: "#8de365", signal: "#ffdb74" },
+    theme: { background: [
+      "#102318", "#102320", "#294143","#192310"], surface: "#1d4327", text: "#f4fff3", muted: "#c0dfbd", accent: "#8de365", signal: "#ffdb74" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
       { id: "language", enabled: true, label: "Language", value: "C#" },
       { id: "format", enabled: true, label: "Format", value: "2D game jam project" },
       { id: "status", enabled: true, label: "Status", value: "Completed · BYOG 2025" },
-      { id: "Genre", enabled: true, label: "Genre", value: "Beat em' up" },
+      { id: "Genre", enabled: true, label: "Genre", value: "Puzzle Platformer" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
+      { id: "jam-theme", enabled: true, label: "Game Jam Theme", value: "Re:Think, Re:Mix, Re:Make" },
     ],
     technicalBlocks: [
       {
@@ -930,7 +1072,72 @@ export const projectItems = [
         layout: "image-left",
       },
     ],
-    ...emptyMedia,
+    images: [
+      {
+        id: "ben-gi-01",
+        enabled: true,
+        src: "assets/images/projects/ben/ben_gi_1.webp",
+        alt: "The digging area in the game",
+        caption: "Menu Page"
+      },
+      {
+        id: "ben-gi-02",
+        enabled: true,
+        src: "assets/images/projects/ben/ben_gi_2.webp",
+        alt: "The digging area in the game",
+        caption: "Gameplay View"
+      },
+      {
+        id: "ben-gi-03",
+        enabled: true,
+        src: "assets/images/projects/ben/ben_gi_3.webp",
+        alt: "The digging area in the game",
+        caption: "Mini-Game View"
+      },
+      {
+        id: "ben-gi-04",
+        enabled: true,
+        src: "assets/images/projects/ben/ben_gi_5.webp",
+        alt: "The digging area in the game",
+        caption: "Ability Selection View"
+      },
+      {
+        id: "ben-gi-05",
+        enabled: true,
+        src: "assets/images/projects/ben/ben_gi_6.webp",
+        alt: "The digging area in the game",
+        caption: "Mini-Game View"
+      },
+      {
+        id: "ben-gi-06",
+        enabled: true,
+        src: "assets/images/projects/ben/ben_gi_7.webp",
+        alt: "The digging area in the game",
+        caption: "Dash View"
+      },
+      {
+        id: "ben-gi-07",
+        enabled: true,
+        src: "assets/images/projects/ben/ben_gi_8.webp",
+        alt: "The digging area in the game",
+        caption: "Mini-Game View"
+      },
+      {
+        id: "ben-gi-08",
+        enabled: true,
+        src: "assets/images/projects/ben/ben_gi_9.webp",
+        alt: "The digging area in the game",
+        caption: "Shrink View"
+      },
+    ],
+    gameplayVideos: [
+      {
+        id: "ben-gameplay-01",
+        enabled: true,
+        youtube: "https://youtu.be/oHbOex0BFyo",
+        title: "Two Player Tag Gameplay"
+      },
+    ],
   },
   {
     id: "bubble-parkour",
