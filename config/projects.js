@@ -32,14 +32,14 @@ const emptyMedia = {
     {
       id: "digging-gameplay-01",
       enabled: true,
-      src: "assets/images/projects/coverImages/bbCoverImg.png",
+      src: "assets/images/projects/coverImages/bbCoverImg.webp",
       alt: "The digging area in the game",
       caption: "Gameplay view"
     },
     {
       id: "digging-gameplay-01",
       enabled: true,
-      src: "assets/images/projects/coverImages/t3CoverImg.jpg",
+      src: "assets/images/projects/coverImages/t3CoverImg.webp",
       alt: "The digging area in the game",
       caption: "Gameplay view"
     }
@@ -63,15 +63,15 @@ export const projectItems = [
     shortDescription: "A fast-paced crowd-control beat 'em up with combat-driven environment puzzles.",
     description:
       "A fast-paced beat 'em up centered on systemic crowd-control mechanics. The game bridges the gap between combat and exploration by utilizing combat abilities as environmental traversal tools, replacing standard attack inputs with interactive, state-driven challenges.",
-    coverImage: "assets/images/projects/coverImages/renCoverImg.png",
+    coverImage: "assets/images/projects/coverImages/renCoverImg.webp",
     backgroundImages: [
-      "assets/images/projects/ren/gi_01.png",
-      "assets/images/projects/ren/gi_02.png",
-      "assets/images/projects/ren/gi_03.png",
-      "assets/images/projects/ren/gi_04.png",
-      "assets/images/projects/ren/tb/ren-puzzle-1.png",
-      "assets/images/projects/ren/tb/mocap_1.png",
-      "assets/images/projects/ren/tb/hung-prog-1.png",
+      "assets/images/projects/ren/gi_01.webp",
+      "assets/images/projects/ren/gi_02.webp",
+      "assets/images/projects/ren/gi_03.webp",
+      "assets/images/projects/ren/gi_04.webp",
+      "assets/images/projects/ren/tb/ren-puzzle-1.webp",
+      "assets/images/projects/ren/tb/mocap_1.webp",
+      "assets/images/projects/ren/tb/hung-prog-1.webp",
     ],
     theme: { background: ["#180e0e", "#0e180f", "#524949"], surface: "#110a0a", text: "#fee8e8", muted: "#cab4b4", accent: "#db7878", signal: "#f0c86e" },
     facts: [
@@ -87,7 +87,7 @@ export const projectItems = [
         id: "ren-combat-puzzles",
         enabled: true,
         title: "Combat-led environment puzzles",
-        images: ["assets/images/projects/ren/tb/ren-puzzle-1.png"],
+        images: ["assets/images/projects/ren/tb/ren-puzzle-1.webp"],
         imageAlt: "",
         description: "The project direction connects combat styles to environmental progression, using a small focus-and-strength interaction for obstacles instead of treating every obstacle as a single attack-button action.",
         layout: "image-right",
@@ -97,8 +97,8 @@ export const projectItems = [
         enabled: true,
         title: "Mocap-focused production direction",
         images: [
-          { id: "ren-mocap-1", enabled: true, src: "assets/images/projects/ren/tb/mocap_1.png", alt: "Ren mocap production" },
-          { id: "ren-mocap-2", enabled: true, src: "assets/images/projects/ren/tb/mocap_2.png", alt: "Ren mocap production" },
+          { id: "ren-mocap-1", enabled: true, src: "assets/images/projects/ren/tb/mocap_1.webp", alt: "Ren mocap production" },
+          { id: "ren-mocap-2", enabled: true, src: "assets/images/projects/ren/tb/mocap_2.webp", alt: "Ren mocap production" },
         ],
         description: "The project is being developed with UE 5.8 mocap as part of its current production direction.",
         layout: "image-left",
@@ -109,15 +109,15 @@ export const projectItems = [
         title: "Hungarian Algorithm",
         progressionImages: [
           {
-            src: "assets/images/projects/ren/tb/hung-prog-1.png",
+            src: "assets/images/projects/ren/tb/hung-prog-1.webp",
             alt: "Initial stage"
           },
           {
-            src: "assets/images/projects/ren/tb/hung-prog-2.png",
+            src: "assets/images/projects/ren/tb/hung-prog-2.webp",
             alt: "Second stage"
           },
           {
-            src: "assets/images/projects/ren/tb/hung-prog-3.png",
+            src: "assets/images/projects/ren/tb/hung-prog-3.webp",
             alt: "Final stage"
           },
         ],
@@ -132,28 +132,28 @@ export const projectItems = [
       {
         id: "ren-gi-01",
         enabled: true,
-        src: "assets/images/projects/ren/gi_01.png",
+        src: "assets/images/projects/ren/gi_01.webp",
         alt: "The digging area in the game",
         caption: "Non-Combat View"
       },
       {
         id: "ren-gi-02",
         enabled: true,
-        src: "assets/images/projects/ren/gi_02.png",
+        src: "assets/images/projects/ren/gi_02.webp",
         alt: "The digging area in the game",
         caption: "Combat View"
       },
       {
         id: "ren-gi-03",
         enabled: true,
-        src: "assets/images/projects/ren/gi_03.png",
+        src: "assets/images/projects/ren/gi_03.webp",
         alt: "The digging area in the game",
         caption: "Finisher View - I"
       },
       {
         id: "ren-gi-04",
         enabled: true,
-        src: "assets/images/projects/ren/gi_04.png",
+        src: "assets/images/projects/ren/gi_04.webp",
         alt: "The digging area in the game",
         caption: "Finisher View - II"
       },
@@ -338,15 +338,15 @@ export const projectItems = [
     shortDescription: "A rebuilding and resource-progression game with a chunk-based sand area.",
     description:
       "The player rebuilds a broken house by completing quests, earning coins, opening areas, gathering materials and crafting resources. A large sand area uses Minecraft-like blocks presented through a chunk system.",
-    coverImage: "assets/images/projects/coverImages/dgCoverImg.png",
+    coverImage: "assets/images/projects/coverImages/dgCoverImg.webp",
     backgroundImages: [
-      "assets/images/projects/dg/Gameplay_1.png",
-      "assets/images/projects/dg/Gameplay_2.png",
-      "assets/images/projects/dg/EngineView.png",
-      "assets/images/projects/dg/Tools Shop View.png",
-      "assets/images/projects/dg/Backpack Shop View.png",
-      "assets/images/projects/dg/Storage View.png",
-      "assets/images/projects/dg/Quests View.png",
+      "assets/images/projects/dg/Gameplay_1.webp",
+      "assets/images/projects/dg/Gameplay_2.webp",
+      "assets/images/projects/dg/EngineView.webp",
+      "assets/images/projects/dg/Tools Shop View.webp",
+      "assets/images/projects/dg/Backpack Shop View.webp",
+      "assets/images/projects/dg/Storage View.webp",
+      "assets/images/projects/dg/Quests View.webp",
     ],
     theme: { background: ["#1b1a10", "#101a1b", "#4b4b46"], surface: "#2b2b17", text: "#fcf9ca", muted: "#ede8de", accent: "#dbc278", signal: "#f0c86e" },
     facts: [
@@ -379,17 +379,17 @@ export const projectItems = [
             alt: "Initial stage"
           },
           {
-            src: "assets/images/projects/dg/tb/chestSO_1.png",
+            src: "assets/images/projects/dg/tb/chestSO_1.webp",
             alt: "Initial stage"
           },
           {
-            src: "assets/images/projects/dg/tb/chestOpen.png",
+            src: "assets/images/projects/dg/tb/chestOpen.webp",
             alt: "Initial stage"
           },
         ],
         images: [
           { id: "dg-chunk-2", enabled: true, src: "assets/images/projects/dg/tb/chestSO.gif", alt: "Chunk System" },
-          { id: "dg-chunk-2", enabled: true, src: "assets/images/projects/dg/tb/chestSO_1.png", alt: "Chunk System" },
+          { id: "dg-chunk-2", enabled: true, src: "assets/images/projects/dg/tb/chestSO_1.webp", alt: "Chunk System" },
         ],
         imageAlt: "",
         description: `I designed a chunk-based chest spawning system for the sand area, using Unity Scriptable Objects to efficiently manage chest
@@ -412,49 +412,49 @@ export const projectItems = [
       {
         id: "dg-gi-01",
         enabled: true,
-        src: "assets/images/projects/dg/Gameplay_1.png",
+        src: "assets/images/projects/dg/Gameplay_1.webp",
         alt: "The digging area in the game",
         caption: "Gameplay View"
       },
       {
         id: "dg-gi-02",
         enabled: true,
-        src: "assets/images/projects/dg/Gameplay_2.png",
+        src: "assets/images/projects/dg/Gameplay_2.webp",
         alt: "The digging area in the game",
         caption: "Gameplay View"
       },
       {
         id: "rdgen-gi-03",
         enabled: true,
-        src: "assets/images/projects/dg/EngineView.png",
+        src: "assets/images/projects/dg/EngineView.webp",
         alt: "The digging area in the game",
         caption: "Engine View"
       },
       {
         id: "dg-gi-04",
         enabled: true,
-        src: "assets/images/projects/dg/Tools Shop View.png",
+        src: "assets/images/projects/dg/Tools Shop View.webp",
         alt: "The digging area in the game",
         caption: "Tools shop view"
       },
       {
         id: "dg-gi-05",
         enabled: true,
-        src: "assets/images/projects/dg/Backpack Shop View.png",
+        src: "assets/images/projects/dg/Backpack Shop View.webp",
         alt: "The digging area in the game",
         caption: "Backpack shop view"
       },
       {
         id: "dg-gi-06",
         enabled: true,
-        src: "assets/images/projects/dg/Storage View.png",
+        src: "assets/images/projects/dg/Storage View.webp",
         alt: "The digging area in the game",
         caption: "Storage view"
       },
       {
         id: "dg-gi-07",
         enabled: true,
-        src: "assets/images/projects/dg/Quests View.png",
+        src: "assets/images/projects/dg/Quests View.webp",
         alt: "The digging area in the game",
         caption: "Quests view"
       },
@@ -486,7 +486,7 @@ export const projectItems = [
        capping at level 30. To ensure high replayability, both the target words and grid letters are randomized on 
        each restart. Additionally, each five-level tier features a strict time limit, which is exposed to the 
        Engine Inspector via Scriptable Objects for rapid playtesting and balancing.`,
-    coverImage: "assets/images/projects/coverImages/wsCoverImg.jpeg",
+    coverImage: "assets/images/projects/coverImages/wsCoverImg.webp",
     theme: { background: ["#271e10", "#102713", "#102027", "#c9c390", "#abc0c1"], surface: "#4b2f12", text: "#f6e4cd", muted: "#eee7d4", accent: "#ffcb77", signal: "#f4bd6a" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
@@ -504,27 +504,27 @@ export const projectItems = [
         image: "",
         progressionImages: [
           {
-            src: "assets/images/projects/ws/tb/ws_1_5.png",
+            src: "assets/images/projects/ws/tb/ws_1_5.webp",
             alt: "Initial stage"
           },
           {
-            src: "assets/images/projects/ws/tb/ws_6_10.png",
+            src: "assets/images/projects/ws/tb/ws_6_10.webp",
             alt: "Initial stage"
           },
           {
-            src: "assets/images/projects/ws/tb/ws_11_15.png",
+            src: "assets/images/projects/ws/tb/ws_11_15.webp",
             alt: "Initial stage"
           },
           {
-            src: "assets/images/projects/ws/tb/ws_16_20.png",
+            src: "assets/images/projects/ws/tb/ws_16_20.webp",
             alt: "Initial stage"
           },
           {
-            src: "assets/images/projects/ws/tb/ws_21_25.png",
+            src: "assets/images/projects/ws/tb/ws_21_25.webp",
             alt: "Initial stage"
           },
           {
-            src: "assets/images/projects/ws/tb/ws_26_30.png",
+            src: "assets/images/projects/ws/tb/ws_26_30.webp",
             alt: "Initial stage"
           },
         ],
@@ -549,21 +549,21 @@ export const projectItems = [
       {
         id: "ws-gi-01",
         enabled: true,
-        src: "assets/images/projects/ws/ws_gameView.png",
+        src: "assets/images/projects/ws/ws_gameView.webp",
         alt: "The digging area in the game",
         caption: "Game View"
       },
       {
         id: "ws-gi-02",
         enabled: true,
-        src: "assets/images/projects/ws/ws_win.png",
+        src: "assets/images/projects/ws/ws_win.webp",
         alt: "The digging area in the game",
         caption: "Win condition"
       },
       {
         id: "ws-gi-03",
         enabled: true,
-        src: "assets/images/projects/ws/ws_lose.png",
+        src: "assets/images/projects/ws/ws_lose.webp",
         alt: "The digging area in the game",
         caption: "Lose condition"
       },
@@ -642,7 +642,7 @@ export const projectItems = [
     platform: "2D",
     shortDescription: "A recreation of the Tower of Hanoi puzzle with shuffled starting order.",
     description: "A simple Tower of Hanoi recreation where a shuffled puzzle is presented for the player to solve.",
-    coverImage: "assets/images/projects/coverImages/tohCoverImg.png",
+    coverImage: "assets/images/projects/coverImages/tohCoverImg.webp",
     theme: { background: ["#393730", "#4e3224", "#250000" 
       , "#001e08", "#20001a"], backgroundAngle: "180deg", surface: "#383322", text: "#e7d6e2", muted: "#b4a6b0", accent: "#e8dfe5", signal: "#d0ccbc" },
     facts: [
@@ -666,21 +666,21 @@ export const projectItems = [
       {
         id: "toh-gi-01",
         enabled: true,
-        src: "assets/images/projects/toh/toh_gameView.png",
+        src: "assets/images/projects/toh/toh_gameView.webp",
         alt: "The digging area in the game",
         caption: "Gameplay view"
       },
       {
         id: "toh-gi-02",
         enabled: true,
-        src: "assets/images/projects/toh/toh_win_condition.png",
+        src: "assets/images/projects/toh/toh_win_condition.webp",
         alt: "The digging area in the game",
         caption: "Win condition"
       },
       {
         id: "toh-gi-03",
         enabled: true,
-        src: "assets/images/projects/toh/toh_lose_condition.png",
+        src: "assets/images/projects/toh/toh_lose_condition.webp",
         alt: "The digging area in the game",
         caption: "Lose condition"
       },
@@ -722,7 +722,7 @@ export const projectItems = [
     shortDescription: "A two-player online multiplayer game across 10 increasingly difficult levels.",
     description:
       "Two players attempt a sequence of 10 levels with increasing difficulty. The project focuses on online multiplayer, synchronizing movements and managing packets in real time.",
-    coverImage: "assets/images/projects/coverImages/rrCoverImg.png",
+    coverImage: "assets/images/projects/coverImages/rrCoverImg.webp",
     theme: { background: "#1a1510", surface: "#35281c", text: "#fff8ed", muted: "#dec9a9", accent: "#ffb36f", signal: "#8ee2bb" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
@@ -758,7 +758,7 @@ export const projectItems = [
     shortDescription: "A local two-player basketball-inspired game built for quick play.",
     description:
       "A simple local two-player game inspired by basketball. Players use separate shift keys to hit rotating balls, with the player who hits the most winning the round.",
-    coverImage: "assets/images/projects/coverImages/bbCoverImg.png",
+    coverImage: "assets/images/projects/coverImages/bbCoverImg.webp",
     theme: { background: ["#121e1d", "#1e1b12", "#12191e", "#121e15"], surface: "#392417", text: "#fff6ef", muted: "#e1c1aa", accent: "#ff9d58", signal: "#ffd36b" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
@@ -773,28 +773,28 @@ export const projectItems = [
       {
         id: "bb-gi-01",
         enabled: true,
-        src: "assets/images/projects/bb/bb_menu.png",
+        src: "assets/images/projects/bb/bb_menu.webp",
         alt: "The digging area in the game",
         caption: "Menu View"
       },
       {
         id: "bb-gi-02",
         enabled: true,
-        src: "assets/images/projects/bb/bb_hit.png",
+        src: "assets/images/projects/bb/bb_hit.webp",
         alt: "The digging area in the game",
         caption: "Game View"
       },
       {
         id: "bb-gi-03",
         enabled: true,
-        src: "assets/images/projects/bb/bb_p1_win.png",
+        src: "assets/images/projects/bb/bb_p1_win.webp",
         alt: "The digging area in the game",
         caption: "Player 1 Win condition"
       },
       {
         id: "bb-gi-03",
         enabled: true,
-        src: "assets/images/projects/bb/bb_p2_win.png",
+        src: "assets/images/projects/bb/bb_p2_win.webp",
         alt: "The digging area in the game",
         caption: "Player 2 Win condition"
       },
@@ -821,7 +821,7 @@ export const projectItems = [
     shortDescription: "A local two-player arena game where the player holding the tag at time-out loses.",
     description:
       "Players compete in a 2D arena. One player begins with the tag, and the goal is to pass it to the opponent before the final second; the tag holder loses.",
-    coverImage: "assets/images/projects/coverImages/tagCoverImg.png",
+    coverImage: "assets/images/projects/coverImages/tagCoverImg.webp",
     theme: { background: "#181125", surface: "#2d1b4a", text: "#f9f3ff", muted: "#d1bce6", accent: "#b597ff", signal: "#80e8cf" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
@@ -847,7 +847,7 @@ export const projectItems = [
     shortDescription: "A violence-free obstacle, quiz and puzzle game created for a school competition.",
     description:
       "Created for a Chinmaya Vidyalaya school competition while in 11th standard. The player progresses through obstacles, math quizzes and puzzles to reach a treasure in a non-violent game format.",
-    coverImage: "assets/images/projects/coverImages/t3CoverImg.jpg",
+    coverImage: "assets/images/projects/coverImages/t3CoverImg.webp",
     theme: { background: "#111e23", surface: "#18343a", text: "#efffff", muted: "#b7d4d7", accent: "#6ed8df", signal: "#ecd16f" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unreal Engine 4.27" },
@@ -873,7 +873,7 @@ export const projectItems = [
     shortDescription: "A mask-themed dream world where each emotion grants a progression ability.",
     description:
       "Built for Global Game Jam 2026 with the theme ‘mask.’ The player is trapped in dreams and changes between yellow (happy), purple (sad) and red (anger) masks, using their abilities in the right places to progress.",
-    coverImage: "assets/images/projects/coverImages/ltCoverImg.png",
+    coverImage: "assets/images/projects/coverImages/ltCoverImg.webp",
     theme: { background: "#20122c", surface: "#422355", text: "#fff7ff", muted: "#d8bfdf", accent: "#e07ee1", signal: "#f6d562" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
@@ -909,7 +909,7 @@ export const projectItems = [
     shortDescription: "A game-jam project with three powers earned through short genre-switching mini-games.",
     description:
       "Built for BYOG 2025 around the ‘Re:Think, Re:Mix and Re:Make’ theme. Inspired by Ben 10 powers, the player earns jump, dash and shrink abilities from a watch by completing mini-games of different genres, then reaches the end.",
-    coverImage: "assets/images/projects/coverImages/benCoverImg.png",
+    coverImage: "assets/images/projects/coverImages/benCoverImg.webp",
     theme: { background: "#102318", surface: "#1d4327", text: "#f4fff3", muted: "#c0dfbd", accent: "#8de365", signal: "#ffdb74" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
@@ -945,7 +945,7 @@ export const projectItems = [
     shortDescription: "A bathroom-scale parkour escape made for the ‘Bubble’ Global Game Jam theme.",
     description:
       "Built for Global Game Jam 2025, this was the first game jam project. The player navigates an exaggerated bathroom where surrounding objects are much larger than the character, attempting to escape through the window.",
-    coverImage: "assets/images/projects/coverImages/bpCoverImg.png",
+    coverImage: "assets/images/projects/coverImages/bpCoverImg.webp",
     theme: { background: "#10202b", surface: "#163c51", text: "#f1fbff", muted: "#b8d5e1", accent: "#6bc9ee", signal: "#b5e96b" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
