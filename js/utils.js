@@ -58,7 +58,8 @@ export function makeId(prefix = "ui") {
 }
 
 export function scrollToTarget(target) {
-  const node = document.querySelector(target);
+  let id; try{id=decodeURIComponent(target.slice(1))}catch{return}
+  const node = document.getElementById(id);
   if (node) node.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
 }
 

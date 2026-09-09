@@ -14,7 +14,8 @@ export const profileWidgets = [
     ],
     style: {
       title: { fontSize: "clamp(3rem, 6.5vw, 6.2rem)", fontFamily: "Space Grotesk", color: "var(--text)" },
-      description: { fontSize: "1.02rem", fontFamily: "Manrope", color: "var(--muted)" },
+      description: { fontSize: "clamp(1.125rem, 1.6vw, 1.35rem)", fontFamily: "Manrope", color: "#dce6f5" },
     },
   },
 ];
+

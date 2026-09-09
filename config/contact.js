@@ -1,23 +1,23 @@
-// Personal links are intentionally blank because they were not supplied.
-// Fill a value and change `enabled` to true to display it.
+// Edit your contact details and labels here. Set `enabled: false` to hide an item.
 export const contactWidgets = [
   {
     id: "contact",
     enabled: true,
     eyebrow: "CONTACT / 05",
     title: "Let’s build something playable.",
-    description: "Use the form or the links below to get in touch.",
+    description: "Get in touch by email, or prepare a message using the form below.",
     bar: {
       enabled: true,
       label: "Contact",
     },
     form: {
       enabled: true,
-      title: "Send a message",
+      title: "Prepare an email",
       recipientEmail: "sgopinath2006@gmail.com",
       deliveryMode: "mailto", // `mailto` works with an email app. Use `endpoint` with server/contact-server.example.js.
       endpoint: "http://localhost:8787/api/contact",
-      buttonLabel: "Create message",
+      buttonLabel: "Open email app",
+      explanation: "This form opens your email application with a draft. Send the email there to complete your message.",
       successMessage: "Your email app should now be ready with the message.",
       fields: [
         { id: "name", enabled: true, label: "Name", type: "text", required: true, placeholder: "Your name" },

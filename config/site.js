@@ -14,7 +14,7 @@ export const siteSettings = [
       { id: "projects", enabled: true, label: "Projects", target: "#projects" },
       { id: "skills", enabled: true, label: "Skills", target: "#skills" },
       { id: "certificates", enabled: true, label: "Certificates", target: "#certificates" },
-      { id: "contact", enabled: true, label: "Contact", target: "#contact" },
+      { id: "contact", enabled: true, label: "Contact", target: "#contact-form" },
     ],
     // Add, remove, or restyle any profile action here. `href` supports page
     // anchors, website links, PDFs, and downloadable files. Use `download`
@@ -33,7 +33,7 @@ export const siteSettings = [
       },
       {
         id: "resume",
-        enabled: true,
+        enabled: false, // Add your actual PDF and set true.
         label: "Download resume",
         href: "./assets/resume/your-resume.pdf",
         download: true,
@@ -45,13 +45,19 @@ export const siteSettings = [
     ],
     projectQuickBar: {
       enabled: true,
+      mode: "bar", // "bar" shows thumbnails; "drawer" retains the optional dialog.
+      initiallyCollapsed: false,
+      minimizeLabel: "Minimize",
+      restoreLabel: "Projects",
+      buttonLabel: "Browse projects",
+      closeLabel: "Close",
       label: "Projects",
       previousLabel: "Previous projects",
       nextLabel: "Next projects",
     },
     footer: {
       enabled: true,
-      text: "@ 2026 Gopinath S. All rights reserved.",
+      text: "© 2026 Gopinath S. All rights reserved.",
       style: { fontSize: "0.78rem", fontFamily: "DM Mono", color: "var(--muted)" },
     },
   },

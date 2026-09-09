@@ -3,5 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "check": "node scripts/validate.mjs",
+    "sync:intro": "node scripts/sync-intro.mjs"
+  },
   "description": "A static, configuration-driven game programmer portfolio."
 }

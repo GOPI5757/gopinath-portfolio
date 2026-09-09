@@ -1,3 +1,6 @@
+import { imageManifest } from "../config/image-manifest.js";
+import { experience } from "../config/experience.js";
+import { onRouteDispose } from "./experience.js";
 import { applyTextStyle, el, hasValue, makeId, textElement, visible } from "./utils.js";
 
 export function eyebrow(text) {
@@ -19,66 +22,48 @@ export function renderChip(label, className = "chip") {
 }
 
 export function renderImage(image, alt, className = "media-image") {
-  if (!hasValue(image)) return null;
-  const img = el("img", { className, attrs: { src: image, alt: alt || "" } });
-  img.addEventListener("error", () => img.closest(".project-node-cover, figure, .carousel-slide, .project-cover")?.remove());
+  if(!hasValue(image))return null;
+  const asset=imageManifest[image.replace(/^\.\//,"")];
+  const config=experience.performance;
+  const img=el("img",{className,attrs:{alt:alt || "",decoding:"async",width:asset?.width,height:asset?.height}});
+  const sizes=/quickbar|drawer/.test(className)?config.imageSizes.browser:/node/.test(className)?config.imageSizes.projectCard:config.imageSizes.detail;
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const load=()=>{
+    if(asset?.versions && config.responsiveImages){img.sizes=sizes;img.srcset=asset.versions.map(v=>`${v.src} ${v.width}w`).join(', ')}
+    img.src=asset?.animated && reduced ? asset.poster : image;
+  };
+  if(config.lazyImages && 'IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){load();observer.disconnect()}},{rootMargin:config.imageRootMargin});
+    observer.observe(img);onRouteDispose(()=>observer.disconnect());
+  } else load();
+  img.addEventListener('error',()=>{
+    img.removeAttribute('srcset');img.removeAttribute('src');
+    if(!alt){img.style.visibility='hidden';return}
+    const message=el('span',{className:'image-unavailable',text:config.imageErrorLabel,attrs:{role:'img','aria-label':alt}});img.replaceWith(message);
+  },{once:true});
   return img;
 }
 
-// export function renderVideo(item, kindLabel) {
-//   if (!item?.enabled || !hasValue(item.src)) return null;
-//   const video = el("video", {
-//     className: "project-video",
-//     attrs: { controls: true, preload: "metadata", playsinline: true },
-//   });
-//   video.append(el("source", { attrs: { src: item.src, type: item.type || "video/mp4" } }));
-//   const heading = textElement("h3", item.title || kindLabel, "video-title", item.style?.title);
-//   const description = hasValue(item.description) ? textElement("p", item.description, "video-description", item.style?.description) : null;
-//   return el("article", { className: "video-card" }, [video, el("div", { className: "video-copy" }, [heading, description])]);
-// }
-
 export function renderVideo(item, kindLabel) {
-  if (!item?.enabled || !hasValue(item.youtube)) return null;
-
-  const videoId = extractYouTubeId(item.youtube);
-
-  if (!videoId) return null;
-
-  const iframe = el("iframe", {
-    className: "project-video",
-    attrs: {
-      src: `https://www.youtube.com/embed/${videoId}`,
-      title: item.title || kindLabel,
-      loading: "lazy",
-      allow:
-        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-      allowfullscreen: "",
-    },
-  });
-
-  const heading = textElement(
-    "h3",
-    item.title || kindLabel,
-    "video-title",
-    item.style?.title
-  );
-
-  const description = hasValue(item.description)
-    ? textElement(
-        "p",
-        item.description,
-        "video-description",
-        item.style?.description
-      )
-    : null;
-
-  return el("article", { className: "video-card" }, [
-    iframe,
-    el("div", { className: "video-copy" }, [
-      heading,
-      description,
-    ]),
-  ]);
+  if(!item?.enabled || !hasValue(item.youtube))return null;
+  const id=extractYouTubeId(item.youtube);if(!id)return null;
+  const title=item.title || kindLabel;
+  const container=el('div',{className:'video-container'});
+  const mount=(autoplay=false)=>{
+    const iframe=el('iframe',{className:'project-video',attrs:{src:`https://www.youtube-nocookie.com/embed/${id}?autoplay=${autoplay?1:0}`,title,loading:'lazy',allow:'autoplay; encrypted-media; picture-in-picture; fullscreen',allowfullscreen:'',referrerpolicy:'strict-origin-when-cross-origin'}});
+    container.replaceChildren(iframe);if(autoplay)iframe.focus();
+  };
+  if(experience.performance.clickToLoadYouTube){
+    const button=el('button',{className:'video-launch',attrs:{type:'button','aria-label':`${experience.performance.playVideoLabel}: ${title}`},on:{click:()=>mount(true)}},[
+      hasValue(item.poster)?renderImage(item.poster,'','video-poster'):null,
+      el('span',{className:'video-launch-label',text:`▶ ${experience.performance.playVideoLabel}`})
+    ]);container.append(button);
+  } else mount();
+  return el('article',{className:'video-card'},[container,el('div',{className:'video-copy'},[
+    textElement('h3',title,'video-title',item.style?.title),
+    hasValue(item.description)?textElement('p',item.description,'video-description',item.style?.description):null,
+    el('a',{className:'video-link',text:experience.performance.watchLinkLabel,attrs:{href:item.youtube,target:'_blank',rel:'noreferrer'}})
+  ])]);
 }
 
 function extractYouTubeId(value) {
@@ -114,7 +99,8 @@ export function renderCarousel(items, options = {}) {
   let activeIndex = 0;
 
   const slides = items.map((item, index) => {
-    const slide = el("div", { className: "carousel-slide", attrs: { role: "group", "aria-roledescription": "slide", "aria-label": `${index + 1} of ${items.length}` } }, renderSlide(item, index));
+    const slide = el("div", { className: "carousel-slide", attrs: { role: "group", "aria-roledescription": "slide", "aria-label": `${index + 1} of ${items.length}` } }, index === 0 ? renderSlide(item, index) : null);
+    slide.dataset.rendered = String(index === 0);
     track.append(slide);
     return slide;
   });
@@ -131,6 +117,7 @@ export function renderCarousel(items, options = {}) {
 
   function setActive(index) {
     activeIndex = (index + items.length) % items.length;
+    if(slides[activeIndex].dataset.rendered !== "true"){slides[activeIndex].append(renderSlide(items[activeIndex],activeIndex));slides[activeIndex].dataset.rendered="true";}
     track.style.transform = `translateX(-${activeIndex * 100}%)`;
     slides.forEach((slide, slideIndex) => slide.setAttribute("aria-hidden", String(slideIndex !== activeIndex)));
     dotButtons.forEach((dot, dotIndex) => {
@@ -194,6 +181,7 @@ export function renderTechnicalBlock(block) {
 
     renderProgressionRows();
     window.addEventListener("resize", renderProgressionRows);
+    onRouteDispose(()=>window.removeEventListener("resize", renderProgressionRows));
     const copy = el("div", { className: "technical-progression-copy" }, [
       textElement("h3", block.title || "Technical work", "technical-title", block.style?.title),
       hasValue(block.description)
@@ -273,3 +261,4 @@ export function renderDocumentSection(section) {
     el("div", { className: "document-groups" }, groups),
   ]);
 }
+

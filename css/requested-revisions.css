@@ -1,0 +1,29 @@
+/* Only the restored project navigation, intro, contact background and documents. */
+:root { --header-height:4.9rem; --project-bar-height:0px; --documents-height:0px; --reserved-contact-width:0px; }
+html.contact-right.reserve-contact-space.has-contact { --reserved-contact-width:calc(var(--contact-panel-width) + 2.5rem); }
+html.contact-right.reserve-contact-space.has-contact.contact-collapsed { --reserved-contact-width:2.5rem; }
+.project-quickbar { top:var(--header-height); }
+.project-quickbar[hidden] { display:none!important; }
+.project-quickbar-restore { min-height:40px; padding:.45rem .7rem; border:1px solid var(--line); border-radius:.3rem; background:var(--surface); color:var(--text); font:500 .85rem var(--font-mono),monospace; white-space:nowrap; }
+.project-quickbar-item[aria-current=page] .project-quickbar-cover { border-color:var(--accent); box-shadow:0 0 0 1px var(--accent); }
+.project-quickbar-item[aria-current=page] .project-quickbar-title { color:var(--text); }
+html { scroll-padding-top:calc(var(--header-height) + var(--project-bar-height) + var(--documents-height) + .5rem); }
+.section-shell,.detail-section { scroll-margin-top:.5rem; }
+/* Extend the same project canvas into the reserved contact area, without moving it. */
+html.project-route .project-detail::after { content:""; position:absolute; z-index:-1; inset:0 calc(-1 * var(--reserved-contact-width)) 0 0; background:var(--project-background); pointer-events:none; }
+html.project-route .project-detail::before { right:calc(-1 * var(--reserved-contact-width)); }
+html.project-route #contact-rail-root { --background:var(--active-project-surface); --surface:var(--active-project-surface); --surface-raised:var(--active-project-surface); --text:var(--active-project-text); --muted:var(--active-project-muted); --accent:var(--active-project-accent); }
+.project-detail .documents-toolbar { position:relative; inset:auto; z-index:18; display:flex; align-items:center; gap:.75rem; width:100%; min-width:0; margin:0; padding:.65rem 1rem; border-bottom:1px solid color-mix(in srgb,var(--project-accent) 25%,var(--line)); background:var(--project-surface); color:var(--project-text); animation:none; }
+.documents-toolbar-title { flex:0 0 auto; margin:0; font:500 .8rem var(--font-mono),monospace; }
+.documents-toolbar-links { display:flex; flex-wrap:wrap; align-items:center; gap:.45rem; min-width:0; }
+.documents-toolbar .document-link { display:inline-flex; align-items:center; gap:.45rem; min-height:36px; margin:0; padding:.35rem .6rem; font-size:.8rem; overflow-wrap:anywhere; }
+.documents-toolbar .document-type { font-size:.65rem; }
+/* Opaque from its first frame; the only fade is the exit into the main page. */
+.intro-splash:not(.is-exiting) { animation:none; }
+.intro-collage { grid-auto-rows:minmax(0,1fr); }
+.intro-collage-image { min-width:0; min-height:0; }
+@media(max-width:760px) {
+  .documents-toolbar-title { font-size:.75rem; }
+  .project-detail .documents-toolbar { align-items:flex-start; flex-direction:column; gap:.35rem; }
+  .project-quickbar-restore { font-size:.75rem; padding-inline:.5rem; }
+}

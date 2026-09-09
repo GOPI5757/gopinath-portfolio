@@ -1,135 +1,29 @@
-# Configurable Game Programmer Portfolio
+# Gopinath S — Gameplay Programmer Portfolio
 
-A responsive, static portfolio for a game programmer. The website is rendered from section-specific JavaScript configuration files—content is not hardcoded into the page layout.
+Updated static portfolio with a 25.6-second gameplay background, responsive contact controls, an on-demand project browser and optimized images. No build step or package installation is required for hosting.
 
-## Open it locally
+## Preview
 
-The site uses JavaScript modules, so serve this folder from a small local web server instead of opening `index.html` directly. For example, from this folder:
+Extract the ZIP. In the folder containing index.html run `python -m http.server 8080`, then open http://localhost:8080. Your editor's Live Server extension also works. Double-clicking index.html does not support the JavaScript modules used by the site.
 
-```powershell
-python -m http.server 8080
-```
+## Customize
 
-Then open `http://localhost:8080` in a browser. Any ordinary static-site host (GitHub Pages, Netlify, Vercel static hosting, etc.) can host the front end.
+Start with **CONFIGURATION.md**. Appearance, responsive behavior, video sources and performance controls are in `config/experience.js`. Profile text/font sizes are in `config/profile.js`; project content in `config/projects.js`; navigation and resume in `config/site.js`; contact details in `config/contact.js`. Global colors/fonts remain in `config/theme.js`.
 
-## Edit content
+## Static hosting
 
-All user-facing content is in `config/`. Every widget/item has an `enabled` property:
+Put this folder's CONTENTS in your GitHub Pages publishing directory, with index.html, config, css, js and assets as siblings. Preserve folder names and filename capitalization. Include .nojekyll. Bundled asset paths are relative and have been checked under a repository-style subdirectory. No deployment has been made for you.
 
-```js
-{ enabled: false, title: "This will not render" }
-```
+Keep your original ZIP as a backup of the full-resolution image inputs. This package uses the smaller assets/optimized library and omits duplicate original images.
 
-Disabled or empty content is omitted completely, so the surrounding page reflows without empty headings, cards, or broken media areas.
+## Contact and resume
 
-| File | Controls |
-| --- | --- |
-| `config/site.js` | Name, role, navigation, hero actions, resume button, footer |
-| `config/theme.js` | Global colors and fonts |
-| `config/intro.js` | Intro splash text, duration, collage image paths, typography |
-| `config/profile.js` | Profile copy, tags and journey strip |
-| `config/projects.js` | Project categories, project nodes, themed detail pages, technical blocks, documents, images and videos |
-| `config/skills.js` | Skill groups and individual skills |
-| `config/certificates.js` | Certificate carousel items |
-| `config/contact.js` | Form delivery settings, email/phone and social links |
+Your contact information is already configured. The form opens the visitor's email application with a draft; it does not send directly from the website. GitHub Pages cannot execute the optional server example in server/.
 
-Text style options can be attached to the relevant widgets, for example:
+The resume button was disabled because its PDF was missing. Add your real PDF and enable its action in config/site.js. No resume was invented or substituted.
 
-```js
-style: {
-  title: { fontSize: "3rem", fontFamily: "Space Grotesk", color: "#ffffff" },
-  description: { fontSize: "1rem", color: "#aab7d4" }
-}
-```
+## Optional check
 
-## Add a project
+With Node.js installed, run `npm run check`. No packages are required. This checks JavaScript syntax, project IDs and configured local assets with exact filename case. It does not verify external services.
 
-1. Add a category object to `projectCategories` only if you need a new group.
-2. Add one project object to `projectItems`, choose its `id`, and list one or more `categoryIds`.
-3. Add `facts`, `technicalBlocks`, `documentGroups`, `images`, `gameplayVideos`, or `engineWorkVideos` only where needed.
-4. Set the item and any nested widget to `enabled: true`.
-
-Each project detail view is a shareable route such as `#project/digging-game`. Its `theme` object changes the detail-page color scheme only for that project.
-
-Example image carousel item:
-
-```js
-images: [
-  {
-    id: "digging-gameplay-01",
-    enabled: true,
-    src: "./assets/images/projects/digging-game/gameplay-01.jpg",
-    alt: "The digging area in the game",
-    caption: "Gameplay view"
-  }
-]
-```
-
-Example video item:
-
-```js
-gameplayVideos: [
-  {
-    id: "digging-demo",
-    enabled: true,
-    title: "Digging loop",
-    description: "Short gameplay demonstration.",
-    src: "./assets/videos/gameplay/digging-loop.mp4",
-    type: "video/mp4"
-  }
-]
-```
-
-## Assets
-
-Use these folders so paths remain tidy as the portfolio grows:
-
-```text
-assets/
-├── images/
-│   ├── intro/            # splash collage images
-│   ├── projects/         # create a folder per project when helpful
-│   └── certificates/     # certificate scans/images
-├── videos/
-│   ├── gameplay/         # gameplay clips
-│   └── engine-work/      # editor/debug/technical clips
-├── documents/            # GDDs, case studies, PDFs
-└── resume/               # downloadable resume PDF
-```
-
-Use web-friendly, compressed images (WebP/JPG/PNG) and videos (MP4/WebM). A configured media widget with an empty source is not rendered. If a configured file cannot load, its media element is removed rather than distorting the layout.
-
-## Contact form
-
-The starter configuration has no personal email address or social links because none were provided. Add those in `config/contact.js` and set their `enabled` flags to `true`.
-
-`deliveryMode: "mailto"` is the no-backend option: it opens the visitor’s email app with the form details. Set `recipientEmail` before publishing.
-
-For automatic sending, set `deliveryMode: "endpoint"` and use the optional Resend-based server example in `server/`:
-
-1. Copy `server/.env.example` to `server/.env` and set its values.
-2. Run the server with Node.js 18+.
-3. Set `endpoint` in `config/contact.js` to its public `/api/contact` address.
-
-Keep `.env` private; it contains an email-service API key and must never be committed or placed in `config/`.
-
-## Responsive and accessibility behavior
-
-- The layout uses fluid grids and typography from 320px mobile width through desktop.
-- Project nodes turn into a non-overflowing grid; graph connector decoration is removed when space is tight.
-- Navigation collapses to a keyboard-accessible menu on small screens.
-- Carousels support arrow keys, visible controls and accessible slide labels.
-- Focus states, semantic headings, form labels, reduced-motion support and a skip link are included.
-
-## Project structure
-
-```text
-game-programmer-portfolio/
-├── index.html
-├── README.md
-├── config/
-├── css/
-├── js/
-├── assets/
-└── server/                 # optional contact endpoint example
-```
+See UPDATE-NOTES.md for changes/checks and GAMEPLAY-SOURCES.md for the gameplay link inventory.

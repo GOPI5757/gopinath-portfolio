@@ -1,3 +1,5 @@
+import { experience } from "../config/experience.js";
+import { applyExperience, attachProfileVideo, disposeRoute, onRouteDispose } from "./experience.js";
 import { siteSettings } from "../config/site.js";
 import { portfolioThemes } from "../config/theme.js";
 import { introWidgets } from "../config/intro.js";
@@ -11,8 +13,8 @@ import { eyebrow, renderCarousel, renderChip, renderDocumentGroup, renderImage, 
 
 const site = first(siteSettings) || {};
 const root = document.querySelector("#site-shell");
-let projectQuickBarCollapsed = false;
-let contactRailCollapsed = false;
+let projectQuickBarCollapsed = site.projectQuickBar?.initiallyCollapsed !== false;
+let contactRailCollapsed = experience.contact.initiallyCollapsed;
 
 function applyPortfolioTheme() {
   const theme = first(portfolioThemes);
@@ -42,7 +44,7 @@ function navigateTo(target) {
 
 function renderHeader() {
   const navId = "main-navigation";
-  const navLinks = visible(site.navigation).map((item) => el("a", {
+  const navLinks = visible(site.navigation).filter(item => item.target !== "#certificates" || visible(first(certificateWidgets)?.items || []).some(item => hasValue(item.image))).map((item) => el("a", {
     className: "nav-link",
     text: item.label,
     attrs: { href: item.target },
@@ -56,6 +58,7 @@ function renderHeader() {
         }
       }
       document.querySelector(".site-header")?.classList.remove("nav-open");
+      const menu = document.querySelector(".menu-toggle"); if(menu){menu.setAttribute("aria-expanded","false");menu.textContent="Menu";}
     } },
   }));
   const nav = el("nav", { className: "site-nav", attrs: { id: navId, "aria-label": "Main navigation" } }, navLinks);
@@ -64,7 +67,16 @@ function renderHeader() {
     text: "Menu",
     attrs: { type: "button", "aria-expanded": "false", "aria-controls": navId },
   });
-  const header = el("header", { className: "site-header" }, [brand(), menuButton, nav]);
+  const header = el("header", { className: "site-header" }, [brand(), el("div", {className:"header-actions"}, [site.projectQuickBar?.enabled !== false && site.projectQuickBar?.mode === "drawer" ? el("button", {className:"browse-projects-button",text:site.projectQuickBar.buttonLabel || "Browse projects",attrs:{type:"button","aria-haspopup":"dialog"},on:{click:()=>document.querySelector("#projects-drawer")?.showModal()}}) : null, menuButton, nav])]);
+  if (site.projectQuickBar?.enabled !== false && site.projectQuickBar?.mode === "bar") {
+    const restore = el("button", {
+      className: "project-quickbar-restore",
+      text: `⌄ ${site.projectQuickBar.restoreLabel || "Projects"}`,
+      attrs: {type: "button", hidden: !projectQuickBarCollapsed, "aria-expanded": "false", "aria-controls": "project-quickbar"},
+      on: {click: () => document.querySelector(".project-quickbar-toggle")?.click()},
+    });
+    header.querySelector(".header-actions").prepend(restore);
+  }
   menuButton.addEventListener("click", () => {
     const expanded = header.classList.toggle("nav-open");
     menuButton.setAttribute("aria-expanded", String(expanded));
@@ -74,6 +86,18 @@ function renderHeader() {
 }
 
 function renderProjectQuickBar() {
+  const config=site.projectQuickBar || {};
+  if(config.enabled===false)return null;
+  if(config.mode!=="drawer")return renderLegacyProjectQuickBar();
+  const dialog=el("dialog",{className:"projects-drawer",attrs:{id:"projects-drawer","aria-labelledby":"drawer-title"}});
+  const close=el("button",{className:"drawer-close",text:config.closeLabel || "Close",attrs:{type:"button"},on:{click:()=>dialog.close()}});
+  const items=visible(projectItems).map(project=>el("a",{className:"drawer-project",attrs:{href:`#project/${project.id}`},on:{click:()=>dialog.close()}},[renderImage(project.coverImage,"","drawer-cover"),el("strong",{text:project.title}),el("span",{className:"drawer-meta",text:`${project.engine} · ${project.language}`})]));
+  dialog.append(el("div",{className:"drawer-heading"},[el("h2",{text:config.label || "Projects",attrs:{id:"drawer-title"}}),close]),el("div",{className:"drawer-projects"},items));
+  dialog.addEventListener("click",event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}});
+  return dialog;
+}
+
+function renderLegacyProjectQuickBar() {
   const config = site.projectQuickBar || {};
   const projects = visible(projectItems).filter((project) => hasValue(project.title));
   if (config.enabled === false || !projects.length) return null;
@@ -81,7 +105,7 @@ function renderProjectQuickBar() {
   const trackId = "project-quickbar-track";
   const bar = el("aside", {
     className: "project-quickbar",
-    attrs: { "aria-label": config.label || "Projects" },
+    attrs: { id: "project-quickbar", "aria-label": config.label || "Projects" },
   });
   const track = el("div", {
     className: "project-quickbar-track",
@@ -91,12 +115,12 @@ function renderProjectQuickBar() {
   const toggle = el("button", {
     className: "project-quickbar-toggle",
     attrs: { type: "button", "aria-controls": trackId },
-  }, [toggleIcon, el("span", { text: config.label || "Projects" })]);
+  }, [toggleIcon, el("span", { text: config.minimizeLabel || "Minimize" })]);
 
   projects.forEach((project) => {
     const link = el("a", {
       className: "project-quickbar-item",
-      attrs: { href: `#project/${project.id}`, "aria-label": `Open ${project.title}` },
+      attrs: { href: `#project/${project.id}`, "aria-label": `Open ${project.title}`, "aria-current": currentProjectId() === project.id ? "page" : undefined },
     });
     const image = renderImage(project.coverImage, "", "project-quickbar-image");
     if (image) link.append(el("span", { className: "project-quickbar-cover", attrs: { "aria-hidden": "true" } }, image));
@@ -126,11 +150,17 @@ function renderProjectQuickBar() {
   const updateCollapsedState = () => {
     bar.classList.toggle("is-collapsed", projectQuickBarCollapsed);
     toggle.setAttribute("aria-expanded", String(!projectQuickBarCollapsed));
-    toggleIcon.textContent = projectQuickBarCollapsed ? "⌄" : "⌃";
+    toggleIcon.textContent = "⌃";
+    bar.hidden = projectQuickBarCollapsed;
+    const restore = document.querySelector(".project-quickbar-restore");
+    if (restore) restore.hidden = !projectQuickBarCollapsed;
+    document.documentElement.classList.toggle("projects-minimized", projectQuickBarCollapsed);
   };
   toggle.addEventListener("click", () => {
     projectQuickBarCollapsed = !projectQuickBarCollapsed;
     updateCollapsedState();
+    if (projectQuickBarCollapsed) document.querySelector(".project-quickbar-restore")?.focus({preventScroll: true});
+    else toggle.focus({preventScroll: true});
   });
   updateCollapsedState();
 
@@ -163,7 +193,9 @@ function renderProfileSection() {
     el("div", { className: "signal-lines", attrs: { "aria-hidden": "true" } }),
   ]);
   copy.querySelector("h1").id = "profile-title";
-  return el("section", { className: "profile-section section-shell", attrs: { id: "profile", "aria-labelledby": "profile-title" } }, [el("div", { className: "profile-grid" }, [copy, signal])]);
+  const section=el("section", { className: "profile-section section-shell", attrs: { id: "profile", "aria-labelledby": "profile-title" } }, [el("div", { className: "profile-grid" }, [copy, signal])]);
+  attachProfileVideo(section);
+  return section;
 }
 
 function renderProfileActions() {
@@ -372,7 +404,7 @@ function renderProjectsSection() {
     if (event.key === "End") nextIndex = availableCategories.length - 1;
 
     setActiveCategory(nextIndex, true);
-    tabs[nextIndex].focus();
+    tabs[activeIndex].focus();
   });
 
   setActiveCategory(0);
@@ -520,6 +552,7 @@ function renderContactRail() {
   ]);
   const updateCollapsedState = () => {
     rail.classList.toggle("is-collapsed", contactRailCollapsed);
+    document.documentElement.classList.toggle("contact-collapsed",contactRailCollapsed);
     toggle.setAttribute("aria-expanded", String(!contactRailCollapsed));
     icon.textContent = contactRailCollapsed ? "⌃" : "⌄";
     mobileToggle.setAttribute("aria-expanded", String(!contactRailCollapsed));
@@ -537,7 +570,9 @@ function renderContactRail() {
 }
 
 function mountContactRail() {
-  document.querySelector("#contact-rail-root")?.replaceChildren(...[renderContactRail()].filter(Boolean));
+  const rail=renderContactRail();
+  document.querySelector("#contact-rail-root")?.replaceChildren(...[rail].filter(Boolean));
+  document.documentElement.classList.toggle("has-contact",!!rail);
 }
 
 function renderContactSection() {
@@ -545,7 +580,8 @@ function renderContactSection() {
   if (!enabled(widget)) return null;
   const form = renderContactForm(widget.form);
   if (!form) return null;
-  return el("section", { className: "contact-section section-shell", attrs: { id: "contact-form", "aria-labelledby": "contact-title" } }, [sectionHeading(widget), form]);
+  const email=widget.form?.recipientEmail || visible(widget.directDetails).find(detail=>detail.id==="email")?.value;
+  return el("section", { className: "contact-section section-shell", attrs: { id: "contact-form", "aria-labelledby": "contact-title" } }, [sectionHeading(widget), email ? el("a",{className:"contact-direct-inline",text:email,attrs:{href:`mailto:${email}`}}) : null, widget.form?.enabled && widget.form?.deliveryMode === "mailto" ? el("p",{className:"contact-form-note",text:widget.form.explanation || ""}) : null, form]);
 }
 
 function renderContactForm(config) {
@@ -627,7 +663,7 @@ function renderEngineWorkVideos(project) {
 
   // With zero or one unique section, keep the existing behavior and show every video.
   if (sectionNames.length <= 1) {
-    const engineVideos = videos.map((video) => renderVideo(video, "Engine-work video")).filter(Boolean);
+    const engineVideos = videos.map((video) => renderVideo({...video,poster:video.poster || project.coverImage}, "Engine-work video")).filter(Boolean);
     return engineVideos.length
       ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "engine-videos-title" } }, [
           el("h2", { className: "detail-heading", text: "Engine-work videos", attrs: { id: "engine-videos-title" } }),
@@ -653,7 +689,7 @@ function renderEngineWorkVideos(project) {
   //   videoGrid.replaceChildren(
   //     ...videos
   //       .filter((video) => Array.isArray(video.section) && video.section.includes(activeSection))
-  //       .map((video) => renderVideo(video, "Engine-work video"))
+  //       .map((video) => renderVideo({...video,poster:video.poster || project.coverImage}, "Engine-work video"))
   //       .filter(Boolean)
   //   );
   // };
@@ -670,7 +706,7 @@ function renderEngineWorkVideos(project) {
 
     videoGrid.replaceChildren(
       ...filteredVideos
-        .map((video) => renderVideo(video, "Engine-work video"))
+        .map((video) => renderVideo({...video,poster:video.poster || project.coverImage}, "Engine-work video"))
         .filter(Boolean)
     );
   };
@@ -743,7 +779,8 @@ function seededRandom(seed) {
 function renderProjectBackground(project) {
   const uniqueSources = projectBackdropSources(project).slice(0, 16);
   if (!uniqueSources.length) return null;
-  const overlayCount = 15;
+  if(!experience.performance.decorativeProjectImages)return null;
+  const overlayCount = Math.max(0,Math.min(15,experience.performance.maxDecorativeImages));
   const sources = Array.from({ length: overlayCount }, (_, index) => uniqueSources[index % uniqueSources.length]);
 
   const random = seededRandom(project.id || project.title || "project");
@@ -802,7 +839,7 @@ function renderProjectDetail(project) {
   const documentSections = visible(project.documentSections).map(renderDocumentSection).filter(Boolean);
   const docs = visible(project.documentGroups).map(renderDocumentGroup).filter(Boolean);
   const images = visible(project.images).filter((image) => hasValue(image.src));
-  const gameplayVideos = visible(project.gameplayVideos).map((video) => renderVideo(video, "Gameplay video")).filter(Boolean);
+  const gameplayVideos = visible(project.gameplayVideos).map((video) => renderVideo({...video,poster:video.poster || project.coverImage}, "Gameplay video")).filter(Boolean);
   const engineVideosSection = renderEngineWorkVideos(project);
   const themeStyle = projectThemeStyle(project.theme);
 
@@ -841,6 +878,20 @@ function renderProjectDetail(project) {
       }, documentContent)
     : null;
   
+  if (documentsSidebar && experience.projectDetail.documents?.compact) {
+    const links = [...documentsSidebar.querySelectorAll("a")];
+    for (const link of links) {
+      const groupTitle = link.closest(".document-group")?.querySelector("h3")?.textContent;
+      if (groupTitle) link.title = groupTitle;
+    }
+    documentsSidebar.replaceChildren(
+      el("h2", {className: "documents-toolbar-title", text: experience.projectDetail.documents.label, attrs: {id: "documents-title"}}),
+      el("div", {className: "documents-toolbar-links"}, links)
+    );
+    documentsSidebar.classList.add("documents-toolbar");
+    documentsSidebar.setAttribute("aria-labelledby", "documents-title");
+  }
+
   // const main = el("main", { 
   //   className: "project-detail project-detail--enter", 
   //   attrs: { id: "main-content", tabindex: "-1" },
@@ -852,7 +903,13 @@ function renderProjectDetail(project) {
   const main = el("main", { 
     className: "project-detail project-detail--enter", 
     attrs: { id: "main-content", tabindex: "-1" },
-  }, [renderProjectBackground(project), intro, documentsSidebar, ...detailSections]);
+  }, [renderProjectBackground(project), ...(experience.projectDetail.documents?.compact && documentsSidebar ? [documentsSidebar] : []), intro, ...(() => {
+    const sections = new Map(detailSections.map(section => [section.getAttribute("aria-labelledby").replace(/-title$/, ""),section]));
+    if(documentsSidebar && !experience.projectDetail.documents?.compact) sections.set("documents",documentsSidebar);
+    const result=[];
+    for(const key of experience.projectDetail.sectionOrder || []){if(sections.has(key)){result.push(sections.get(key));sections.delete(key)}}
+    return [...result,...sections.values()];
+  })()]);
 
   Object.entries(themeStyle).forEach(([property, value]) => {
     main.style.setProperty(property, value);
@@ -878,18 +935,44 @@ function renderNotFoundProject() {
 }
 
 function currentProjectId() {
-  const match = decodeURIComponent(location.hash).match(/^#project\/([^/?#]+)$/);
+  let hash; try { hash=decodeURIComponent(location.hash); } catch { return "invalid-link"; }
+  const match = hash.match(/^#project\/([^/?#]+)$/);
   return match?.[1] || null;
+}
+
+function syncPageChrome() {
+  const main = document.querySelector(".project-detail");
+  const html = document.documentElement;
+  html.classList.toggle("project-route", Boolean(main) && experience.contact.matchProjectBackground !== false);
+  for (const name of ["background", "surface", "text", "muted", "accent", "signal"]) {
+    html.style.setProperty(`--active-project-${name}`, main ? getComputedStyle(main).getPropertyValue(`--project-${name}`) : "initial");
+  }
+  const header = document.querySelector(".site-header");
+  const bar = document.querySelector(".project-quickbar");
+  const documents = document.querySelector(".documents-toolbar");
+  const measure = () => {
+    html.style.setProperty("--header-height", `${header?.offsetHeight || 0}px`);
+    html.style.setProperty("--project-bar-height", `${bar?.offsetHeight || 0}px`);
+    html.style.setProperty("--documents-height", documents && getComputedStyle(documents).position === "sticky" ? `${documents.offsetHeight}px` : "0px");
+  };
+  const observer = new ResizeObserver(measure);
+  [header, bar, documents].filter(Boolean).forEach(node => observer.observe(node));
+  measure();
+  onRouteDispose(() => observer.disconnect());
 }
 
 function renderRoute() {
   const projectId = currentProjectId();
   if (projectId) {
+    disposeRoute();
     const project = visible(projectItems).find((item) => item.id === projectId);
     if (project) renderProjectDetail(project); else renderNotFoundProject();
+    syncPageChrome();
     return;
   }
-  renderHome();
+  document.querySelectorAll("dialog[open]").forEach(dialog=>dialog.close());
+  if(!document.querySelector("#profile")){disposeRoute();renderHome();syncPageChrome();}
+  document.title = `${site.name || "Portfolio"} | ${site.role || "Gameplay Programmer"}`;
   if (
     location.hash &&
     location.hash !== "#top" &&
@@ -901,7 +984,12 @@ function renderRoute() {
 function renderIntro() {
   const intro = first(introWidgets);
   const documentElement = document.documentElement;
-  const releaseIntroGuard = () => documentElement.classList.remove("intro-pending", "intro-active");
+  const releaseIntroGuard = () => {
+    documentElement.classList.remove("intro-pending", "intro-active");
+    document.querySelector("#intro-root").replaceChildren();
+    document.querySelector("#site-shell")?.removeAttribute("inert");
+    document.querySelector("#contact-rail-root")?.removeAttribute("inert");
+  };
   if (!enabled(intro)) {
     releaseIntroGuard();
     return;
@@ -922,12 +1010,16 @@ function renderIntro() {
   const collage = images.length ? el("div", { className: "intro-collage", attrs: { "aria-hidden": "true" } }, images) : null;
   const title = applyTextStyle(el("h1", { className: "intro-title", text: intro.title || site.name || "Portfolio" }), intro.style?.title);
   const subtitle = applyTextStyle(el("p", { className: "intro-subtitle", text: intro.subtitle || site.role || "" }), intro.style?.subtitle);
-  const splash = el("div", { className: "intro-splash", attrs: { role: "presentation" } }, [
+  const splash = rootNode.querySelector(".intro-splash") || el("div", { className: "intro-splash", attrs: { role: "presentation" } }, [
     collage,
     el("div", { className: "intro-noise", attrs: { "aria-hidden": "true" } }),
     el("div", { className: "intro-copy" }, [hasValue(intro.kicker) ? el("p", { className: "intro-kicker", text: intro.kicker }) : null, title, subtitle]),
   ]);
+  applyTextStyle(splash.querySelector(".intro-title"), intro.style?.title).textContent = intro.title || site.name || "Portfolio";
+  applyTextStyle(splash.querySelector(".intro-subtitle"), intro.style?.subtitle).textContent = intro.subtitle || site.role || "";
   rootNode.replaceChildren(splash);
+  document.querySelector("#site-shell").setAttribute("inert", "");
+  document.querySelector("#contact-rail-root").setAttribute("inert", "");
   documentElement.classList.add("intro-active");
   documentElement.classList.remove("intro-pending");
   try {
@@ -937,6 +1029,7 @@ function renderIntro() {
   }
   const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : Number(intro.durationMs || 0);
   window.setTimeout(() => {
+    documentElement.classList.remove("intro-pending");
     splash.classList.add("is-exiting");
     window.setTimeout(() => {
       splash.remove();
@@ -947,6 +1040,7 @@ function renderIntro() {
 }
 
 applyPortfolioTheme();
+applyExperience();
 renderRoute();
 renderIntro();
 window.addEventListener("hashchange", renderRoute);
