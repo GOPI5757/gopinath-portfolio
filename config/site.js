@@ -33,9 +33,9 @@ export const siteSettings = [
       },
       {
         id: "resume",
-        enabled: false, // Add your actual PDF and set true.
+        enabled: true, // Add your actual PDF and set true.
         label: "Download resume",
-        href: "./assets/resume/your-resume.pdf",
+        href: "./assets/resume/Gopinath_S_Gameplay_Programmer_Resume.pdf",
         download: true,
         background: "color-mix(in srgb, var(--surface) 80%, transparent)",
         textColor: "var(--text)",
@@ -45,7 +45,7 @@ export const siteSettings = [
     ],
     projectQuickBar: {
       enabled: true,
-      mode: "bar", // "bar" shows thumbnails; "drawer" retains the optional dialog.
+      mode: "drawer", // "bar" shows thumbnails; "drawer" retains the optional dialog.
       initiallyCollapsed: false,
       minimizeLabel: "Minimize",
       restoreLabel: "Projects",

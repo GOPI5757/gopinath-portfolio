@@ -14,7 +14,7 @@ Start with **CONFIGURATION.md**. Appearance, responsive behavior, video sources 
 
 Put this folder's CONTENTS in your GitHub Pages publishing directory, with index.html, config, css, js and assets as siblings. Preserve folder names and filename capitalization. Include .nojekyll. Bundled asset paths are relative and have been checked under a repository-style subdirectory. No deployment has been made for you.
 
-Keep your original ZIP as a backup of the full-resolution image inputs. This package uses the smaller assets/optimized library and omits duplicate original images.
+Keep your original ZIP as a backup of the full-resolution image inputs. This package uses the smaller assets/images library and omits duplicate original images.
 
 ## Contact and resume
 

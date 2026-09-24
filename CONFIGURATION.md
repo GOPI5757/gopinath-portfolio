@@ -80,7 +80,7 @@ In config/experience.js, performance controls:
 | decorativeProjectImages | Optional decorative image collage on project pages; off by default |
 | maxDecorativeImages | Maximum decorative images when enabled |
 
-assets/optimized contains the generated variants. config/image-manifest.js connects their paths, dimensions and widths. Keep these files together. Carousels create additional slides only when selected. Animated technical diagrams remain animated WebP; their static poster is used when reduced motion is requested at page load.
+assets/images contains the generated variants. config/image-manifest.js connects their paths, dimensions and widths. Keep these files together. Carousels create additional slides only when selected. Animated technical diagrams remain animated WebP; their static poster is used when reduced motion is requested at page load.
 
 To add an image, create a folder such as assets/images/my-project, add your resized/compressed file, and set its coverImage or src in config/projects.js. An ordinary image path works without a manifest entry. WebP alone does not guarantee small downloads: dimensions and file size also matter. For multiple sizes, follow an existing image-manifest.js entry with src, width, height and versions. Match filename case exactly.
 

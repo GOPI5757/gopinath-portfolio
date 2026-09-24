@@ -1,1354 +1,1354 @@
 // Generated responsive image variants. Add new ordinary image paths directly to project configs; existing images use these smaller variants.
 export const imageManifest = {
-  "assets/optimized/bbbf71df1c40-1600.webp": {
-    "src": "assets/optimized/bbbf71df1c40-1600.webp",
+  "assets/images/intro/collage-01.webp": {
+    "src": "assets/images/intro/collage-01.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/bbbf71df1c40-320.webp",
+        "src": "assets/images/intro/responsive/collage-01-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/bbbf71df1c40-640.webp",
+        "src": "assets/images/intro/responsive/collage-01-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/bbbf71df1c40-1280.webp",
+        "src": "assets/images/intro/responsive/collage-01-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/bbbf71df1c40-1600.webp",
+        "src": "assets/images/intro/collage-01.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/b9b61651d19b-1600.webp": {
-    "src": "assets/optimized/b9b61651d19b-1600.webp",
+  "assets/images/intro/collage-02.webp": {
+    "src": "assets/images/intro/collage-02.webp",
     "width": 1600,
     "height": 949,
     "versions": [
       {
-        "src": "assets/optimized/b9b61651d19b-320.webp",
+        "src": "assets/images/intro/responsive/collage-02-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/b9b61651d19b-640.webp",
+        "src": "assets/images/intro/responsive/collage-02-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/b9b61651d19b-1280.webp",
+        "src": "assets/images/intro/responsive/collage-02-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/b9b61651d19b-1600.webp",
+        "src": "assets/images/intro/collage-02.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/3998c753f476-1077.webp": {
-    "src": "assets/optimized/3998c753f476-1077.webp",
+  "assets/images/intro/collage-11.webp": {
+    "src": "assets/images/intro/collage-11.webp",
     "width": 1077,
     "height": 600,
     "versions": [
       {
-        "src": "assets/optimized/3998c753f476-320.webp",
+        "src": "assets/images/intro/responsive/collage-11-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/3998c753f476-640.webp",
+        "src": "assets/images/intro/responsive/collage-11-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/3998c753f476-1077.webp",
+        "src": "assets/images/intro/collage-11.webp",
         "width": 1077
       }
     ]
   },
-  "assets/optimized/d60e0a3dab6a-1064.webp": {
-    "src": "assets/optimized/d60e0a3dab6a-1064.webp",
+  "assets/images/intro/collage-12.webp": {
+    "src": "assets/images/intro/collage-12.webp",
     "width": 1064,
     "height": 595,
     "versions": [
       {
-        "src": "assets/optimized/d60e0a3dab6a-320.webp",
+        "src": "assets/images/intro/responsive/collage-12-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/d60e0a3dab6a-640.webp",
+        "src": "assets/images/intro/responsive/collage-12-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/d60e0a3dab6a-1064.webp",
+        "src": "assets/images/intro/collage-12.webp",
         "width": 1064
       }
     ]
   },
-  "assets/optimized/71ead4a601ca-1075.webp": {
-    "src": "assets/optimized/71ead4a601ca-1075.webp",
+  "assets/images/intro/collage-13.webp": {
+    "src": "assets/images/intro/collage-13.webp",
     "width": 1075,
     "height": 600,
     "versions": [
       {
-        "src": "assets/optimized/71ead4a601ca-320.webp",
+        "src": "assets/images/intro/responsive/collage-13-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/71ead4a601ca-640.webp",
+        "src": "assets/images/intro/responsive/collage-13-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/71ead4a601ca-1075.webp",
+        "src": "assets/images/intro/collage-13.webp",
         "width": 1075
       }
     ]
   },
-  "assets/optimized/0e49861e783a-1065.webp": {
-    "src": "assets/optimized/0e49861e783a-1065.webp",
+  "assets/images/intro/collage-14.webp": {
+    "src": "assets/images/intro/collage-14.webp",
     "width": 1065,
     "height": 600,
     "versions": [
       {
-        "src": "assets/optimized/0e49861e783a-320.webp",
+        "src": "assets/images/intro/responsive/collage-14-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/0e49861e783a-640.webp",
+        "src": "assets/images/intro/responsive/collage-14-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/0e49861e783a-1065.webp",
+        "src": "assets/images/intro/collage-14.webp",
         "width": 1065
       }
     ]
   },
-  "assets/optimized/fcc9142e26ab-1048.webp": {
-    "src": "assets/optimized/fcc9142e26ab-1048.webp",
+  "assets/images/intro/collage-03.webp": {
+    "src": "assets/images/intro/collage-03.webp",
     "width": 1048,
     "height": 606,
     "versions": [
       {
-        "src": "assets/optimized/fcc9142e26ab-320.webp",
+        "src": "assets/images/intro/responsive/collage-03-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/fcc9142e26ab-640.webp",
+        "src": "assets/images/intro/responsive/collage-03-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/fcc9142e26ab-1048.webp",
+        "src": "assets/images/intro/collage-03.webp",
         "width": 1048
       }
     ]
   },
-  "assets/optimized/68559777e597-1600.webp": {
-    "src": "assets/optimized/68559777e597-1600.webp",
+  "assets/images/intro/collage-04.webp": {
+    "src": "assets/images/intro/collage-04.webp",
     "width": 1600,
     "height": 1000,
     "versions": [
       {
-        "src": "assets/optimized/68559777e597-320.webp",
+        "src": "assets/images/intro/responsive/collage-04-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/68559777e597-640.webp",
+        "src": "assets/images/intro/responsive/collage-04-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/68559777e597-1280.webp",
+        "src": "assets/images/intro/responsive/collage-04-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/68559777e597-1600.webp",
+        "src": "assets/images/intro/collage-04.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/5dad40cd78f5-1600.webp": {
-    "src": "assets/optimized/5dad40cd78f5-1600.webp",
+  "assets/images/intro/collage-05.webp": {
+    "src": "assets/images/intro/collage-05.webp",
     "width": 1600,
     "height": 951,
     "versions": [
       {
-        "src": "assets/optimized/5dad40cd78f5-320.webp",
+        "src": "assets/images/intro/responsive/collage-05-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/5dad40cd78f5-640.webp",
+        "src": "assets/images/intro/responsive/collage-05-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/5dad40cd78f5-1280.webp",
+        "src": "assets/images/intro/responsive/collage-05-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/5dad40cd78f5-1600.webp",
+        "src": "assets/images/intro/collage-05.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/ec0322d0c911-1600.webp": {
-    "src": "assets/optimized/ec0322d0c911-1600.webp",
+  "assets/images/intro/collage-06.webp": {
+    "src": "assets/images/intro/collage-06.webp",
     "width": 1600,
     "height": 887,
     "versions": [
       {
-        "src": "assets/optimized/ec0322d0c911-320.webp",
+        "src": "assets/images/intro/responsive/collage-06-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/ec0322d0c911-640.webp",
+        "src": "assets/images/intro/responsive/collage-06-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/ec0322d0c911-1280.webp",
+        "src": "assets/images/intro/responsive/collage-06-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/ec0322d0c911-1600.webp",
+        "src": "assets/images/intro/collage-06.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/4e5a0c788760-1082.webp": {
-    "src": "assets/optimized/4e5a0c788760-1082.webp",
+  "assets/images/intro/collage-07.webp": {
+    "src": "assets/images/intro/collage-07.webp",
     "width": 1082,
     "height": 608,
     "versions": [
       {
-        "src": "assets/optimized/4e5a0c788760-320.webp",
+        "src": "assets/images/intro/responsive/collage-07-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/4e5a0c788760-640.webp",
+        "src": "assets/images/intro/responsive/collage-07-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/4e5a0c788760-1082.webp",
+        "src": "assets/images/intro/collage-07.webp",
         "width": 1082
       }
     ]
   },
-  "assets/optimized/07139429716a-1600.webp": {
-    "src": "assets/optimized/07139429716a-1600.webp",
+  "assets/images/intro/collage-08.webp": {
+    "src": "assets/images/intro/collage-08.webp",
     "width": 1600,
     "height": 902,
     "versions": [
       {
-        "src": "assets/optimized/07139429716a-320.webp",
+        "src": "assets/images/intro/responsive/collage-08-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/07139429716a-640.webp",
+        "src": "assets/images/intro/responsive/collage-08-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/07139429716a-1280.webp",
+        "src": "assets/images/intro/responsive/collage-08-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/07139429716a-1600.webp",
+        "src": "assets/images/intro/collage-08.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/a537d4256ceb-936.webp": {
-    "src": "assets/optimized/a537d4256ceb-936.webp",
+  "assets/images/intro/collage-09.webp": {
+    "src": "assets/images/intro/collage-09.webp",
     "width": 936,
     "height": 390,
     "versions": [
       {
-        "src": "assets/optimized/a537d4256ceb-320.webp",
+        "src": "assets/images/intro/responsive/collage-09-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/a537d4256ceb-640.webp",
+        "src": "assets/images/intro/responsive/collage-09-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/a537d4256ceb-936.webp",
+        "src": "assets/images/intro/collage-09.webp",
         "width": 936
       }
     ]
   },
-  "assets/optimized/8fd45d3465f8-1069.webp": {
-    "src": "assets/optimized/8fd45d3465f8-1069.webp",
+  "assets/images/intro/collage-10.webp": {
+    "src": "assets/images/intro/collage-10.webp",
     "width": 1069,
     "height": 605,
     "versions": [
       {
-        "src": "assets/optimized/8fd45d3465f8-320.webp",
+        "src": "assets/images/intro/responsive/collage-10-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/8fd45d3465f8-640.webp",
+        "src": "assets/images/intro/responsive/collage-10-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/8fd45d3465f8-1069.webp",
+        "src": "assets/images/intro/collage-10.webp",
         "width": 1069
       }
     ]
   },
-  "assets/optimized/f85cd35aad5d-1600.webp": {
-    "src": "assets/optimized/f85cd35aad5d-1600.webp",
+  "assets/images/projects/ball-bashers/gameplay/hit.webp": {
+    "src": "assets/images/projects/ball-bashers/gameplay/hit.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/f85cd35aad5d-320.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/hit-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/f85cd35aad5d-640.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/hit-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/f85cd35aad5d-1280.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/hit-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/f85cd35aad5d-1600.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/hit.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/d761bc0bd17d-1600.webp": {
-    "src": "assets/optimized/d761bc0bd17d-1600.webp",
+  "assets/images/projects/ball-bashers/gameplay/menu.webp": {
+    "src": "assets/images/projects/ball-bashers/gameplay/menu.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/d761bc0bd17d-320.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/menu-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/d761bc0bd17d-640.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/menu-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/d761bc0bd17d-1280.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/menu-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/d761bc0bd17d-1600.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/menu.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/17e819b40319-1600.webp": {
-    "src": "assets/optimized/17e819b40319-1600.webp",
+  "assets/images/projects/ball-bashers/gameplay/player-1-win.webp": {
+    "src": "assets/images/projects/ball-bashers/gameplay/player-1-win.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/17e819b40319-320.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/player-1-win-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/17e819b40319-640.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/player-1-win-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/17e819b40319-1280.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/player-1-win-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/17e819b40319-1600.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/player-1-win.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/776b37589ea6-1600.webp": {
-    "src": "assets/optimized/776b37589ea6-1600.webp",
+  "assets/images/projects/ball-bashers/gameplay/player-2-win.webp": {
+    "src": "assets/images/projects/ball-bashers/gameplay/player-2-win.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/776b37589ea6-320.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/player-2-win-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/776b37589ea6-640.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/player-2-win-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/776b37589ea6-1280.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/player-2-win-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/776b37589ea6-1600.webp",
+        "src": "assets/images/projects/ball-bashers/gameplay/player-2-win.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/17b682026d8e-1082.webp": {
-    "src": "assets/optimized/17b682026d8e-1082.webp",
+  "assets/images/projects/ball-bashers/cover.webp": {
+    "src": "assets/images/projects/ball-bashers/cover.webp",
     "width": 1082,
     "height": 608,
     "versions": [
       {
-        "src": "assets/optimized/17b682026d8e-320.webp",
+        "src": "assets/images/projects/ball-bashers/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/17b682026d8e-640.webp",
+        "src": "assets/images/projects/ball-bashers/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/17b682026d8e-1082.webp",
+        "src": "assets/images/projects/ball-bashers/cover.webp",
         "width": 1082
       }
     ]
   },
-  "assets/optimized/75658b345f64-1600.webp": {
-    "src": "assets/optimized/75658b345f64-1600.webp",
+  "assets/images/projects/ben-3/cover.webp": {
+    "src": "assets/images/projects/ben-3/cover.webp",
     "width": 1600,
     "height": 1000,
     "versions": [
       {
-        "src": "assets/optimized/75658b345f64-320.webp",
+        "src": "assets/images/projects/ben-3/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/75658b345f64-640.webp",
+        "src": "assets/images/projects/ben-3/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/75658b345f64-1280.webp",
+        "src": "assets/images/projects/ben-3/responsive/cover-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/75658b345f64-1600.webp",
+        "src": "assets/images/projects/ben-3/cover.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/f1bf600e99f6-1600.webp": {
-    "src": "assets/optimized/f1bf600e99f6-1600.webp",
+  "assets/images/projects/bubble-parkour/cover.webp": {
+    "src": "assets/images/projects/bubble-parkour/cover.webp",
     "width": 1600,
     "height": 1000,
     "versions": [
       {
-        "src": "assets/optimized/f1bf600e99f6-320.webp",
+        "src": "assets/images/projects/bubble-parkour/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/f1bf600e99f6-640.webp",
+        "src": "assets/images/projects/bubble-parkour/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/f1bf600e99f6-1280.webp",
+        "src": "assets/images/projects/bubble-parkour/responsive/cover-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/f1bf600e99f6-1600.webp",
+        "src": "assets/images/projects/bubble-parkour/cover.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/2817b9299b4a-1600.webp": {
-    "src": "assets/optimized/2817b9299b4a-1600.webp",
+  "assets/images/projects/digging-game/cover.webp": {
+    "src": "assets/images/projects/digging-game/cover.webp",
     "width": 1600,
     "height": 902,
     "versions": [
       {
-        "src": "assets/optimized/2817b9299b4a-320.webp",
+        "src": "assets/images/projects/digging-game/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/2817b9299b4a-640.webp",
+        "src": "assets/images/projects/digging-game/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/2817b9299b4a-1280.webp",
+        "src": "assets/images/projects/digging-game/responsive/cover-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/2817b9299b4a-1600.webp",
+        "src": "assets/images/projects/digging-game/cover.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/80c818b73723-1600.webp": {
-    "src": "assets/optimized/80c818b73723-1600.webp",
+  "assets/images/projects/lost-trance/cover.webp": {
+    "src": "assets/images/projects/lost-trance/cover.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/80c818b73723-320.webp",
+        "src": "assets/images/projects/lost-trance/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/80c818b73723-640.webp",
+        "src": "assets/images/projects/lost-trance/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/80c818b73723-1280.webp",
+        "src": "assets/images/projects/lost-trance/responsive/cover-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/80c818b73723-1600.webp",
+        "src": "assets/images/projects/lost-trance/cover.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/d207a5618b90-1600.webp": {
-    "src": "assets/optimized/d207a5618b90-1600.webp",
+  "assets/images/projects/ren-path-of-destiny/cover.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/cover.webp",
     "width": 1600,
     "height": 849,
     "versions": [
       {
-        "src": "assets/optimized/d207a5618b90-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/d207a5618b90-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/d207a5618b90-1280.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/responsive/cover-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/d207a5618b90-1600.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/cover.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/698664c220cc-1048.webp": {
-    "src": "assets/optimized/698664c220cc-1048.webp",
+  "assets/images/projects/ruin-runners/cover.webp": {
+    "src": "assets/images/projects/ruin-runners/cover.webp",
     "width": 1048,
     "height": 606,
     "versions": [
       {
-        "src": "assets/optimized/698664c220cc-320.webp",
+        "src": "assets/images/projects/ruin-runners/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/698664c220cc-640.webp",
+        "src": "assets/images/projects/ruin-runners/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/698664c220cc-1048.webp",
+        "src": "assets/images/projects/ruin-runners/cover.webp",
         "width": 1048
       }
     ]
   },
-  "assets/optimized/5b251dacb1ae-1024.webp": {
-    "src": "assets/optimized/5b251dacb1ae-1024.webp",
+  "assets/images/projects/think-try-treasure/cover.webp": {
+    "src": "assets/images/projects/think-try-treasure/cover.webp",
     "width": 1024,
     "height": 640,
     "versions": [
       {
-        "src": "assets/optimized/5b251dacb1ae-320.webp",
+        "src": "assets/images/projects/think-try-treasure/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/5b251dacb1ae-640.webp",
+        "src": "assets/images/projects/think-try-treasure/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/5b251dacb1ae-1024.webp",
+        "src": "assets/images/projects/think-try-treasure/cover.webp",
         "width": 1024
       }
     ]
   },
-  "assets/optimized/d2e0053fbb85-1600.webp": {
-    "src": "assets/optimized/d2e0053fbb85-1600.webp",
+  "assets/images/projects/2-player-tag/cover.webp": {
+    "src": "assets/images/projects/2-player-tag/cover.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/d2e0053fbb85-320.webp",
+        "src": "assets/images/projects/2-player-tag/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/d2e0053fbb85-640.webp",
+        "src": "assets/images/projects/2-player-tag/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/d2e0053fbb85-1280.webp",
+        "src": "assets/images/projects/2-player-tag/responsive/cover-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/d2e0053fbb85-1600.webp",
+        "src": "assets/images/projects/2-player-tag/cover.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/d19980699478-1600.webp": {
-    "src": "assets/optimized/d19980699478-1600.webp",
+  "assets/images/projects/tower-of-hanoi/cover.webp": {
+    "src": "assets/images/projects/tower-of-hanoi/cover.webp",
     "width": 1600,
     "height": 900,
     "versions": [
       {
-        "src": "assets/optimized/d19980699478-320.webp",
+        "src": "assets/images/projects/tower-of-hanoi/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/d19980699478-640.webp",
+        "src": "assets/images/projects/tower-of-hanoi/responsive/cover-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/d19980699478-1280.webp",
+        "src": "assets/images/projects/tower-of-hanoi/responsive/cover-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/d19980699478-1600.webp",
+        "src": "assets/images/projects/tower-of-hanoi/cover.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/70284ca46127-610.webp": {
-    "src": "assets/optimized/70284ca46127-610.webp",
+  "assets/images/projects/word-search/cover.webp": {
+    "src": "assets/images/projects/word-search/cover.webp",
     "width": 610,
     "height": 1356,
     "versions": [
       {
-        "src": "assets/optimized/70284ca46127-320.webp",
+        "src": "assets/images/projects/word-search/responsive/cover-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/70284ca46127-610.webp",
+        "src": "assets/images/projects/word-search/cover.webp",
         "width": 610
       }
     ]
   },
-  "assets/optimized/7f411c4e47ce-1064.webp": {
-    "src": "assets/optimized/7f411c4e47ce-1064.webp",
+  "assets/images/projects/digging-game/gameplay/backpack-shop.webp": {
+    "src": "assets/images/projects/digging-game/gameplay/backpack-shop.webp",
     "width": 1064,
     "height": 595,
     "versions": [
       {
-        "src": "assets/optimized/7f411c4e47ce-320.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/backpack-shop-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/7f411c4e47ce-640.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/backpack-shop-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/7f411c4e47ce-1064.webp",
+        "src": "assets/images/projects/digging-game/gameplay/backpack-shop.webp",
         "width": 1064
       }
     ]
   },
-  "assets/optimized/ec8eaeed86e3-936.webp": {
-    "src": "assets/optimized/ec8eaeed86e3-936.webp",
+  "assets/images/projects/digging-game/technical/engine-view.webp": {
+    "src": "assets/images/projects/digging-game/technical/engine-view.webp",
     "width": 936,
     "height": 390,
     "versions": [
       {
-        "src": "assets/optimized/ec8eaeed86e3-320.webp",
+        "src": "assets/images/projects/digging-game/technical/responsive/engine-view-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/ec8eaeed86e3-640.webp",
+        "src": "assets/images/projects/digging-game/technical/responsive/engine-view-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/ec8eaeed86e3-936.webp",
+        "src": "assets/images/projects/digging-game/technical/engine-view.webp",
         "width": 936
       }
     ]
   },
-  "assets/optimized/dac01f732f10-1600.webp": {
-    "src": "assets/optimized/dac01f732f10-1600.webp",
+  "assets/images/projects/digging-game/gameplay/gameplay-01.webp": {
+    "src": "assets/images/projects/digging-game/gameplay/gameplay-01.webp",
     "width": 1600,
     "height": 902,
     "versions": [
       {
-        "src": "assets/optimized/dac01f732f10-320.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/gameplay-01-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/dac01f732f10-640.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/gameplay-01-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/dac01f732f10-1280.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/gameplay-01-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/dac01f732f10-1600.webp",
+        "src": "assets/images/projects/digging-game/gameplay/gameplay-01.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/989d131b462c-1600.webp": {
-    "src": "assets/optimized/989d131b462c-1600.webp",
+  "assets/images/projects/digging-game/gameplay/gameplay-02.webp": {
+    "src": "assets/images/projects/digging-game/gameplay/gameplay-02.webp",
     "width": 1600,
     "height": 895,
     "versions": [
       {
-        "src": "assets/optimized/989d131b462c-320.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/gameplay-02-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/989d131b462c-640.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/gameplay-02-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/989d131b462c-1280.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/gameplay-02-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/989d131b462c-1600.webp",
+        "src": "assets/images/projects/digging-game/gameplay/gameplay-02.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/28ca8941b307-1065.webp": {
-    "src": "assets/optimized/28ca8941b307-1065.webp",
+  "assets/images/projects/digging-game/gameplay/quests.webp": {
+    "src": "assets/images/projects/digging-game/gameplay/quests.webp",
     "width": 1065,
     "height": 600,
     "versions": [
       {
-        "src": "assets/optimized/28ca8941b307-320.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/quests-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/28ca8941b307-640.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/quests-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/28ca8941b307-1065.webp",
+        "src": "assets/images/projects/digging-game/gameplay/quests.webp",
         "width": 1065
       }
     ]
   },
-  "assets/optimized/b8039188ded2-1075.webp": {
-    "src": "assets/optimized/b8039188ded2-1075.webp",
+  "assets/images/projects/digging-game/gameplay/storage.webp": {
+    "src": "assets/images/projects/digging-game/gameplay/storage.webp",
     "width": 1075,
     "height": 600,
     "versions": [
       {
-        "src": "assets/optimized/b8039188ded2-320.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/storage-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/b8039188ded2-640.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/storage-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/b8039188ded2-1075.webp",
+        "src": "assets/images/projects/digging-game/gameplay/storage.webp",
         "width": 1075
       }
     ]
   },
-  "assets/optimized/5d83f3db7abe-1069.webp": {
-    "src": "assets/optimized/5d83f3db7abe-1069.webp",
+  "assets/images/projects/digging-game/gameplay/tools-shop.webp": {
+    "src": "assets/images/projects/digging-game/gameplay/tools-shop.webp",
     "width": 1069,
     "height": 605,
     "versions": [
       {
-        "src": "assets/optimized/5d83f3db7abe-320.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/tools-shop-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/5d83f3db7abe-640.webp",
+        "src": "assets/images/projects/digging-game/gameplay/responsive/tools-shop-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/5d83f3db7abe-1069.webp",
+        "src": "assets/images/projects/digging-game/gameplay/tools-shop.webp",
         "width": 1069
       }
     ]
   },
-  "assets/optimized/303ed490cb61-1600.webp": {
-    "src": "assets/optimized/303ed490cb61-1600.webp",
+  "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-01.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-01.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/303ed490cb61-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-01-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/303ed490cb61-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-01-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/303ed490cb61-1280.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-01-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/303ed490cb61-1600.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-01.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/c0e16bbda0d1-1600.webp": {
-    "src": "assets/optimized/c0e16bbda0d1-1600.webp",
+  "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-02.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-02.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/c0e16bbda0d1-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-02-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/c0e16bbda0d1-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-02-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/c0e16bbda0d1-1280.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-02-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/c0e16bbda0d1-1600.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-02.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/aaf8153fec44-1600.webp": {
-    "src": "assets/optimized/aaf8153fec44-1600.webp",
+  "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-03.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-03.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/aaf8153fec44-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-03-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/aaf8153fec44-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-03-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/aaf8153fec44-1280.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-03-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/aaf8153fec44-1600.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-03.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/ef34e8a57a47-1600.webp": {
-    "src": "assets/optimized/ef34e8a57a47-1600.webp",
+  "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-04.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-04.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/ef34e8a57a47-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-04-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/ef34e8a57a47-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-04-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/ef34e8a57a47-1280.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/responsive/gameplay-04-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/ef34e8a57a47-1600.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/gameplay/gameplay-04.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/614f7f9d8203-1600.webp": {
-    "src": "assets/optimized/614f7f9d8203-1600.webp",
+  "assets/images/projects/tower-of-hanoi/gameplay/gameplay.webp": {
+    "src": "assets/images/projects/tower-of-hanoi/gameplay/gameplay.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/614f7f9d8203-320.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/responsive/gameplay-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/614f7f9d8203-640.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/responsive/gameplay-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/614f7f9d8203-1280.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/responsive/gameplay-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/614f7f9d8203-1600.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/gameplay.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/e81a94f00a63-1600.webp": {
-    "src": "assets/optimized/e81a94f00a63-1600.webp",
+  "assets/images/projects/tower-of-hanoi/gameplay/lose-condition.webp": {
+    "src": "assets/images/projects/tower-of-hanoi/gameplay/lose-condition.webp",
     "width": 1600,
     "height": 891,
     "versions": [
       {
-        "src": "assets/optimized/e81a94f00a63-320.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/responsive/lose-condition-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/e81a94f00a63-640.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/responsive/lose-condition-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/e81a94f00a63-1280.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/responsive/lose-condition-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/e81a94f00a63-1600.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/lose-condition.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/203f5f837a21-1600.webp": {
-    "src": "assets/optimized/203f5f837a21-1600.webp",
+  "assets/images/projects/tower-of-hanoi/gameplay/win-condition.webp": {
+    "src": "assets/images/projects/tower-of-hanoi/gameplay/win-condition.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/203f5f837a21-320.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/responsive/win-condition-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/203f5f837a21-640.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/responsive/win-condition-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/203f5f837a21-1280.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/responsive/win-condition-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/203f5f837a21-1600.webp",
+        "src": "assets/images/projects/tower-of-hanoi/gameplay/win-condition.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/d5a3604611e7-1600.webp": {
-    "src": "assets/optimized/d5a3604611e7-1600.webp",
+  "assets/images/projects/word-search/gameplay/gameplay.webp": {
+    "src": "assets/images/projects/word-search/gameplay/gameplay.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/d5a3604611e7-320.webp",
+        "src": "assets/images/projects/word-search/gameplay/responsive/gameplay-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/d5a3604611e7-640.webp",
+        "src": "assets/images/projects/word-search/gameplay/responsive/gameplay-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/d5a3604611e7-1280.webp",
+        "src": "assets/images/projects/word-search/gameplay/responsive/gameplay-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/d5a3604611e7-1600.webp",
+        "src": "assets/images/projects/word-search/gameplay/gameplay.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/85f7fc8145bf-1600.webp": {
-    "src": "assets/optimized/85f7fc8145bf-1600.webp",
+  "assets/images/projects/word-search/gameplay/lose-state.webp": {
+    "src": "assets/images/projects/word-search/gameplay/lose-state.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/85f7fc8145bf-320.webp",
+        "src": "assets/images/projects/word-search/gameplay/responsive/lose-state-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/85f7fc8145bf-640.webp",
+        "src": "assets/images/projects/word-search/gameplay/responsive/lose-state-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/85f7fc8145bf-1280.webp",
+        "src": "assets/images/projects/word-search/gameplay/responsive/lose-state-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/85f7fc8145bf-1600.webp",
+        "src": "assets/images/projects/word-search/gameplay/lose-state.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/f5c20b002014-1600.webp": {
-    "src": "assets/optimized/f5c20b002014-1600.webp",
+  "assets/images/projects/word-search/gameplay/win-state.webp": {
+    "src": "assets/images/projects/word-search/gameplay/win-state.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/f5c20b002014-320.webp",
+        "src": "assets/images/projects/word-search/gameplay/responsive/win-state-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/f5c20b002014-640.webp",
+        "src": "assets/images/projects/word-search/gameplay/responsive/win-state-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/f5c20b002014-1280.webp",
+        "src": "assets/images/projects/word-search/gameplay/responsive/win-state-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/f5c20b002014-1600.webp",
+        "src": "assets/images/projects/word-search/gameplay/win-state.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/18da6a6b4dd6-1600.webp": {
-    "src": "assets/optimized/18da6a6b4dd6-1600.webp",
+  "assets/images/projects/digging-game/technical/chest-open.webp": {
+    "src": "assets/images/projects/digging-game/technical/chest-open.webp",
     "width": 1600,
     "height": 892,
     "versions": [
       {
-        "src": "assets/optimized/18da6a6b4dd6-320.webp",
+        "src": "assets/images/projects/digging-game/technical/responsive/chest-open-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/18da6a6b4dd6-640.webp",
+        "src": "assets/images/projects/digging-game/technical/responsive/chest-open-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/18da6a6b4dd6-1280.webp",
+        "src": "assets/images/projects/digging-game/technical/responsive/chest-open-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/18da6a6b4dd6-1600.webp",
+        "src": "assets/images/projects/digging-game/technical/chest-open.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/746ea9d03faf.webp": {
-    "src": "assets/optimized/746ea9d03faf.webp",
+  "assets/images/projects/digging-game/technical/chest-scriptable-object-animation.webp": {
+    "src": "assets/images/projects/digging-game/technical/chest-scriptable-object-animation.webp",
     "width": 800,
     "height": 479,
-    "poster": "assets/optimized/746ea9d03faf-poster.webp",
+    "poster": "assets/images/projects/digging-game/technical/chest-scriptable-object-animation-poster.webp",
     "animated": true
   },
-  "assets/optimized/3709885f9a86-1126.webp": {
-    "src": "assets/optimized/3709885f9a86-1126.webp",
+  "assets/images/projects/digging-game/technical/chest-scriptable-object.webp": {
+    "src": "assets/images/projects/digging-game/technical/chest-scriptable-object.webp",
     "width": 1126,
     "height": 634,
     "versions": [
       {
-        "src": "assets/optimized/3709885f9a86-320.webp",
+        "src": "assets/images/projects/digging-game/technical/responsive/chest-scriptable-object-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/3709885f9a86-640.webp",
+        "src": "assets/images/projects/digging-game/technical/responsive/chest-scriptable-object-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/3709885f9a86-1126.webp",
+        "src": "assets/images/projects/digging-game/technical/chest-scriptable-object.webp",
         "width": 1126
       }
     ]
   },
-  "assets/optimized/16451fea0052.webp": {
-    "src": "assets/optimized/16451fea0052.webp",
+  "assets/images/projects/digging-game/technical/chunk-system-animation.webp": {
+    "src": "assets/images/projects/digging-game/technical/chunk-system-animation.webp",
     "width": 800,
     "height": 477,
-    "poster": "assets/optimized/16451fea0052-poster.webp",
+    "poster": "assets/images/projects/digging-game/technical/chunk-system-animation-poster.webp",
     "animated": true
   },
-  "assets/optimized/b34565d3cf7d-1075.webp": {
-    "src": "assets/optimized/b34565d3cf7d-1075.webp",
+  "assets/images/projects/ren-path-of-destiny/technical/hungarian-algorithm-step-01.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/technical/hungarian-algorithm-step-01.webp",
     "width": 1075,
     "height": 517,
     "versions": [
       {
-        "src": "assets/optimized/b34565d3cf7d-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/hungarian-algorithm-step-01-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/b34565d3cf7d-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/hungarian-algorithm-step-01-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/b34565d3cf7d-1075.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/hungarian-algorithm-step-01.webp",
         "width": 1075
       }
     ]
   },
-  "assets/optimized/742d38dbd2fa-1099.webp": {
-    "src": "assets/optimized/742d38dbd2fa-1099.webp",
+  "assets/images/projects/ren-path-of-destiny/technical/hungarian-algorithm-step-02.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/technical/hungarian-algorithm-step-02.webp",
     "width": 1099,
     "height": 598,
     "versions": [
       {
-        "src": "assets/optimized/742d38dbd2fa-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/hungarian-algorithm-step-02-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/742d38dbd2fa-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/hungarian-algorithm-step-02-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/742d38dbd2fa-1099.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/hungarian-algorithm-step-02.webp",
         "width": 1099
       }
     ]
   },
-  "assets/optimized/860d8003b665-973.webp": {
-    "src": "assets/optimized/860d8003b665-973.webp",
+  "assets/images/projects/ren-path-of-destiny/technical/hungarian-algorithm-step-03.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/technical/hungarian-algorithm-step-03.webp",
     "width": 973,
     "height": 445,
     "versions": [
       {
-        "src": "assets/optimized/860d8003b665-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/hungarian-algorithm-step-03-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/860d8003b665-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/hungarian-algorithm-step-03-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/860d8003b665-973.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/hungarian-algorithm-step-03.webp",
         "width": 973
       }
     ]
   },
-  "assets/optimized/9c86dc55a8fe-1600.webp": {
-    "src": "assets/optimized/9c86dc55a8fe-1600.webp",
+  "assets/images/projects/ren-path-of-destiny/technical/mocap-01.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/technical/mocap-01.webp",
     "width": 1600,
     "height": 832,
     "versions": [
       {
-        "src": "assets/optimized/9c86dc55a8fe-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/mocap-01-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/9c86dc55a8fe-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/mocap-01-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/9c86dc55a8fe-1280.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/mocap-01-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/9c86dc55a8fe-1600.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/mocap-01.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/9356bdc81c06-1600.webp": {
-    "src": "assets/optimized/9356bdc81c06-1600.webp",
+  "assets/images/projects/ren-path-of-destiny/technical/mocap-02.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/technical/mocap-02.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/9356bdc81c06-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/mocap-02-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/9356bdc81c06-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/mocap-02-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/9356bdc81c06-1280.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/mocap-02-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/9356bdc81c06-1600.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/mocap-02.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/908953c79a7e-748.webp": {
-    "src": "assets/optimized/908953c79a7e-748.webp",
+  "assets/images/projects/ren-path-of-destiny/technical/character-60.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/technical/character-60.webp",
     "width": 748,
     "height": 349,
     "versions": [
       {
-        "src": "assets/optimized/908953c79a7e-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/character-60-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/908953c79a7e-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/character-60-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/908953c79a7e-748.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/character-60.webp",
         "width": 748
       }
     ]
   },
-  "assets/optimized/c2123d6869c5-754.webp": {
-    "src": "assets/optimized/c2123d6869c5-754.webp",
+  "assets/images/projects/ren-path-of-destiny/technical/character-90.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/technical/character-90.webp",
     "width": 754,
     "height": 349,
     "versions": [
       {
-        "src": "assets/optimized/c2123d6869c5-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/character-90-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/c2123d6869c5-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/character-90-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/c2123d6869c5-754.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/character-90.webp",
         "width": 754
       }
     ]
   },
-  "assets/optimized/e755fb642077-1600.webp": {
-    "src": "assets/optimized/e755fb642077-1600.webp",
+  "assets/images/projects/ren-path-of-destiny/technical/environment-puzzle-01.webp": {
+    "src": "assets/images/projects/ren-path-of-destiny/technical/environment-puzzle-01.webp",
     "width": 1600,
     "height": 920,
     "versions": [
       {
-        "src": "assets/optimized/e755fb642077-320.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/environment-puzzle-01-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/e755fb642077-640.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/environment-puzzle-01-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/e755fb642077-1280.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/responsive/environment-puzzle-01-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/e755fb642077-1600.webp",
+        "src": "assets/images/projects/ren-path-of-destiny/technical/environment-puzzle-01.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/ed636dda1207-1600.webp": {
-    "src": "assets/optimized/ed636dda1207-1600.webp",
+  "assets/images/projects/word-search/technical/levels-11-15.webp": {
+    "src": "assets/images/projects/word-search/technical/levels-11-15.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/ed636dda1207-320.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-11-15-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/ed636dda1207-640.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-11-15-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/ed636dda1207-1280.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-11-15-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/ed636dda1207-1600.webp",
+        "src": "assets/images/projects/word-search/technical/levels-11-15.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/5a2ceb04ab1e-1600.webp": {
-    "src": "assets/optimized/5a2ceb04ab1e-1600.webp",
+  "assets/images/projects/word-search/technical/levels-16-20.webp": {
+    "src": "assets/images/projects/word-search/technical/levels-16-20.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/5a2ceb04ab1e-320.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-16-20-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/5a2ceb04ab1e-640.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-16-20-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/5a2ceb04ab1e-1280.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-16-20-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/5a2ceb04ab1e-1600.webp",
+        "src": "assets/images/projects/word-search/technical/levels-16-20.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/fc4a0a3c47c8-1600.webp": {
-    "src": "assets/optimized/fc4a0a3c47c8-1600.webp",
+  "assets/images/projects/word-search/technical/levels-01-05.webp": {
+    "src": "assets/images/projects/word-search/technical/levels-01-05.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/fc4a0a3c47c8-320.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-01-05-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/fc4a0a3c47c8-640.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-01-05-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/fc4a0a3c47c8-1280.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-01-05-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/fc4a0a3c47c8-1600.webp",
+        "src": "assets/images/projects/word-search/technical/levels-01-05.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/a4969ab05e95-1600.webp": {
-    "src": "assets/optimized/a4969ab05e95-1600.webp",
+  "assets/images/projects/word-search/technical/levels-21-25.webp": {
+    "src": "assets/images/projects/word-search/technical/levels-21-25.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/a4969ab05e95-320.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-21-25-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/a4969ab05e95-640.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-21-25-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/a4969ab05e95-1280.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-21-25-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/a4969ab05e95-1600.webp",
+        "src": "assets/images/projects/word-search/technical/levels-21-25.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/25f705966fbb-1600.webp": {
-    "src": "assets/optimized/25f705966fbb-1600.webp",
+  "assets/images/projects/word-search/technical/levels-26-30.webp": {
+    "src": "assets/images/projects/word-search/technical/levels-26-30.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/25f705966fbb-320.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-26-30-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/25f705966fbb-640.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-26-30-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/25f705966fbb-1280.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-26-30-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/25f705966fbb-1600.webp",
+        "src": "assets/images/projects/word-search/technical/levels-26-30.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/afeacb4428c5-1600.webp": {
-    "src": "assets/optimized/afeacb4428c5-1600.webp",
+  "assets/images/projects/word-search/technical/levels-06-10.webp": {
+    "src": "assets/images/projects/word-search/technical/levels-06-10.webp",
     "width": 1600,
     "height": 999,
     "versions": [
       {
-        "src": "assets/optimized/afeacb4428c5-320.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-06-10-320w.webp",
         "width": 320
       },
       {
-        "src": "assets/optimized/afeacb4428c5-640.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-06-10-640w.webp",
         "width": 640
       },
       {
-        "src": "assets/optimized/afeacb4428c5-1280.webp",
+        "src": "assets/images/projects/word-search/technical/responsive/levels-06-10-1280w.webp",
         "width": 1280
       },
       {
-        "src": "assets/optimized/afeacb4428c5-1600.webp",
+        "src": "assets/images/projects/word-search/technical/levels-06-10.webp",
         "width": 1600
       }
     ]
   },
-  "assets/optimized/1a91d8cf772b.webp": {
-    "src": "assets/optimized/1a91d8cf772b.webp",
+  "assets/images/projects/word-search/technical/inspector-animation.webp": {
+    "src": "assets/images/projects/word-search/technical/inspector-animation.webp",
     "width": 800,
     "height": 450,
-    "poster": "assets/optimized/1a91d8cf772b-poster.webp",
+    "poster": "assets/images/projects/word-search/technical/inspector-animation-poster.webp",
     "animated": true
   }
 };

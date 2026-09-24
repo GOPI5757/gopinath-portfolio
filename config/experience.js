@@ -67,7 +67,7 @@ export const experience = {
       projectCard: "(max-width:760px) 45vw, (max-width:1100px) 30vw, 300px",
       detail: "(max-width:760px) 94vw, 900px",
     },
-    imageQualityNote: "Variants are generated in assets/optimized. Custom image paths also work without a manifest entry.",
+    imageQualityNote: "Variants are generated in assets/images. Custom image paths also work without a manifest entry.",
     clickToLoadYouTube: true,
     playVideoLabel: "Play video",
     imageErrorLabel: "Image unavailable",
