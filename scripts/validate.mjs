@@ -26,6 +26,17 @@ for(const asset of assets){
 const {projectItems}=await import(pathToFileURL(path.join(root,'config/projects.js')));
 const ids=projectItems.filter(p=>p.enabled).map(p=>p.id);
 if(new Set(ids).size!==ids.length)errors.push('Duplicate project IDs');
+const {projectCodeSnippets}=await import(pathToFileURL(path.join(root,'config/code-snippets.js')));
+const {normalizeGroup}=await import(pathToFileURL(path.join(root,'js/code-model.js')));
+for(const [id,groups] of Object.entries(projectCodeSnippets)){
+ if(!projectItems.some(p=>p.id===id))errors.push(`Unknown code project: ${id}`);
+ const groupIds=new Set();
+ for(const group of groups){
+  if(!group.id || groupIds.has(group.id))errors.push(`Missing or duplicate code group id in ${id}`);
+  groupIds.add(group.id);
+  try{normalizeGroup(group)}catch(error){errors.push(`${id}/${group.id}: ${error.message}`)}
+ }
+}
 const {experience}=await import(pathToFileURL(path.join(root,'config/experience.js')));
 for(const type of ['desktop','tablet','mobile']){
  if(!experience.profileVideo.sources[type]?.src||!experience.profileVideo.sources[type]?.poster)errors.push(`Missing ${type} video/poster config`);

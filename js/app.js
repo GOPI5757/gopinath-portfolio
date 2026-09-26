@@ -1,3 +1,7 @@
+import { renderContactForm } from "./contact-form.js";
+import { attachContactLayout } from "./contact-layout.js";
+import { fillCollageSources } from "./intro-layout.js";
+import { renderCodeSnippets } from "./code-snippets.js";
 import { experience } from "../config/experience.js";
 import { applyExperience, attachProfileVideo, disposeRoute, onRouteDispose } from "./experience.js";
 import { siteSettings } from "../config/site.js";
@@ -439,6 +443,7 @@ function renderProjectNode(project, index) {
     el("span", { className: "node-label", text: project.nodeLabel || project.title }),
     el("span", { className: "node-title", text: project.title }),
     el("span", { className: "node-meta", text: [project.engine, project.language, project.platform].filter(Boolean).join(" · ") }),
+    experience.projectGrid.showStatus && project.status ? el("span", {className:"node-status",text:project.status}) : null,
     el("span", { className: "node-open", text: "Open project ↗" }),
   );
   return node;
@@ -552,6 +557,7 @@ function renderContactRail() {
   ]);
   const updateCollapsedState = () => {
     rail.classList.toggle("is-collapsed", contactRailCollapsed);
+    window.dispatchEvent(new Event("contactlayoutchange"));
     document.documentElement.classList.toggle("contact-collapsed",contactRailCollapsed);
     toggle.setAttribute("aria-expanded", String(!contactRailCollapsed));
     icon.textContent = contactRailCollapsed ? "⌃" : "⌄";
@@ -566,6 +572,12 @@ function renderContactRail() {
   mobileToggle.addEventListener("click", toggleContactRail);
   updateCollapsedState();
   rail.append(panel, toggle, mobileStrip);
+  if (experience.contact.showMobileScrollHint) mobileStrip.append(el("span", {className:"contact-scroll-hint",text:experience.contact.mobileScrollHint}));
+  const updateScroll = () => {mobilePrevious.disabled=mobileTrack.scrollLeft<=1; mobileNext.disabled=mobileTrack.scrollLeft+mobileTrack.clientWidth>=mobileTrack.scrollWidth-2;};
+  mobileTrack.addEventListener("scroll",updateScroll,{passive:true});
+  const scrollObserver=new ResizeObserver(updateScroll); scrollObserver.observe(mobileTrack);
+  onRouteDispose(()=>scrollObserver.disconnect());
+  requestAnimationFrame(updateScroll);
   return rail;
 }
 
@@ -573,6 +585,7 @@ function mountContactRail() {
   const rail=renderContactRail();
   document.querySelector("#contact-rail-root")?.replaceChildren(...[rail].filter(Boolean));
   document.documentElement.classList.toggle("has-contact",!!rail);
+  if (rail) attachContactLayout(rail);
 }
 
 function renderContactSection() {
@@ -582,56 +595,6 @@ function renderContactSection() {
   if (!form) return null;
   const email=widget.form?.recipientEmail || visible(widget.directDetails).find(detail=>detail.id==="email")?.value;
   return el("section", { className: "contact-section section-shell", attrs: { id: "contact-form", "aria-labelledby": "contact-title" } }, [sectionHeading(widget), email ? el("a",{className:"contact-direct-inline",text:email,attrs:{href:`mailto:${email}`}}) : null, widget.form?.enabled && widget.form?.deliveryMode === "mailto" ? el("p",{className:"contact-form-note",text:widget.form.explanation || ""}) : null, form]);
-}
-
-function renderContactForm(config) {
-  const fields = visible(config?.fields);
-  if (!enabled(config) || !fields.length) return null;
-  const status = el("p", { className: "form-status", attrs: { role: "status" } });
-  const fieldNodes = fields.map((field) => {
-    const fieldId = `contact-${field.id}`;
-    const control = field.type === "textarea"
-      ? el("textarea", { className: "form-control", attrs: { id: fieldId, name: field.id, required: field.required, placeholder: field.placeholder, rows: "5" } })
-      : el("input", { className: "form-control", attrs: { id: fieldId, name: field.id, type: field.type || "text", required: field.required, placeholder: field.placeholder } });
-    return el("div", { className: "form-field" }, [el("label", { text: field.label, attrs: { for: fieldId } }), control]);
-  });
-  const form = el("form", { className: "contact-form", attrs: { novalidate: "" } }, [
-    hasValue(config.title) ? el("h3", { className: "contact-form-title", text: config.title }) : null,
-    ...fieldNodes,
-    el("button", { className: "button button--primary", text: config.buttonLabel || "Send message", attrs: { type: "submit" } }),
-    !hasValue(config.recipientEmail) ? el("p", { className: "form-config-note", text: "Add your email address in config/contact.js before publishing." }) : null,
-    status,
-  ]);
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    const values = Object.fromEntries(new FormData(form).entries());
-    if (!hasValue(config.recipientEmail)) {
-      status.textContent = "A recipient email address has not been configured yet.";
-      status.className = "form-status is-error";
-      return;
-    }
-    if (config.deliveryMode === "endpoint") {
-      try {
-        status.textContent = "Sending…";
-        const response = await fetch(config.endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(values) });
-        if (!response.ok) throw new Error("Request failed");
-        form.reset();
-        status.textContent = "Message sent. Thank you.";
-        status.className = "form-status is-success";
-      } catch {
-        status.textContent = "Message could not be sent. Please try the direct email link.";
-        status.className = "form-status is-error";
-      }
-      return;
-    }
-    const subject = encodeURIComponent(`Portfolio message from ${values.name || "a visitor"}`);
-    const body = encodeURIComponent(`Name: ${values.name || ""}\nEmail: ${values.email || ""}\n\n${values.message || ""}`);
-    window.location.href = `mailto:${config.recipientEmail}?subject=${subject}&body=${body}`;
-    status.textContent = config.successMessage || "Your email app should now be ready.";
-    status.className = "form-status is-success";
-  });
-  return form;
 }
 
 function renderHome() {
@@ -667,7 +630,7 @@ function renderEngineWorkVideos(project) {
     return engineVideos.length
       ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "engine-videos-title" } }, [
           el("h2", { className: "detail-heading", text: "Engine-work videos", attrs: { id: "engine-videos-title" } }),
-          el("div", { className: "video-grid" }, engineVideos),
+          el("div", { className: "video-grid engine-video-grid" }, engineVideos),
         ])
       : null;
   }
@@ -683,7 +646,7 @@ function renderEngineWorkVideos(project) {
     className: "engine-video-section-tabs",
     attrs: { role: "tablist", "aria-label": "Engine-work video sections" },
   });
-  const videoGrid = el("div", { className: "video-grid" });
+  const videoGrid = el("div", { className: "video-grid engine-video-grid" });
 
   // const renderSection = () => {
   //   videoGrid.replaceChildren(
@@ -857,6 +820,7 @@ function renderProjectDetail(project) {
     technical.length ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "technical-title" } }, [el("h2", { className: "detail-heading", text: "Technical work", attrs: { id: "technical-title" } }), el("div", { className: "technical-list" }, technical)]) : null,
     images.length ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "images-title" } }, [el("h2", { className: "detail-heading", text: "Gameplay images", attrs: { id: "images-title" } }), renderCarousel(images, { label: `${project.title} gameplay images`, className: "carousel image-carousel", renderSlide: (image) => el("figure", { className: "gameplay-image-figure" }, [renderImage(image.src, image.alt || "", "gameplay-image"), hasValue(image.caption) ? el("figcaption", { text: image.caption }) : null]) })]) : null,
     gameplayVideos.length ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "gameplay-videos-title" } }, [el("h2", { className: "detail-heading", text: "Gameplay videos", attrs: { id: "gameplay-videos-title" } }), el("div", { className: "video-grid" }, gameplayVideos)]) : null,
+    renderCodeSnippets(project),
     engineVideosSection,
   ].filter(Boolean);
 
@@ -1006,8 +970,9 @@ function renderIntro() {
 
   jumpToTopImmediately();
   const rootNode = document.querySelector("#intro-root");
-  const images = (intro.backgroundAssets || []).filter(hasValue).map((image, index) => renderImage(image, "", "intro-collage-image"));
+  const images = fillCollageSources(intro.backgroundAssets, intro.collageColumns, intro.collageMinRows).map((image, index) => renderImage(image, "", "intro-collage-image"));
   const collage = images.length ? el("div", { className: "intro-collage", attrs: { "aria-hidden": "true" } }, images) : null;
+  if (collage) {collage.style.gridTemplateColumns=`repeat(${intro.collageColumns || 3},minmax(0,1fr))`;collage.style.gridTemplateRows=`repeat(${Math.ceil(images.length/(intro.collageColumns || 3))},minmax(0,1fr))`;}
   const title = applyTextStyle(el("h1", { className: "intro-title", text: intro.title || site.name || "Portfolio" }), intro.style?.title);
   const subtitle = applyTextStyle(el("p", { className: "intro-subtitle", text: intro.subtitle || site.role || "" }), intro.style?.subtitle);
   const splash = rootNode.querySelector(".intro-splash") || el("div", { className: "intro-splash", attrs: { role: "presentation" } }, [
@@ -1017,6 +982,7 @@ function renderIntro() {
   ]);
   applyTextStyle(splash.querySelector(".intro-title"), intro.style?.title).textContent = intro.title || site.name || "Portfolio";
   applyTextStyle(splash.querySelector(".intro-subtitle"), intro.style?.subtitle).textContent = intro.subtitle || site.role || "";
+  splash.style.setProperty("--intro-title-gap",intro.titleGap || "1.5rem");
   rootNode.replaceChildren(splash);
   document.querySelector("#site-shell").setAttribute("inert", "");
   document.querySelector("#contact-rail-root").setAttribute("inert", "");

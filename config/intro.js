@@ -6,6 +6,9 @@ export const introWidgets = [
     enabled: true,
     durationMs: 3000,
     showOncePerTab: false,
+    collageColumns: 3,
+    collageMinRows: 3,
+    titleGap: "clamp(1rem, 2.5vh, 2rem)",
     backgroundAssets: [
       "assets/images/intro/collage-01.webp",
       "assets/images/intro/collage-02.webp",

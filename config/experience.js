@@ -17,7 +17,12 @@ export const experience = {
     panelWidth: "13rem",
     topOffset: "6.25rem",
     initiallyCollapsed: false,
-    reserveContentSpace: true,
+    reserveContentSpace: false, // No full-height side column.
+    adjustContentAroundPanel: true, // false = overlay without reflow.
+    contentGap: 18,
+    minContentWidth: 320,
+    showMobileScrollHint: true,
+    mobileScrollHint: "Swipe for more contacts",
     matchProjectBackground: true,
   },
   projectGrid: {
@@ -30,7 +35,10 @@ export const experience = {
     mobileGap: "0.65rem",
     mobileTitleSize: "1.05rem",
     mobileCardMinHeight: "13rem",
-    coverOpacity: 0.42,
+    coverOpacity: 0.85,
+    visualCards: true,
+    showStatus: true,
+    thumbnailRatio: "16 / 10",
     showGraphConnectors: false,
     showCategoryCode: false,
   },
@@ -76,7 +84,7 @@ export const experience = {
     maxDecorativeImages: 3,
   },
   projectDetail: {
-    sectionOrder: ["documents", "gameplay-videos", "technical", "images", "engine-videos"],
+    sectionOrder: ["documents", "gameplay-videos", "code-snippets", "technical", "images", "engine-videos"],
     documents: {
       compact: true,
       label: "Documents & links",
@@ -85,6 +93,10 @@ export const experience = {
       stickyMinHeight: 650,
       maxHeight: "7rem",
     },
+  },
+  engineVideos: {
+    desktopColumns: 4, tabletColumns: 3, mobileColumns: 2,
+    tabletMaxWidth: 1100, mobileMaxWidth: 760, gap: "0.75rem",
   },
   // Optional CSS for advanced styling, appended after the generated rules.
   // Most changes can be made using the settings above or profile.js/theme.js.

@@ -15,10 +15,16 @@ export const contactWidgets = [
       title: "Prepare an email",
       recipientEmail: "sgopinath2006@gmail.com",
       deliveryMode: "mailto", // `mailto` works with an email app. Use `endpoint` with server/contact-server.example.js.
-      endpoint: "http://localhost:8787/api/contact",
+      endpoint: "", // Set only if you connect a real sending service.
+      maxWidth: "36rem",
+      showGmail: true,
+      gmailLabel: "Open Gmail",
+      showCopy: true,
+      copyLabel: "Copy message",
+      timeoutMs: 15000,
       buttonLabel: "Open email app",
-      explanation: "This form opens your email application with a draft. Send the email there to complete your message.",
-      successMessage: "Your email app should now be ready with the message.",
+      explanation: "Choose your email app or Gmail to prepare a draft, then send it there. You can also copy your message. This website does not send email directly.",
+      successMessage: "Email draft requested. If nothing opened, use Gmail or copy your message. Your message has not been sent by this website.",
       fields: [
         { id: "name", enabled: true, label: "Name", type: "text", required: true, placeholder: "Your name" },
         { id: "email", enabled: true, label: "Email", type: "email", required: true, placeholder: "you@example.com" },

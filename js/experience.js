@@ -1,4 +1,5 @@
 import { experience as settings } from "../config/experience.js";
+import { codeSnippetSettings } from "../config/code-snippets.js";
 import { el } from "./utils.js";
 let cleanup=[];
 export function onRouteDispose(fn){cleanup.push(fn)}
@@ -7,6 +8,8 @@ export function disposeRoute(){cleanup.splice(0).forEach(fn=>fn());document.quer
 export function applyExperience(){
   const {contact:c,projectGrid:g,profileVideo:v,projectBrowser:b}=settings;
   const root=document.documentElement;
+  root.classList.toggle("visual-project-cards",g.visualCards!==false);
+  const engine=settings.engineVideos || {};
   const numeric=(value,fallback)=>Number.isFinite(Number(value))?Number(value):fallback;
   const columns=value=>Math.max(1,Math.min(6,Math.round(numeric(value,2))));
   const css=el('style',{text:`
@@ -22,6 +25,11 @@ export function applyExperience(){
     @media(max-width:${numeric(g.mobileMaxWidth,760)}px){.project-graph{grid-template-columns:repeat(${columns(g.mobileColumns)},minmax(0,1fr));gap:${g.mobileGap}}.project-node{min-height:${g.mobileCardMinHeight};padding:.8rem}.node-title{font-size:${g.mobileTitleSize};line-height:1.2;letter-spacing:-.025em}.node-meta{font-size:.75rem;overflow-wrap:anywhere}.node-open{font-size:.75rem}.node-index{margin-bottom:1rem}.project-category-panel{padding:.65rem}.node-label{font-size:.75rem}}
     @media(max-width:${numeric(v.mobileMaxWidth,600)}px){.profile-section.has-video{min-height:var(--hero-mobile-height);aspect-ratio:9/16}.has-video .profile-grid{align-self:start;padding:2rem 1.2rem}.has-video .profile-copy{width:100%;max-width:none}.has-video .hero-title{font-size:clamp(2.8rem,11vw,4rem)}.has-video .chip-row{gap:.35rem}.has-video .chip{font-size:.75rem}.has-video .profile-description{line-height:1.55}}
     ${settings.projectDetail.documents?.sticky ? `@media(min-width:${numeric(settings.projectDetail.documents.stickyMinWidth,761)}px) and (min-height:${numeric(settings.projectDetail.documents.stickyMinHeight,650)}px){.project-detail .documents-toolbar{position:sticky;top:calc(var(--header-height) + var(--project-bar-height));max-height:${settings.projectDetail.documents.maxHeight};overflow-y:auto}}` : ''}
+    :root{--project-thumbnail-ratio:${g.thumbnailRatio || "16 / 10"}}
+    .engine-video-grid{grid-template-columns:repeat(${columns(engine.desktopColumns || 4)},minmax(0,1fr));gap:${engine.gap || ".75rem"}}
+    @media(max-width:${numeric(engine.tabletMaxWidth,1100)}px){.engine-video-grid{grid-template-columns:repeat(${columns(engine.tabletColumns || 3)},minmax(0,1fr))}}
+    @media(max-width:${numeric(engine.mobileMaxWidth,760)}px){.engine-video-grid{grid-template-columns:repeat(${columns(engine.mobileColumns || 2)},minmax(0,1fr))}}
+    @media(max-width:${numeric(codeSnippetSettings.mobileMaxWidth,760)}px){.code-walkthrough-layout{display:block}.code-board{grid-template-columns:minmax(0,1fr)}.code-explanations{margin-top:1rem}}
     ${settings.customCSS || ''}
   `});document.head.append(css);
   const query=matchMedia(`(max-width:${numeric(c.mobileMaxWidth,760)}px), (max-height:${numeric(c.shortMaxHeight,520)}px)`);
