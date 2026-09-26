@@ -1,3 +1,5 @@
+import { resumeLinks, renderLiveProject } from "./discovery.js";
+import { resumeSettings } from "../config/discovery.js";
 import { renderContactForm } from "./contact-form.js";
 import { attachContactLayout } from "./contact-layout.js";
 import { fillCollageSources } from "./intro-layout.js";
@@ -19,6 +21,26 @@ const site = first(siteSettings) || {};
 const root = document.querySelector("#site-shell");
 let projectQuickBarCollapsed = site.projectQuickBar?.initiallyCollapsed !== false;
 let contactRailCollapsed = experience.contact.initiallyCollapsed;
+let projectBrowserMode = site.projectQuickBar?.mode === "bar" ? "bar" : "drawer";
+if(site.projectQuickBar?.allowVisitorModeSwitch && site.projectQuickBar?.rememberVisitorMode){try{const saved=localStorage.getItem("portfolio-project-browser-mode");if(["bar","drawer"].includes(saved))projectBrowserMode=saved;}catch{}}
+let chromeCleanup=()=>{};
+function renderBrowserModeSwitch(){
+  const config=site.projectQuickBar || {};if(!config.enabled||!config.allowVisitorModeSwitch)return null;
+  const group=el("div",{className:"project-mode-switch",attrs:{role:"group","aria-label":config.modeSwitchLabel || "Project navigation"}});
+  for(const mode of ["bar","drawer"]){group.append(el("button",{text:mode==="bar"?config.barModeLabel:config.drawerModeLabel,attrs:{type:"button","aria-pressed":String(projectBrowserMode===mode),"aria-label":`Use project ${mode}`},on:{click:()=>{
+    if(projectBrowserMode===mode)return;
+    projectBrowserMode=mode;
+    if(mode==="bar")projectQuickBarCollapsed=false;
+    if(config.rememberVisitorMode){try{localStorage.setItem("portfolio-project-browser-mode",mode)}catch{}}
+    document.querySelector("#projects-drawer")?.close();
+    document.querySelector(".project-quickbar")?.remove();document.querySelector("#projects-drawer")?.remove();
+    document.querySelector(".site-header")?.replaceWith(renderHeader());
+    const browser=renderProjectQuickBar();if(browser)document.querySelector(".site-header")?.after(browser);
+    syncPageChrome();
+    document.querySelector(`.project-mode-switch button[aria-pressed="true"]`)?.focus({preventScroll:true});
+    window.dispatchEvent(new Event("contactlayoutchange"));
+  }}}));}return group;
+}
 
 function applyPortfolioTheme() {
   const theme = first(portfolioThemes);
@@ -53,11 +75,11 @@ function renderHeader() {
     text: item.label,
     attrs: { href: item.target },
     on: { click: (event) => {
-      if (item.target === "#contact") {
+      if (item.target === "#contact" || item.target === "#contact-form") {
         const rail = document.querySelector(".contact-rail");
         const railToggle = rail?.querySelector(".contact-rail-toggle");
         if (rail && railToggle) {
-          event.preventDefault();
+          if (item.target === "#contact") event.preventDefault();
           if (rail.classList.contains("is-collapsed")) railToggle.click();
         }
       }
@@ -71,28 +93,34 @@ function renderHeader() {
     text: "Menu",
     attrs: { type: "button", "aria-expanded": "false", "aria-controls": navId },
   });
-  const header = el("header", { className: "site-header" }, [brand(), el("div", {className:"header-actions"}, [site.projectQuickBar?.enabled !== false && site.projectQuickBar?.mode === "drawer" ? el("button", {className:"browse-projects-button",text:site.projectQuickBar.buttonLabel || "Browse projects",attrs:{type:"button","aria-haspopup":"dialog"},on:{click:()=>document.querySelector("#projects-drawer")?.showModal()}}) : null, menuButton, nav])]);
-  if (site.projectQuickBar?.enabled !== false && site.projectQuickBar?.mode === "bar") {
+  const header = el("header", { className: "site-header" }, [brand(), el("div", {className:"header-actions"}, [site.projectQuickBar?.enabled !== false && projectBrowserMode === "drawer" ? el("button", {className:"browse-projects-button",text:site.projectQuickBar.buttonLabel || "Browse projects",attrs:{type:"button","aria-haspopup":"dialog","data-mobile-label":site.projectQuickBar.mobileButtonLabel || "Projects"},on:{click:()=>document.querySelector("#projects-drawer")?.showModal()}}) : null, menuButton, nav])]);
+  if (site.projectQuickBar?.enabled !== false && projectBrowserMode === "bar") {
     const restore = el("button", {
       className: "project-quickbar-restore",
       text: `⌄ ${site.projectQuickBar.restoreLabel || "Projects"}`,
-      attrs: {type: "button", hidden: !projectQuickBarCollapsed, "aria-expanded": "false", "aria-controls": "project-quickbar"},
+      attrs: {type: "button", "aria-expanded": String(!projectQuickBarCollapsed), "aria-controls": "project-quickbar"},
       on: {click: () => document.querySelector(".project-quickbar-toggle")?.click()},
     });
     header.querySelector(".header-actions").prepend(restore);
   }
+  header.querySelector(".header-actions").prepend(resumeLinks("header") || "");
+  const modeSwitch=renderBrowserModeSwitch();if(modeSwitch)header.querySelector(".header-actions").insertBefore(modeSwitch,menuButton);
   menuButton.addEventListener("click", () => {
     const expanded = header.classList.toggle("nav-open");
     menuButton.setAttribute("aria-expanded", String(expanded));
     menuButton.textContent = expanded ? "Close" : "Menu";
   });
+  const actions=header.querySelector(".header-actions");
+  const strip=el("div",{className:"header-control-strip",attrs:{tabindex:"0","aria-label":experience.navigation.mobileControlsLabel}});
+  [...actions.children].filter(child=>child!==menuButton && child!==nav).forEach(child=>strip.append(child));
+  actions.prepend(strip);
   return header;
 }
 
 function renderProjectQuickBar() {
   const config=site.projectQuickBar || {};
   if(config.enabled===false)return null;
-  if(config.mode!=="drawer")return renderLegacyProjectQuickBar();
+  if(projectBrowserMode!=="drawer")return renderLegacyProjectQuickBar();
   const dialog=el("dialog",{className:"projects-drawer",attrs:{id:"projects-drawer","aria-labelledby":"drawer-title"}});
   const close=el("button",{className:"drawer-close",text:config.closeLabel || "Close",attrs:{type:"button"},on:{click:()=>dialog.close()}});
   const items=visible(projectItems).map(project=>el("a",{className:"drawer-project",attrs:{href:`#project/${project.id}`},on:{click:()=>dialog.close()}},[renderImage(project.coverImage,"","drawer-cover"),el("strong",{text:project.title}),el("span",{className:"drawer-meta",text:`${project.engine} · ${project.language}`})]));
@@ -157,7 +185,7 @@ function renderLegacyProjectQuickBar() {
     toggleIcon.textContent = "⌃";
     bar.hidden = projectQuickBarCollapsed;
     const restore = document.querySelector(".project-quickbar-restore");
-    if (restore) restore.hidden = !projectQuickBarCollapsed;
+    if (restore) {restore.hidden=false;restore.setAttribute("aria-expanded",String(!projectQuickBarCollapsed));}
     document.documentElement.classList.toggle("projects-minimized", projectQuickBarCollapsed);
   };
   toggle.addEventListener("click", () => {
@@ -209,6 +237,7 @@ function renderProfileActions() {
   ].filter(Boolean);
   const actions = visible(Array.isArray(site.profileActions) ? site.profileActions : legacyActions)
     .filter((action) => hasValue(action.href) && hasValue(action.label))
+    .filter(action => !(resumeSettings.suppressLegacyProfileResume !== false && (action.id === "resume" || action.id === "resume-view")))
     .map((action) => {
       const style = {};
       if (hasValue(action.background)) style["--profile-action-background"] = action.background;
@@ -230,6 +259,7 @@ function renderProfileActions() {
       Object.entries(style).forEach(([property, value]) => link.style.setProperty(property, value));
       return link;
     });
+  const resume=resumeLinks("profile");if(resume)resumeSettings.profile.first ? actions.unshift(resume) : actions.push(resume);
   return actions.length ? el("div", { className: "action-row" }, actions) : null;
 }
 
@@ -556,14 +586,20 @@ function renderContactRail() {
     mobileNext,
   ]);
   const updateCollapsedState = () => {
-    rail.classList.toggle("is-collapsed", contactRailCollapsed);
+    const alwaysOpen=experience.contact.alwaysOpenOnMobile !== false && document.documentElement.classList.contains("contact-bottom");
+    const collapsed=contactRailCollapsed && !alwaysOpen;
+    rail.classList.toggle("mobile-always-open",alwaysOpen);
+    rail.classList.toggle("is-collapsed",collapsed);
+    document.documentElement.classList.toggle("contact-collapsed",collapsed);
+    mobileToggle.hidden=alwaysOpen;
+    toggle.setAttribute("aria-expanded",String(!collapsed));
+    icon.textContent=collapsed ? "⌃" : "⌄";
+    mobileToggle.setAttribute("aria-expanded",String(!collapsed));
+    mobileToggleIcon.textContent=collapsed ? "⌃" : "⌄";
     window.dispatchEvent(new Event("contactlayoutchange"));
-    document.documentElement.classList.toggle("contact-collapsed",contactRailCollapsed);
-    toggle.setAttribute("aria-expanded", String(!contactRailCollapsed));
-    icon.textContent = contactRailCollapsed ? "⌃" : "⌄";
-    mobileToggle.setAttribute("aria-expanded", String(!contactRailCollapsed));
-    mobileToggleIcon.textContent = contactRailCollapsed ? "⌃" : "⌄";
   };
+  window.addEventListener("contactplacementchange",updateCollapsedState);
+  onRouteDispose(()=>window.removeEventListener("contactplacementchange",updateCollapsedState));
   const toggleContactRail = () => {
     contactRailCollapsed = !contactRailCollapsed;
     updateCollapsedState();
@@ -599,6 +635,7 @@ function renderContactSection() {
 
 function renderHome() {
   const main = el("main", { attrs: { id: "main-content", tabindex: "-1" } }, [
+    renderLiveProject(projectItems),
     renderProfileSection(),
     renderProjectsSection(),
     renderSkillsSection(),
@@ -626,7 +663,7 @@ function renderEngineWorkVideos(project) {
 
   // With zero or one unique section, keep the existing behavior and show every video.
   if (sectionNames.length <= 1) {
-    const engineVideos = videos.map((video) => renderVideo({...video,poster:video.poster || project.coverImage}, "Engine-work video")).filter(Boolean);
+    const engineVideos = videos.map((video) => renderVideo({...video,projectPoster:project.coverImage}, "Engine-work video")).filter(Boolean);
     return engineVideos.length
       ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "engine-videos-title" } }, [
           el("h2", { className: "detail-heading", text: "Engine-work videos", attrs: { id: "engine-videos-title" } }),
@@ -652,7 +689,7 @@ function renderEngineWorkVideos(project) {
   //   videoGrid.replaceChildren(
   //     ...videos
   //       .filter((video) => Array.isArray(video.section) && video.section.includes(activeSection))
-  //       .map((video) => renderVideo({...video,poster:video.poster || project.coverImage}, "Engine-work video"))
+  //       .map((video) => renderVideo({...video,projectPoster:project.coverImage}, "Engine-work video"))
   //       .filter(Boolean)
   //   );
   // };
@@ -669,7 +706,7 @@ function renderEngineWorkVideos(project) {
 
     videoGrid.replaceChildren(
       ...filteredVideos
-        .map((video) => renderVideo({...video,poster:video.poster || project.coverImage}, "Engine-work video"))
+        .map((video) => renderVideo({...video,projectPoster:project.coverImage}, "Engine-work video"))
         .filter(Boolean)
     );
   };
@@ -802,7 +839,7 @@ function renderProjectDetail(project) {
   const documentSections = visible(project.documentSections).map(renderDocumentSection).filter(Boolean);
   const docs = visible(project.documentGroups).map(renderDocumentGroup).filter(Boolean);
   const images = visible(project.images).filter((image) => hasValue(image.src));
-  const gameplayVideos = visible(project.gameplayVideos).map((video) => renderVideo({...video,poster:video.poster || project.coverImage}, "Gameplay video")).filter(Boolean);
+  const gameplayVideos = visible(project.gameplayVideos).map((video) => renderVideo({...video,projectPoster:project.coverImage}, "Gameplay video")).filter(Boolean);
   const engineVideosSection = renderEngineWorkVideos(project);
   const themeStyle = projectThemeStyle(project.theme);
 
@@ -819,7 +856,7 @@ function renderProjectDetail(project) {
   const detailSections = [
     technical.length ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "technical-title" } }, [el("h2", { className: "detail-heading", text: "Technical work", attrs: { id: "technical-title" } }), el("div", { className: "technical-list" }, technical)]) : null,
     images.length ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "images-title" } }, [el("h2", { className: "detail-heading", text: "Gameplay images", attrs: { id: "images-title" } }), renderCarousel(images, { label: `${project.title} gameplay images`, className: "carousel image-carousel", renderSlide: (image) => el("figure", { className: "gameplay-image-figure" }, [renderImage(image.src, image.alt || "", "gameplay-image"), hasValue(image.caption) ? el("figcaption", { text: image.caption }) : null]) })]) : null,
-    gameplayVideos.length ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "gameplay-videos-title" } }, [el("h2", { className: "detail-heading", text: "Gameplay videos", attrs: { id: "gameplay-videos-title" } }), el("div", { className: "video-grid" }, gameplayVideos)]) : null,
+    gameplayVideos.length ? el("section", { className: "detail-section", attrs: { "aria-labelledby": "gameplay-videos-title" } }, [el("h2", { className: "detail-heading", text: "Gameplay videos", attrs: { id: "gameplay-videos-title" } }), el("div", { className: "video-grid gameplay-video-grid" }, gameplayVideos)]) : null,
     renderCodeSnippets(project),
     engineVideosSection,
   ].filter(Boolean);
@@ -905,6 +942,7 @@ function currentProjectId() {
 }
 
 function syncPageChrome() {
+  chromeCleanup();
   const main = document.querySelector(".project-detail");
   const html = document.documentElement;
   html.classList.toggle("project-route", Boolean(main) && experience.contact.matchProjectBackground !== false);
@@ -918,10 +956,12 @@ function syncPageChrome() {
     html.style.setProperty("--header-height", `${header?.offsetHeight || 0}px`);
     html.style.setProperty("--project-bar-height", `${bar?.offsetHeight || 0}px`);
     html.style.setProperty("--documents-height", documents && getComputedStyle(documents).position === "sticky" ? `${documents.offsetHeight}px` : "0px");
+    window.dispatchEvent(new Event("contactlayoutchange"));
   };
   const observer = new ResizeObserver(measure);
   [header, bar, documents].filter(Boolean).forEach(node => observer.observe(node));
   measure();
+  chromeCleanup=()=>observer.disconnect();
   onRouteDispose(() => observer.disconnect());
 }
 

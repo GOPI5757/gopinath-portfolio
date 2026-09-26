@@ -1,4 +1,5 @@
 import { imageManifest } from "../config/image-manifest.js";
+import { videoPresentation } from "../config/discovery.js";
 import { experience } from "../config/experience.js";
 import { onRouteDispose } from "./experience.js";
 import { applyTextStyle, el, hasValue, makeId, textElement, visible } from "./utils.js";
@@ -49,13 +50,20 @@ export function renderVideo(item, kindLabel) {
   const id=extractYouTubeId(item.youtube);if(!id)return null;
   const title=item.title || kindLabel;
   const container=el('div',{className:'video-container'});
+  container.style.setProperty('--video-poster-fit',item.posterFit || videoPresentation.posterFit || 'contain');
+  container.style.setProperty('--video-ratio',item.aspectRatio || videoPresentation.aspectRatio || '16 / 9');
+  container.style.setProperty('--video-background',videoPresentation.background || '#070b16');
+  const source=item.thumbnailSource || videoPresentation.thumbnailSource || 'youtube';
+  const imageSource=source==='project'?item.projectPoster:source==='custom'?item.poster:`https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  const poster=hasValue(imageSource)?el('img',{className:'video-poster',attrs:{src:imageSource,alt:'',loading:'lazy',decoding:'async','data-thumbnail-source':source}}):null;
+  if(poster){let fallback=false;poster.addEventListener('error',()=>{if(!fallback&&item.projectPoster&&poster.getAttribute('src')!==item.projectPoster){fallback=true;poster.src=item.projectPoster;poster.dataset.thumbnailSource='project-fallback';}else{poster.remove();}});}
   const mount=(autoplay=false)=>{
     const iframe=el('iframe',{className:'project-video',attrs:{src:`https://www.youtube-nocookie.com/embed/${id}?autoplay=${autoplay?1:0}`,title,loading:'lazy',allow:'autoplay; encrypted-media; picture-in-picture; fullscreen',allowfullscreen:'',referrerpolicy:'strict-origin-when-cross-origin'}});
     container.replaceChildren(iframe);if(autoplay)iframe.focus();
   };
   if(experience.performance.clickToLoadYouTube){
     const button=el('button',{className:'video-launch',attrs:{type:'button','aria-label':`${experience.performance.playVideoLabel}: ${title}`},on:{click:()=>mount(true)}},[
-      hasValue(item.poster)?renderImage(item.poster,'','video-poster'):null,
+      poster,
       el('span',{className:'video-launch-label',text:`▶ ${experience.performance.playVideoLabel}`})
     ]);container.append(button);
   } else mount();

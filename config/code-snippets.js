@@ -1,3 +1,14 @@
+import {blocks as project0} from "./code-projects/ren-path-of-destiny.js";
+import {blocks as project1} from "./code-projects/digging-game.js";
+import {blocks as project2} from "./code-projects/ruin-runners.js";
+import {blocks as project3} from "./code-projects/word-search.js";
+import {blocks as project4} from "./code-projects/tower-of-hanoi.js";
+import {blocks as project5} from "./code-projects/ball-bashers.js";
+import {blocks as project6} from "./code-projects/two-player-tag.js";
+import {blocks as project7} from "./code-projects/think-try-treasure.js";
+import {blocks as project8} from "./code-projects/lost-trance.js";
+import {blocks as project9} from "./code-projects/ben-3.js";
+import {blocks as project10} from "./code-projects/bubble-parkour.js";
 // Replace these illustrative examples with your own code. See CUSTOMIZATION-UPDATES.md.
 export const codeSnippetSettings = {
   enabled: true,
@@ -13,62 +24,20 @@ export const codeSnippetSettings = {
   arrowColor: "#efbc61",
   highlightColor: "#efbc6126",
   showConnections: true,
+  arrowClearance: 10, arrowBendPenalty: 4,
 };
 
-const example = {
-  id: "chunk-example", enabled: true, placeholder: true,
-  title: "From declaration to mesh generation",
-  description: "Illustrative placeholder code — replace with your own implementation and explanation.",
-  explanationPosition: "right",
-  snippets: [
-    {
-      id: "header", fileName: "ChunkManager.h", language: "C++", startLine: 1,
-      code: `#pragma once
-#include "MeshBuilder.h"
-
-class ChunkManager {
-public:
-    Mesh GenerateChunkMesh(const Chunk& chunk);
-};`,
-      highlights: [{ start: 6, end: 6 }],
-      explanation: { title: "01 / Declaration", text: "This header declares the entry point. Replace this explanation with the purpose and design decisions behind your actual code." },
-    },
-    {
-      id: "implementation", fileName: "ChunkManager.cpp", language: "C++", startLine: 1,
-      code: `#include "ChunkManager.h"
-
-Mesh ChunkManager::GenerateChunkMesh(
-    const Chunk& chunk)
-{
-    Mesh mesh = MeshBuilder::Build(chunk);
-    return mesh;
-}`,
-      highlights: [{ start: 3, end: 4 }, { start: 6, end: 6 }],
-      explanation: { title: "02 / Implementation", text: "The implementation delegates mesh creation to a helper. The highlighted ranges and every connection are editable independently." },
-    },
-    {
-      id: "builder", fileName: "MeshBuilder.cpp", language: "C++", startLine: 1,
-      code: `#include "MeshBuilder.h"
-
-Mesh MeshBuilder::Build(const Chunk& chunk)
-{
-    Mesh mesh;
-    for (const auto& voxel : chunk.voxels) {
-        if (voxel.IsExposed()) {
-            mesh.AddFaces(voxel);
-        }
-    }
-    return mesh;
-}`,
-      highlights: [{ start: 3, end: 4 }, { start: 6, end: 9 }],
-      explanation: { title: "03 / Called function", text: "Illustrative pseudocode for building exposed voxel faces. This is a layout demonstration, not this project's production code." },
-    },
-  ],
-  connections: [
-    { id: "declaration", label: "Declaration → implementation", from: { snippet: "header", start: 6, end: 6 }, to: { snippet: "implementation", start: 3, end: 4 } },
-    { id: "call", label: "Call → mesh builder", from: { snippet: "implementation", start: 6, end: 6 }, to: { snippet: "builder", start: 3, end: 4 } },
-    { id: "flow", label: "Entry point → voxel loop", from: { snippet: "header", start: 6, end: 6 }, to: { snippet: "builder", start: 6, end: 9 } },
-  ],
+// Every project has its own editable block array.
+export const projectCodeSnippets = {
+  "ren-path-of-destiny": project0,
+  "digging-game": project1,
+  "ruin-runners": project2,
+  "word-search": project3,
+  "tower-of-hanoi": project4,
+  "ball-bashers": project5,
+  "two-player-tag": project6,
+  "think-try-treasure": project7,
+  "lost-trance": project8,
+  "ben-3": project9,
+  "bubble-parkour": project10,
 };
-
-export const projectCodeSnippets = { "digging-game": [example] };

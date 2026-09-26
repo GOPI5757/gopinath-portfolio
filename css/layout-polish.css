@@ -1,0 +1,30 @@
+.live-project.is-full-width{width:100%;max-width:none;margin-inline:0;border-radius:0}
+.live-project-badge{color:var(--live-label-color,var(--live-accent))}
+.header-control-strip{display:flex;align-items:center;gap:.6rem;min-width:0}
+.header-control-strip>*{flex-shrink:0}
+.header-control-strip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.project-fact{min-width:0}
+.project-fact dt,.project-fact dd{overflow-wrap:anywhere}
+html.contact-bottom .contact-rail.mobile-always-open .contact-rail-mobile-toggle{display:none}
+html.contact-bottom .contact-rail.mobile-always-open .contact-rail-mobile-strip{grid-template-columns:36px minmax(0,1fr) 36px}
+html.contact-bottom .contact-rail.mobile-always-open .contact-scroll-hint{grid-column:1/-1}
+@media(max-width:760px){.header-control-strip{flex:1;justify-content:space-between;gap:.3rem}.project-fact{padding:.7rem}}
+/* One row: preserve legible buttons, with a swipeable controls strip on small phones. */
+html.mobile-single-header .site-header{display:flex;flex-wrap:nowrap;gap:.45rem;min-height:3.6rem;padding:.35rem 0}
+html.mobile-single-header .site-header>.brand{flex:none;min-height:44px;padding:0;font-size:.85rem}
+html.mobile-single-header .brand-title{display:none}
+html.mobile-single-header .header-actions{width:auto;flex:1;min-width:0;flex-wrap:nowrap;gap:.4rem}
+html.mobile-single-header .header-control-strip{flex:1;justify-content:flex-start;gap:.3rem;overflow-x:auto;overflow-y:hidden;padding:.3rem 2px;scrollbar-width:thin;scrollbar-color:var(--accent) var(--surface);overscroll-behavior-x:contain;touch-action:pan-x}
+html.mobile-single-header .header-control-strip::-webkit-scrollbar{height:3px}
+html.mobile-single-header .header-control-strip::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px}
+html.mobile-single-header .header-control-strip::-webkit-scrollbar-track{background:var(--surface)}
+html.mobile-single-header .header-control-strip::after{content:"›";position:sticky;right:0;flex:none;align-self:stretch;display:grid;place-items:center;width:12px;background:var(--surface);color:var(--accent);pointer-events:none}
+html.mobile-single-header .site-header .menu-toggle{display:block;position:static;flex:none;padding:.4rem;min-height:44px;font-size:.75rem}
+html.mobile-single-header .resume-actions--header{gap:.25rem;font-size:.75rem}
+html.mobile-single-header .resume-actions--header a{min-height:40px;padding:.4rem .5rem}
+html.mobile-single-header .resume-actions--header .resume-download{font-size:0;min-width:32px}
+html.mobile-single-header .resume-actions--header .resume-download::after{content:attr(data-short-label);font-size:1rem}
+html.mobile-single-header .browse-projects-button{font-size:0!important;padding:.4rem .45rem;min-height:40px}
+html.mobile-single-header .browse-projects-button::after{content:attr(data-mobile-label);font-size:.75rem}
+html.mobile-single-header .project-quickbar-restore{font-size:.75rem;padding:.4rem .45rem}
+html.mobile-single-header .project-mode-switch button{font-size:.65rem;padding:.35rem .4rem}

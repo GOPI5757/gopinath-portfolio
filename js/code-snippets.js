@@ -2,6 +2,7 @@ import { codeSnippetSettings as settings, projectCodeSnippets } from "../config/
 import { el, announce } from "./utils.js";
 import { onRouteDispose } from "./experience.js";
 import { normalizeGroup } from "./code-model.js";
+import { routeConnection, pathData } from "./code-routing.js";
 import { copyText } from "./clipboard.js";
 
 const svgNode = (tag, attrs = {}) => { const n = document.createElementNS("http://www.w3.org/2000/svg", tag); Object.entries(attrs).forEach(([k,v]) => n.setAttribute(k,v)); return n; };
@@ -58,31 +59,20 @@ function renderGroup(source) {
   function draw() {
     if (disposed || !board.isConnected) return;
     const stacked=layout.getBoundingClientRect().width < (Number(settings.explanationStackBelow)||780);
-    if (layout.classList.contains("is-stacked")!==stacked) {layout.classList.toggle("is-stacked",stacked);schedule();return;}
-    const bounds=board.getBoundingClientRect();
+    layout.classList.toggle("is-stacked",stacked);
+    let bounds=board.getBoundingClientRect();
+    const mobile = bounds.width < 500 || matchMedia(`(max-width:${Number(settings.mobileMaxWidth)||760}px)`).matches;
+    board.classList.toggle("is-narrow",mobile);
+    const fitted = mobile ? 1 : Math.max(1,Math.min(columns,Math.floor((bounds.width-32)/(Math.max(160,Number(settings.minCardWidth)||260)+36))));
+    board.style.setProperty("--code-columns",String(fitted));
+    bounds=board.getBoundingClientRect();
     svg.setAttribute("viewBox",`0 0 ${bounds.width} ${bounds.height}`);
     svg.setAttribute("width",bounds.width); svg.setAttribute("height",bounds.height);
-    const mobile = bounds.width < 500 || matchMedia(`(max-width:${Number(settings.mobileMaxWidth)||760}px)`).matches;
-    if (board.classList.contains("is-narrow") !== mobile) {board.classList.toggle("is-narrow",mobile);schedule();return;}
-    const fitted = mobile ? 1 : Math.max(1,Math.min(columns,Math.floor((bounds.width-32)/(Math.max(160,Number(settings.minCardWidth)||260)+36))));
-    if (board.style.getPropertyValue("--code-columns") !== String(fitted)) {board.style.setProperty("--code-columns",String(fitted));schedule();return;}
+    const geometry=new Map([...cards].map(([id,card])=>{const box=card.getBoundingClientRect();return [id,{left:box.left-bounds.left,right:box.right-bounds.left,top:box.top-bounds.top,bottom:box.bottom-bounds.top}]}));
     connections.forEach((c,i) => {
-      const a=cards.get(c.from.snippet).getBoundingClientRect(), b=cards.get(c.to.snippet).getBoundingClientRect();
-      const center = r => { const first=lines.get(`${r.snippet}:${r.start}`).getBoundingClientRect(), last=lines.get(`${r.snippet}:${r.end ?? r.start}`).getBoundingClientRect(); return (first.top+last.bottom)/2-bounds.top; };
-      const y1=center(c.from), y2=center(c.to), lane=10+(i%5)*5;
-      let d;
-      if (mobile || Math.abs(a.left-b.left)<2) {
-        const x1=a.left-bounds.left, x2=b.left-bounds.left, x=Math.max(3,Math.min(x1,x2)-lane);
-        // Same-file connections also use the outside gutter.
-        d=`M ${x1} ${y1} H ${x} V ${y2} H ${x2}`;
-      } else {
-        const forward=b.left>a.left;
-        const x1=(forward?a.right:a.left)-bounds.left, x2=(forward?b.left:b.right)-bounds.left;
-        const exit=x1+(forward?12:-12), enter=x2+(forward?-12:12);
-        if (Math.abs(a.top-b.top)<2 && Math.abs(x2-x1)<70) d=`M ${x1} ${y1} H ${(x1+x2)/2} V ${y2} H ${x2}`;
-        else { const corridor=Math.min(a.top,b.top)-bounds.top-lane; d=`M ${x1} ${y1} H ${exit} V ${corridor} H ${enter} V ${y2} H ${x2}`; }
-      }
-      paths[i].setAttribute("d",d);
+      const center=r=>{const first=lines.get(`${r.snippet}:${r.start}`).getBoundingClientRect(),last=lines.get(`${r.snippet}:${r.end ?? r.start}`).getBoundingClientRect();return (first.top+last.bottom)/2-bounds.top};
+      const points=routeConnection({from:{rect:geometry.get(c.from.snippet),y:center(c.from)},to:{rect:geometry.get(c.to.snippet),y:center(c.to)},rects:[...geometry.values()],width:bounds.width,height:bounds.height,mobile,lane:Math.max(8,Math.min(20,Number(settings.arrowClearance)||10))+(i%3)*2,bendPenalty:Number(settings.arrowBendPenalty)||4});
+      paths[i].setAttribute("d",pathData(points));
     });
   }
   const schedule=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(draw)};

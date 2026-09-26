@@ -1,3 +1,4 @@
+import {liveProjectSettings} from '../config/discovery.js';
 import {experience} from '../config/experience.js';
 import {onRouteDispose} from './experience.js';
 
@@ -6,18 +7,19 @@ import {onRouteDispose} from './experience.js';
 export function attachContactLayout(rail) {
   if (!rail) return;
   const config=experience.contact;
-  const selector='.profile-copy,.project-detail-hero,.documents-toolbar,.section-heading,.project-category-panel,.project-category-tabs,.detail-section,.skills-grid,.contact-form';
+  const selector='.live-project,.profile-copy,.project-detail-hero,.documents-toolbar,.section-heading,.project-category-panel,.project-category-tabs,.detail-section,.skills-grid,.contact-form';
   const targets=[...document.querySelectorAll(selector)];
   const original=new Map(targets.map(node=>[node,getComputedStyle(node).paddingRight]));
   let frame=0,disposed=false;
   function update(){
     frame=0;
     if(disposed)return;
-    const active=config.adjustContentAroundPanel && document.documentElement.classList.contains('contact-right') && !rail.classList.contains('is-collapsed');
+    const active=document.documentElement.classList.contains('contact-right') && !rail.classList.contains('is-collapsed');
     const panel=rail.getBoundingClientRect();
     for(const node of targets){
       const box=node.getBoundingClientRect();
-      const overlaps=active && box.top<panel.bottom && box.bottom>panel.top && box.right>panel.left && box.left<panel.right;
+      const adjust=node.classList.contains('live-project') ? liveProjectSettings.avoidContact!==false : config.adjustContentAroundPanel;
+      const overlaps=active && adjust && box.top<panel.bottom && box.bottom>panel.top && box.right>panel.left && box.left<panel.right;
       const inset=overlaps?Math.min(Math.max(0,box.right-panel.left+config.contentGap),Math.max(0,box.width-config.minContentWidth)):0;
       node.style.setProperty('--contact-original-padding',original.get(node));
       node.style.setProperty('--contact-local-inset',`${inset}px`);

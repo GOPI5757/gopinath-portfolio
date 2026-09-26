@@ -32,37 +32,7 @@ Edit `experience.projectGrid` in `config/experience.js`:
 
 ## Code walkthroughs
 
-Edit `config/code-snippets.js`. A **visible, clearly labelled placeholder** is included on the **Digging Game** page, directly after gameplay videos. Other projects get this section when you add their project ID to `projectCodeSnippets`.
-
-Each project maps to an array, so you can add any number of walkthrough groups. Each group contains any number of files and connections. IDs must be unique within their group; snippet IDs use letters, digits, underscores or hyphens.
-
-1. Copy the example group to the desired project key (IDs are in `config/projects.js`).
-2. Replace each snippet's `fileName`, `language`, `code`, `startLine` and `explanation`.
-3. Set `highlights` to one or more inclusive ranges, such as `[{ start: 6, end: 9 }, { start: 15, end: 18 }]`.
-4. Add connections with an ID, label, `from` and `to`. Both endpoints identify a snippet ID and inclusive line range:
-
-```js
-{
-  id: "spawn-call",
-  label: "Spawn request → implementation",
-  from: { snippet: "header", start: 6, end: 7 },
-  to: { snippet: "implementation", start: 20, end: 26 },
-}
-```
-
-Repeat `from` in additional connection objects to draw several arrows from the same source. `end` can be omitted for a single line. The arrow meets the center of the selected line range at the card edge; it does not depend on horizontal code scrolling. Same-file connections are supported too.
-
-`startLine: 40` means the first displayed line is 40, so highlights and endpoints must use those displayed line numbers. Keep every range inside its file. Run the validation command below after editing to catch mistakes.
-
-Set a group's `explanationPosition` to `"left"` or `"right"`. The explanation column contains a separate labelled explanation for each file. On mobile, explanations stack below the files. Global defaults include `columns` (maximum), `minCardWidth`, `explanationWidth`, `mobileMaxWidth`, `fontSize`, `lineHeight`, `arrowColor`, `highlightColor` and `showConnections`.
-
-Code cards fit fewer columns when necessary. `explanationStackBelow` also moves explanations below the code when the available group width gets too narrow, including when an open contact panel reduces that width. Long code lines scroll inside their own card. On mobile, cards stack and right-angle arrows run in the left gutter. Connection buttons let readers jump to destination or source lines and highlight both endpoints. Copy buttons copy the file without line numbers. Basic syntax colours support common C++/C# tokens; other languages are safely displayed as text.
-
-When your real code and explanation are in place, set `placeholder: false` and replace the group's example title/description. Set group `enabled: false` to hide a walkthrough, or global `codeSnippetSettings.enabled: false` to hide all walkthroughs.
-
-Code uses JavaScript template strings (backticks). Escape a literal backtick as \` and a literal interpolation opener as \${ when pasting code. Backslashes inside code strings must be escaped as \\. An alternative is `code: ["first line", "second line"].join("\n")` with normal JS string escaping.
-
-The renderer never executes pasted code or treats it as HTML. Invalid groups are omitted safely at runtime and reported by the validation script.
+The current version includes multiple independent blocks for every project. Edit the matching file under `config/code-projects/`. See `UPDATE-2-GUIDE.md` for the current block structure, routing, video, resume and navigation settings.
 
 ## Contact form
 

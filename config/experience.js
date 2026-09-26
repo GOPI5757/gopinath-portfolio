@@ -1,7 +1,7 @@
 // Appearance, responsive behaviour and loading controls for this update.
 // Widths/heights are CSS pixels. Text sizes accept CSS values such as rem/clamp().
 export const experience = {
-  navigation: { menuMaxWidth: 1100 },
+  navigation: { menuMaxWidth: 1100, mobileSingleRow: false, mobileHeaderMaxWidth: 760, mobileControlsLabel: "Header actions — swipe left or right for more" },
   projectBrowser: {
     maxWidth: "860px",
     maxHeight: "85svh",
@@ -17,13 +17,14 @@ export const experience = {
     panelWidth: "13rem",
     topOffset: "6.25rem",
     initiallyCollapsed: false,
+    alwaysOpenOnMobile: true,
     reserveContentSpace: false, // No full-height side column.
     adjustContentAroundPanel: true, // false = overlay without reflow.
     contentGap: 18,
     minContentWidth: 320,
     showMobileScrollHint: true,
     mobileScrollHint: "Swipe for more contacts",
-    matchProjectBackground: true,
+    matchProjectBackground: false,
   },
   projectGrid: {
     mobileMaxWidth: 760,
@@ -94,7 +95,14 @@ export const experience = {
       maxHeight: "7rem",
     },
   },
+  projectFacts: { mobileColumns: 2, tabletColumns: 3, mobileMaxWidth: 760, tabletMaxWidth: 1100 },
+  gameplayVideos: {
+    expandSingleVideo: true,
+    desktopColumns: 4, tabletColumns: 3, mobileColumns: 2,
+    tabletMaxWidth: 1100, mobileMaxWidth: 760, gap: "0.75rem",
+  },
   engineVideos: {
+    expandSingleVideo: true,
     desktopColumns: 4, tabletColumns: 3, mobileColumns: 2,
     tabletMaxWidth: 1100, mobileMaxWidth: 760, gap: "0.75rem",
   },

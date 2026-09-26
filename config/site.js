@@ -45,11 +45,16 @@ export const siteSettings = [
     ],
     projectQuickBar: {
       enabled: true,
+      allowVisitorModeSwitch: true,
+      rememberVisitorMode: true,
+      modeSwitchLabel: "Project navigation",
+      barModeLabel: "Bar", drawerModeLabel: "Drawer",
       mode: "drawer", // "bar" shows thumbnails; "drawer" retains the optional dialog.
       initiallyCollapsed: false,
       minimizeLabel: "Minimize",
       restoreLabel: "Projects",
       buttonLabel: "Browse projects",
+      mobileButtonLabel: "Projects",
       closeLabel: "Close",
       label: "Projects",
       previousLabel: "Previous projects",

@@ -10,6 +10,8 @@ export function applyExperience(){
   const root=document.documentElement;
   root.classList.toggle("visual-project-cards",g.visualCards!==false);
   const engine=settings.engineVideos || {};
+  const gameplay=settings.gameplayVideos || {};
+  const facts=settings.projectFacts || {};
   const numeric=(value,fallback)=>Number.isFinite(Number(value))?Number(value):fallback;
   const columns=value=>Math.max(1,Math.min(6,Math.round(numeric(value,2))));
   const css=el('style',{text:`
@@ -30,11 +32,21 @@ export function applyExperience(){
     @media(max-width:${numeric(engine.tabletMaxWidth,1100)}px){.engine-video-grid{grid-template-columns:repeat(${columns(engine.tabletColumns || 3)},minmax(0,1fr))}}
     @media(max-width:${numeric(engine.mobileMaxWidth,760)}px){.engine-video-grid{grid-template-columns:repeat(${columns(engine.mobileColumns || 2)},minmax(0,1fr))}}
     @media(max-width:${numeric(codeSnippetSettings.mobileMaxWidth,760)}px){.code-walkthrough-layout{display:block}.code-board{grid-template-columns:minmax(0,1fr)}.code-explanations{margin-top:1rem}}
+    .gameplay-video-grid{grid-template-columns:repeat(${columns(gameplay.desktopColumns || 4)},minmax(0,1fr));gap:${gameplay.gap || ".75rem"}}
+    @media(max-width:${numeric(gameplay.tabletMaxWidth,1100)}px){.gameplay-video-grid{grid-template-columns:repeat(${columns(gameplay.tabletColumns || 3)},minmax(0,1fr))}}
+    @media(max-width:${numeric(gameplay.mobileMaxWidth,760)}px){.gameplay-video-grid{grid-template-columns:repeat(${columns(gameplay.mobileColumns || 2)},minmax(0,1fr))}}
+    ${gameplay.expandSingleVideo!==false?'.gameplay-video-grid>.video-card:only-child{grid-column:1 / -1}':''}
+    ${engine.expandSingleVideo!==false?'.engine-video-grid>.video-card:only-child{grid-column:1 / -1}':''}
+    @media(max-width:${numeric(facts.tabletMaxWidth,1100)}px){.project-facts{grid-template-columns:repeat(${columns(facts.tabletColumns || 3)},minmax(0,1fr))}}
+    @media(max-width:${numeric(facts.mobileMaxWidth,760)}px){.project-facts{grid-template-columns:repeat(${columns(facts.mobileColumns || 2)},minmax(0,1fr))}}
     ${settings.customCSS || ''}
   `});document.head.append(css);
   const query=matchMedia(`(max-width:${numeric(c.mobileMaxWidth,760)}px), (max-height:${numeric(c.shortMaxHeight,520)}px)`);
-  const update=()=>{const bottom=c.placement==='bottom'||(c.placement!=='right'&&query.matches);root.classList.toggle('contact-bottom',bottom);root.classList.toggle('contact-right',!bottom);root.classList.toggle('reserve-contact-space',c.reserveContentSpace!==false)};
+  const update=()=>{const bottom=c.placement==='bottom'||(c.placement!=='right'&&query.matches);root.classList.toggle('contact-bottom',bottom);root.classList.toggle('contact-right',!bottom);root.classList.toggle('reserve-contact-space',c.reserveContentSpace!==false);window.dispatchEvent(new Event('contactplacementchange'))};
   query.addEventListener('change',update);update();
+  const headerQuery=matchMedia(`(max-width:${numeric(settings.navigation.mobileHeaderMaxWidth,760)}px)`);
+  const updateHeader=()=>root.classList.toggle('mobile-single-header',settings.navigation.mobileSingleRow===true && headerQuery.matches);
+  headerQuery.addEventListener('change',updateHeader);updateHeader();
 }
 
 export function attachProfileVideo(section){
