@@ -4,7 +4,7 @@ export const introWidgets = [
   {
     id: "intro-splash",
     enabled: true,
-    durationMs: 3000,
+    durationMs: 800,
     showOncePerTab: false,
     collageColumns: 3,
     collageMinRows: 3,
