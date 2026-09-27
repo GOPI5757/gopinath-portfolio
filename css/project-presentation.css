@@ -1,0 +1,23 @@
+/* Decorative only: the existing hero content keeps its original spacing. */
+.project-hero-stage {position:relative;isolation:isolate;width:100%;}
+.project-page-backdrop {position:absolute;inset:0 0 auto;height:100%;max-height:var(--page-image-height);z-index:0;pointer-events:none;overflow:hidden;opacity:var(--page-image-opacity);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 var(--page-image-side-fade),#000 calc(100% - var(--page-image-side-fade)),transparent),linear-gradient(to bottom,transparent,#000 var(--page-image-top-fade),#000 var(--page-image-bottom-fade),transparent 100%);
+  mask-image:linear-gradient(to right,transparent,#000 var(--page-image-side-fade),#000 calc(100% - var(--page-image-side-fade)),transparent),linear-gradient(to bottom,transparent,#000 var(--page-image-top-fade),#000 var(--page-image-bottom-fade),transparent 100%);
+  -webkit-mask-composite:source-in;mask-composite:intersect;
+}
+.project-page-backdrop img {display:block;width:100%;height:100%;object-fit:var(--page-image-fit);object-position:var(--page-image-position);}
+.project-heading-meta {display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin-bottom:.8rem;}
+.project-heading-meta .eyebrow {margin:0;}
+.project-total-count {display:inline-flex;align-items:center;white-space:nowrap;padding:.3rem .6rem;border:1px solid var(--line);border-radius:999px;color:var(--accent);background:var(--surface);font:500 .75rem var(--font-mono),monospace;}
+.project-quickbar-scroll--next {position:relative;}
+.project-hidden-count {position:absolute;right:-.25rem;top:-.45rem;min-width:1.15rem;height:1.15rem;padding:0 .2rem;display:grid;place-items:center;border-radius:999px;background:var(--accent);color:var(--background);font:600 .65rem var(--font-mono),monospace;box-shadow:0 0 0 2px var(--background);}
+.project-hidden-count[hidden] {display:none;}
+.project-quickbar-scroll:disabled {opacity:.4;cursor:default;}
+
+/* Subtle separation from the project-page image; no layout changes. */
+.project-detail-title {
+  text-shadow: var(--project-title-shadow, 0 2px 8px rgba(0, 0, 0, 0.55));
+}
+.project-detail-description {
+  text-shadow: var(--project-description-shadow, 0 1px 3px rgba(0, 0, 0, 0.7), 0 2px 10px rgba(0, 0, 0, 0.3));
+}

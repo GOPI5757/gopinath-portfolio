@@ -61,7 +61,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "In progress" },
       { id: "Genre", enabled: true, label: "Genre", value: "Beat em' up" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
-      { id: "role", enabled: true, label: "ROLE", value: "Game Programmer" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Game Programmer" },
     ],
     technicalBlocks: [
       {
@@ -337,7 +337,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "In progress" },
       { id: "Genre", enabled: true, label: "Genre", value: "Casual, Resource Management, Simulation" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
-      { id: "role", enabled: true, label: "ROLE", value: "Solo Developer (Programming, Art, & Design)" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Solo Developer (Programming, Art and Design)" },
     ],
     technicalBlocks: [
       {
@@ -473,7 +473,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Finished" },
       { id: "Genre", enabled: true, label: "Genre", value: "Online multiplayer platformer" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
-      { id: "role", enabled: true, label: "ROLE", value: "Solo Developer (Programming, Art, & Design)" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Solo Developer (Programming, Art and Design)" },
     ],
     technicalBlocks: [
       {
@@ -514,7 +514,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Completed" },
       { id: "Genre", enabled: true, label: "Genre", value: "Word Puzzle" },
       { id: "tp", enabled: true, label: "Target Platform", value: "Mobile" },
-      { id: "role", enabled: true, label: "ROLE", value: "Game Programmer" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Game Programmer" },
     ],
     technicalBlocks: [
       {
@@ -672,7 +672,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Completed" },
       { id: "Genre", enabled: true, label: "Genre", value: "Puzzle / Logic" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC / Mobile" },
-      { id: "role", enabled: true, label: "ROLE", value: "Game Programmer" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Game Programmer" },
     ],
     technicalBlocks: [],
     gameplayVideos: [
@@ -752,7 +752,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Completed" },
       { id: "Genre", enabled: true, label: "Genre", value: "Casual, Co-op" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
-      { id: "role", enabled: true, label: "ROLE", value: "Game Programmer" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Game Programmer" },
     ],
     technicalBlocks: [],
     images: [
@@ -816,62 +816,10 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Completed" },
       { id: "Genre", enabled: true, label: "Genre", value: "Local multiplayer tag" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
-      { id: "role", enabled: true, label: "ROLE", value: "Game Programmer" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Game Programmer" },
     ],
     technicalBlocks: [],
-    gameplayVideos: [
-      {
-        id: "bb-gameplay-01",
-        enabled: true,
-        youtube: "https://youtu.be/pwxsrynqhJk",
-        title: "2 Player Tag Gameplay Video"
-      },
-    ],
-    images: [
-      {
-        id: "2p-gi-01",
-        enabled: true,
-        src: "assets/images/projects/tag/2p_gi_1.webp",
-        alt: "Gameplay screenshot",
-        caption: "Gameplay screenshot"
-      },
-      {
-        id: "2p-gi-02",
-        enabled: true,
-        src: "assets/images/projects/tag/2p_gi_2.webp",
-        alt: "Gameplay screenshot",
-        caption: "Gameplay screenshot"
-      },
-      {
-        id: "2p-gi-03",
-        enabled: true,
-        src: "assets/images/projects/tag/2p_gi_3.webp",
-        alt: "Gameplay screenshot",
-        caption: "Gameplay screenshot"
-      },
-      {
-        id: "2p-gi-03",
-        enabled: true,
-        src: "assets/images/projects/tag/2p_gi_4.webp",
-        alt: "Gameplay screenshot",
-        caption: "Gameplay screenshot"
-      },
-      {
-        id: "2p-gi-03",
-        enabled: true,
-        src: "assets/images/projects/tag/2p_gi_5.webp",
-        alt: "Gameplay screenshot",
-        caption: "Win & Lose Condition"
-      },
-    ],
-    gameplayVideos: [
-      {
-        id: "2p-gameplay-01",
-        enabled: true,
-        youtube: "https://youtu.be/pwxsrynqhJk",
-        title: "2 Player Tag Gameplay Video"
-      },
-    ],
+    ...emptyMedia,
   },
   {
     id: "think-try-treasure",
@@ -895,7 +843,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Completed" },
       { id: "Genre", enabled: true, label: "Genre", value: "Puzzle / Adventure" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
-      { id: "role", enabled: true, label: "ROLE", value: "Solo Developer (Programming, Art, & Design)" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Solo Developer (Programming, Art and Design)" },
     ],
     technicalBlocks: [],
     ...emptyMedia,
@@ -914,7 +862,7 @@ export const projectItems = [
     description:
       "Built for Global Game Jam 2026 with the theme ‘mask.’ The player is trapped in dreams and changes between yellow (happy), purple (sad) and red (anger) masks, using their abilities in the right places to progress.",
     coverImage: "assets/images/projects/lost-trance/cover.webp",
-    theme: { background: ["#0b1010", "#1d2225"], surface: "#232219", text: "#fff7ff", muted: "#e4bcbc", accent: "#747965", signal: "#f6d562" },
+    theme: { background: "#20122c", surface: "#422355", text: "#fff7ff", muted: "#d8bfdf", accent: "#e07ee1", signal: "#f6d562" },
     facts: [
       { id: "engine", enabled: true, label: "Engine", value: "Unity" },
       { id: "language", enabled: true, label: "Language", value: "C#" },
@@ -922,7 +870,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Completed · GGJ 2026" },
       { id: "Genre", enabled: true, label: "Genre", value: "Puzzle / Adventure" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
-      { id: "role", enabled: true, label: "ROLE", value: "Game Programmer" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Game Programmer" },
     ],
     technicalBlocks: [
       {
@@ -935,14 +883,7 @@ export const projectItems = [
         layout: "image-right",
       },
     ],
-    gameplayVideos: [
-      {
-        id: "2p-gameplay-01",
-        enabled: true,
-        youtube: "https://youtu.be/XGzpZdOmXcQ",
-        title: "Lost Trance Gameplay Video"
-      },
-    ],
+    ...emptyMedia,
   },
   {
     id: "ben-3",
@@ -966,7 +907,7 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Completed · BYOG 2025" },
       { id: "Genre", enabled: true, label: "Genre", value: "Platformer / Mini-games" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
-      { id: "role", enabled: true, label: "ROLE", value: "Game Programmer" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Game Programmer" },
     ],
     technicalBlocks: [
       {
@@ -979,14 +920,7 @@ export const projectItems = [
         layout: "image-left",
       },
     ],
-    gameplayVideos: [
-      {
-        id: "2p-gameplay-01",
-        enabled: true,
-        youtube: "https://youtu.be/oHbOex0BFyo",
-        title: "BEN 3 Gameplay Video"
-      },
-    ],
+    ...emptyMedia,
   },
   {
     id: "bubble-parkour",
@@ -1010,16 +944,9 @@ export const projectItems = [
       { id: "status", enabled: true, label: "Status", value: "Completed · GGJ 2025" },
       { id: "Genre", enabled: true, label: "Genre", value: "Parkour / Platformer" },
       { id: "tp", enabled: true, label: "Target Platform", value: "PC" },
-      { id: "role", enabled: true, label: "ROLE", value: "Associate Game Programmer" },
+      { id: "Role", enabled: true, label: "ROLE", value: "Game Programmer" },
     ],
     technicalBlocks: [],
-    gameplayVideos: [
-      {
-        id: "2p-gameplay-01",
-        enabled: true,
-        youtube: "https://youtu.be/V_2Rpvzyrj0",
-        title: "Bubble Parkour Gameplay Video"
-      },
-    ],
+    ...emptyMedia,
   },
 ];

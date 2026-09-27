@@ -37,7 +37,7 @@ html.contact-bottom.has-contact.contact-collapsed #site-shell{padding-bottom:cal
 .code-section{min-width:0}
 .code-walkthrough{margin:1.4rem 0 2rem;padding:1rem;border:1px solid var(--project-line,var(--line));border-radius:.6rem;background:color-mix(in srgb,var(--project-surface,var(--surface)) 92%,transparent);min-width:0}
 .code-placeholder{font:600 .7rem var(--font-mono),monospace;color:#efbc61;letter-spacing:.06em}
-.code-group-description,.code-connection-hint{font-size:.85rem;line-height:1.6;color:var(--project-muted,var(--muted))}
+.code-group-description,.code-connection-hint{font-size:1.2rem;line-height:1.6;color:var(--project-muted,var(--muted))}
 .code-walkthrough-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,var(--code-explanation-width,15rem));gap:1rem;align-items:start}
 .code-walkthrough-layout.explanation-left{grid-template-columns:minmax(0,var(--code-explanation-width,15rem)) minmax(0,1fr)}
 .explanation-left .code-explanations{order:-1}

@@ -246,7 +246,7 @@
   line-height: 0.95; 
   color: var(--project-text);
 }
-.project-detail-description { max-width: 51rem; margin-bottom: 2.25rem; color: var(--project-muted); font-size: clamp(1rem, 1.5vw, 1.15rem); }
+.project-detail-description { max-width: 51rem; margin-bottom: 2.25rem; color: var(--project-muted); font-size: clamp(1rem, 1.5vw, 1.15rem); font-weight: 700;}
 .project-facts { 
   display: grid; 
   grid-template-columns: repeat(4, minmax(0, 1fr)); 

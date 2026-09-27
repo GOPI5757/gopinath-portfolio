@@ -1,4 +1,5 @@
 import { resumeLinks, renderLiveProject } from "./discovery.js";
+import { withProjectPageBackground, withProjectTotal, attachProjectHiddenCount } from "./project-presentation.js";
 import { resumeSettings } from "../config/discovery.js";
 import { renderContactForm } from "./contact-form.js";
 import { attachContactLayout } from "./contact-layout.js";
@@ -456,7 +457,7 @@ function renderProjectsSection() {
       "aria-labelledby": "projects-section-title",
     },
   }, [
-    sectionHeading(section),
+    withProjectTotal(sectionHeading(section), projectItems),
     categorySelectControl,
     categoryButtons,
     projectPanel,
@@ -910,7 +911,7 @@ function renderProjectDetail(project) {
   const main = el("main", { 
     className: "project-detail project-detail--enter", 
     attrs: { id: "main-content", tabindex: "-1" },
-  }, [renderProjectBackground(project), ...(experience.projectDetail.documents?.compact && documentsSidebar ? [documentsSidebar] : []), intro, ...(() => {
+  }, [renderProjectBackground(project), ...(experience.projectDetail.documents?.compact && documentsSidebar ? [documentsSidebar] : []), withProjectPageBackground(intro, project), ...(() => {
     const sections = new Map(detailSections.map(section => [section.getAttribute("aria-labelledby").replace(/-title$/, ""),section]));
     if(documentsSidebar && !experience.projectDetail.documents?.compact) sections.set("documents",documentsSidebar);
     const result=[];
@@ -967,8 +968,9 @@ function syncPageChrome() {
   const observer = new ResizeObserver(measure);
   [header, bar, documents].filter(Boolean).forEach(node => observer.observe(node));
   measure();
-  chromeCleanup=()=>observer.disconnect();
-  onRouteDispose(() => observer.disconnect());
+  const disposeCount = attachProjectHiddenCount(bar);
+  chromeCleanup=()=>{observer.disconnect();disposeCount();};
+  onRouteDispose(chromeCleanup);
 }
 
 function renderRoute() {
