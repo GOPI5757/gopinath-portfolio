@@ -69,46 +69,46 @@ export const projectPageImages = {
       }
     ]
   },
-  "word-search": {
-    "enabled": true,
-    "src": "assets/images/project-page-backgrounds/word-search.webp",
-    "position": "center 35%",
-    "mobilePosition": "center 35%",
-    "versions": [
-      {
-        "src": "assets/images/project-page-backgrounds/responsive/word-search-320w.webp",
-        "width": 320
-      },
-      {
-        "src": "assets/images/project-page-backgrounds/responsive/word-search-610w.webp",
-        "width": 610
-      }
-    ]
-  },
-  "tower-of-hanoi": {
-    "enabled": true,
-    "src": "assets/images/project-page-backgrounds/tower-of-hanoi.webp",
-    "position": "center 35%",
-    "mobilePosition": "center 35%",
-    "versions": [
-      {
-        "src": "assets/images/project-page-backgrounds/responsive/tower-of-hanoi-320w.webp",
-        "width": 320
-      },
-      {
-        "src": "assets/images/project-page-backgrounds/responsive/tower-of-hanoi-640w.webp",
-        "width": 640
-      },
-      {
-        "src": "assets/images/project-page-backgrounds/responsive/tower-of-hanoi-1280w.webp",
-        "width": 1280
-      },
-      {
-        "src": "assets/images/project-page-backgrounds/responsive/tower-of-hanoi-1600w.webp",
-        "width": 1600
-      }
-    ]
-  },
+  // "word-search": {
+  //   "enabled": true,
+  //   "src": "assets/images/project-page-backgrounds/word-search.webp",
+  //   "position": "center 35%",
+  //   "mobilePosition": "center 35%",
+  //   "versions": [
+  //     {
+  //       "src": "assets/images/project-page-backgrounds/responsive/word-search-320w.webp",
+  //       "width": 320
+  //     },
+  //     {
+  //       "src": "assets/images/project-page-backgrounds/responsive/word-search-610w.webp",
+  //       "width": 610
+  //     }
+  //   ]
+  // },
+  // "tower-of-hanoi": {
+  //   "enabled": true,
+  //   "src": "assets/images/project-page-backgrounds/tower-of-hanoi.webp",
+  //   "position": "center 35%",
+  //   "mobilePosition": "center 35%",
+  //   "versions": [
+  //     {
+  //       "src": "assets/images/project-page-backgrounds/responsive/tower-of-hanoi-320w.webp",
+  //       "width": 320
+  //     },
+  //     {
+  //       "src": "assets/images/project-page-backgrounds/responsive/tower-of-hanoi-640w.webp",
+  //       "width": 640
+  //     },
+  //     {
+  //       "src": "assets/images/project-page-backgrounds/responsive/tower-of-hanoi-1280w.webp",
+  //       "width": 1280
+  //     },
+  //     {
+  //       "src": "assets/images/project-page-backgrounds/responsive/tower-of-hanoi-1600w.webp",
+  //       "width": 1600
+  //     }
+  //   ]
+  // },
   "ball-bashers": {
     "enabled": true,
     "src": "assets/images/project-page-backgrounds/ball-bashers.webp",
