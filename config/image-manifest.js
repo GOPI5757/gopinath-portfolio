@@ -1,4 +1,3 @@
-// Generated responsive image variants. Add new ordinary image paths directly to project configs; existing images use these smaller variants.
 export const imageManifest = {
   "assets/images/intro/collage-01.webp": {
     "src": "assets/images/intro/collage-01.webp",
@@ -1350,5 +1349,177 @@ export const imageManifest = {
     "height": 450,
     "poster": "assets/images/projects/word-search/technical/inspector-animation-poster.webp",
     "animated": true
+  },
+  "assets/images/projects/digging-game/gameplay/mining-hit.webp": {
+    "width": 1600,
+    "height": 900,
+    "versions": [
+      {
+        "src": "assets/images/projects/digging-game/gameplay/responsive/mining-hit-320w.webp",
+        "width": 320
+      },
+      {
+        "src": "assets/images/projects/digging-game/gameplay/responsive/mining-hit-640w.webp",
+        "width": 640
+      },
+      {
+        "src": "assets/images/projects/digging-game/gameplay/responsive/mining-hit-1280w.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "assets/images/projects/digging-game/gameplay/rare-chest.webp": {
+    "width": 1600,
+    "height": 900,
+    "versions": [
+      {
+        "src": "assets/images/projects/digging-game/gameplay/responsive/rare-chest-320w.webp",
+        "width": 320
+      },
+      {
+        "src": "assets/images/projects/digging-game/gameplay/responsive/rare-chest-640w.webp",
+        "width": 640
+      },
+      {
+        "src": "assets/images/projects/digging-game/gameplay/responsive/rare-chest-1280w.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "assets/images/projects/digging-game/gameplay/mortar-processing.webp": {
+    "width": 1600,
+    "height": 900,
+    "versions": [
+      {
+        "src": "assets/images/projects/digging-game/gameplay/responsive/mortar-processing-320w.webp",
+        "width": 320
+      },
+      {
+        "src": "assets/images/projects/digging-game/gameplay/responsive/mortar-processing-640w.webp",
+        "width": 640
+      },
+      {
+        "src": "assets/images/projects/digging-game/gameplay/responsive/mortar-processing-1280w.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "assets/images/projects/ball-bashers/gameplay/arena-recording.webp": {
+    "width": 1600,
+    "height": 900,
+    "versions": [
+      {
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/arena-recording-320w.webp",
+        "width": 320
+      },
+      {
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/arena-recording-640w.webp",
+        "width": 640
+      },
+      {
+        "src": "assets/images/projects/ball-bashers/gameplay/responsive/arena-recording-1280w.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "assets/images/projects/lost-trance/gameplay/yellow-realm-dash.webp": {
+    "width": 1600,
+    "height": 900,
+    "versions": [
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/yellow-realm-dash-320w.webp",
+        "width": 320
+      },
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/yellow-realm-dash-640w.webp",
+        "width": 640
+      },
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/yellow-realm-dash-1280w.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "assets/images/projects/lost-trance/gameplay/blue-realm-platforms.webp": {
+    "width": 1600,
+    "height": 900,
+    "versions": [
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/blue-realm-platforms-320w.webp",
+        "width": 320
+      },
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/blue-realm-platforms-640w.webp",
+        "width": 640
+      },
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/blue-realm-platforms-1280w.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "assets/images/projects/lost-trance/gameplay/red-realm-traversal.webp": {
+    "width": 1600,
+    "height": 900,
+    "versions": [
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/red-realm-traversal-320w.webp",
+        "width": 320
+      },
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/red-realm-traversal-640w.webp",
+        "width": 640
+      },
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/red-realm-traversal-1280w.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "assets/images/projects/lost-trance/gameplay/swing-joint.webp": {
+    "width": 1600,
+    "height": 900,
+    "versions": [
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/swing-joint-320w.webp",
+        "width": 320
+      },
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/swing-joint-640w.webp",
+        "width": 640
+      },
+      {
+        "src": "assets/images/projects/lost-trance/gameplay/responsive/swing-joint-1280w.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "assets/images/projects/word-search/gameplay/recorded-level-08.webp": {
+    "width": 900,
+    "height": 1600,
+    "versions": [
+      {
+        "width": 320,
+        "src": "assets/images/projects/word-search/gameplay/responsive/recorded-level-08-320w.webp"
+      },
+      {
+        "width": 640,
+        "src": "assets/images/projects/word-search/gameplay/responsive/recorded-level-08-640w.webp"
+      }
+    ]
+  },
+  "assets/images/projects/word-search/gameplay/recorded-level-17.webp": {
+    "width": 900,
+    "height": 1600,
+    "versions": [
+      {
+        "width": 320,
+        "src": "assets/images/projects/word-search/gameplay/responsive/recorded-level-17-320w.webp"
+      },
+      {
+        "width": 640,
+        "src": "assets/images/projects/word-search/gameplay/responsive/recorded-level-17-640w.webp"
+      }
+    ]
   }
 };

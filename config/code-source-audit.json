@@ -1,0 +1,578 @@
+[
+  {
+    "project": "ball-bashers",
+    "block": "bb-hit-speed",
+    "snippet": "hit",
+    "sourcePath": "BaseBallGame/BaseBallGame/Assets/Scripts/GameManager.cs",
+    "startLine": 323,
+    "endLine": 342,
+    "sourceSha256": "0c6de26fd7f9696d8b187ae72bbb4336ef673824f9ce37ef8d94fa3de99c9df3"
+  },
+  {
+    "project": "ball-bashers",
+    "block": "bb-hit-speed",
+    "snippet": "speed",
+    "sourcePath": "BaseBallGame/BaseBallGame/Assets/Scripts/BallScript.cs",
+    "startLine": 101,
+    "endLine": 117,
+    "sourceSha256": "0db90a92732249ac90003b70f4991d4827cb2afa59e02a8c300a0b9987436aea"
+  },
+  {
+    "project": "ball-bashers",
+    "block": "bb-hit-speed",
+    "snippet": "tuning",
+    "sourcePath": "BaseBallGame/BaseBallGame/Assets/Scripts/BallSO.cs",
+    "startLine": 3,
+    "endLine": 14,
+    "sourceSha256": "6db92ad5886b4068ff09e0e6576ffaa9ae6c3196af1730b660366a276a8972ad"
+  },
+  {
+    "project": "ball-bashers",
+    "block": "bb-match-timer",
+    "snippet": "timer",
+    "sourcePath": "BaseBallGame/BaseBallGame/Assets/Scripts/GameManager.cs",
+    "startLine": 177,
+    "endLine": 192,
+    "sourceSha256": "0c6de26fd7f9696d8b187ae72bbb4336ef673824f9ce37ef8d94fa3de99c9df3"
+  },
+  {
+    "project": "ball-bashers",
+    "block": "bb-match-timer",
+    "snippet": "finish",
+    "sourcePath": "BaseBallGame/BaseBallGame/Assets/Scripts/GameManager.cs",
+    "startLine": 150,
+    "endLine": 161,
+    "sourceSha256": "0c6de26fd7f9696d8b187ae72bbb4336ef673824f9ce37ef8d94fa3de99c9df3"
+  },
+  {
+    "project": "ball-bashers",
+    "block": "bb-match-timer",
+    "snippet": "slow",
+    "sourcePath": "BaseBallGame/BaseBallGame/Assets/Scripts/BallScript.cs",
+    "startLine": 92,
+    "endLine": 99,
+    "sourceSha256": "0db90a92732249ac90003b70f4991d4827cb2afa59e02a8c300a0b9987436aea"
+  },
+  {
+    "project": "ben-3",
+    "block": "ben-ability-selection",
+    "snippet": "select",
+    "sourcePath": "BYOG_2D/BYOG_2D/Assets/Scripts/SelectionManager.cs",
+    "startLine": 149,
+    "endLine": 182,
+    "sourceSha256": "032044c5e68cb96e587f35f8935076f7cc334c17f11ad2609e03bb7d3ab7f4c4"
+  },
+  {
+    "project": "ben-3",
+    "block": "ben-ability-selection",
+    "snippet": "dispatch",
+    "sourcePath": "BYOG_2D/BYOG_2D/Assets/Scripts/Player.cs",
+    "startLine": 409,
+    "endLine": 438,
+    "sourceSha256": "78a3ac7b0355a61f15649b9cecbb5fc72ad2934399420b31786bd0d756e1ffd0"
+  },
+  {
+    "project": "ben-3",
+    "block": "ben-ability-selection",
+    "snippet": "dash",
+    "sourcePath": "BYOG_2D/BYOG_2D/Assets/Scripts/Player.cs",
+    "startLine": 464,
+    "endLine": 469,
+    "sourceSha256": "78a3ac7b0355a61f15649b9cecbb5fc72ad2934399420b31786bd0d756e1ffd0"
+  },
+  {
+    "project": "ben-3",
+    "block": "ben-wire-puzzle",
+    "snippet": "request",
+    "sourcePath": "BYOG_2D/BYOG_2D/Assets/Scripts/PuzzleGame_1.cs",
+    "startLine": 231,
+    "endLine": 251,
+    "sourceSha256": "f7964ab5cc8bf9018c2e7530c8b49089d9bd2cc94abef9689764967dbd0279f7"
+  },
+  {
+    "project": "ben-3",
+    "block": "ben-wire-puzzle",
+    "snippet": "animate",
+    "sourcePath": "BYOG_2D/BYOG_2D/Assets/Scripts/PuzzleGame_1.cs",
+    "startLine": 266,
+    "endLine": 283,
+    "sourceSha256": "f7964ab5cc8bf9018c2e7530c8b49089d9bd2cc94abef9689764967dbd0279f7"
+  },
+  {
+    "project": "ben-3",
+    "block": "ben-wire-puzzle",
+    "snippet": "commit",
+    "sourcePath": "BYOG_2D/BYOG_2D/Assets/Scripts/PuzzleGame_1.cs",
+    "startLine": 285,
+    "endLine": 302,
+    "sourceSha256": "f7964ab5cc8bf9018c2e7530c8b49089d9bd2cc94abef9689764967dbd0279f7"
+  },
+  {
+    "project": "ben-3",
+    "block": "ben-memory-puzzle",
+    "snippet": "input",
+    "sourcePath": "BYOG_2D/BYOG_2D/Assets/Scripts/PuzzleGame_3.cs",
+    "startLine": 298,
+    "endLine": 319,
+    "sourceSha256": "1eece15033ec1cb62185bef6940ef7c7ee9c3e9028130cdca14190a04b70cd9f"
+  },
+  {
+    "project": "ben-3",
+    "block": "ben-memory-puzzle",
+    "snippet": "compare",
+    "sourcePath": "BYOG_2D/BYOG_2D/Assets/Scripts/PuzzleGame_3.cs",
+    "startLine": 354,
+    "endLine": 364,
+    "sourceSha256": "1eece15033ec1cb62185bef6940ef7c7ee9c3e9028130cdca14190a04b70cd9f"
+  },
+  {
+    "project": "bubble-parkour",
+    "block": "bubble-slide",
+    "snippet": "slide",
+    "sourcePath": "GGJ2025/GGJ_2025_ParkourFPS-main/Assets/Scripts/Player.cs",
+    "startLine": 105,
+    "endLine": 124,
+    "sourceSha256": "ef2e6e3c2a12352cdbf0bb9330d48c0e784462561ec1b8ce0e5c32181bdaa236"
+  },
+  {
+    "project": "bubble-parkour",
+    "block": "bubble-slide",
+    "snippet": "jump",
+    "sourcePath": "GGJ2025/GGJ_2025_ParkourFPS-main/Assets/Scripts/Player.cs",
+    "startLine": 153,
+    "endLine": 158,
+    "sourceSha256": "ef2e6e3c2a12352cdbf0bb9330d48c0e784462561ec1b8ce0e5c32181bdaa236"
+  },
+  {
+    "project": "bubble-parkour",
+    "block": "bubble-wall-contact",
+    "snippet": "sensor",
+    "sourcePath": "GGJ2025/GGJ_2025_ParkourFPS-main/Assets/Scripts/TriggerScript.cs",
+    "startLine": 31,
+    "endLine": 46,
+    "sourceSha256": "919ac282d37d868ed2c770ad3a83c01c35482d511f6b6b500ecbe149b8d49f9f"
+  },
+  {
+    "project": "bubble-parkour",
+    "block": "bubble-wall-contact",
+    "snippet": "tilt",
+    "sourcePath": "GGJ2025/GGJ_2025_ParkourFPS-main/Assets/Scripts/Player.cs",
+    "startLine": 136,
+    "endLine": 151,
+    "sourceSha256": "ef2e6e3c2a12352cdbf0bb9330d48c0e784462561ec1b8ce0e5c32181bdaa236"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-surface-mesh",
+    "snippet": "damage",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Grid/Chunk.cs",
+    "startLine": 337,
+    "endLine": 360,
+    "sourceSha256": "a32d84a15b84ec4f4d71619c740f37097bc4eb048fbf8551efb859b29db18b50"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-surface-mesh",
+    "snippet": "rebuild",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Grid/Chunk.cs",
+    "startLine": 315,
+    "endLine": 335,
+    "sourceSha256": "a32d84a15b84ec4f4d71619c740f37097bc4eb048fbf8551efb859b29db18b50"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-surface-mesh",
+    "snippet": "surface",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Grid/Chunk.cs",
+    "startLine": 266,
+    "endLine": 288,
+    "sourceSha256": "a32d84a15b84ec4f4d71619c740f37097bc4eb048fbf8551efb859b29db18b50"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-quest-events",
+    "snippet": "publish",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Grid/Chunk.cs",
+    "startLine": 349,
+    "endLine": 359,
+    "sourceSha256": "a32d84a15b84ec4f4d71619c740f37097bc4eb048fbf8551efb859b29db18b50"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-quest-events",
+    "snippet": "bus",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Delegates/EventBus.cs",
+    "startLine": 1,
+    "endLine": 10,
+    "sourceSha256": "5b6549eba29ba71b2221aff4d2a197714fe87005e5a4fad834e991688f4363af"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-quest-events",
+    "snippet": "quest",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Areas/QuestManager.cs",
+    "startLine": 263,
+    "endLine": 296,
+    "sourceSha256": "e7ff4e375371903485822f66a457a043556aa04fb0830aed4ba5623976a89bda"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-depth-activation",
+    "snippet": "subscription",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Grid/GridManager.cs",
+    "startLine": 31,
+    "endLine": 40,
+    "sourceSha256": "9af5000a8d8f06bc80782bb7592861cb4a7cfbb83068abe4e51a5292ab15052c"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-depth-activation",
+    "snippet": "activation",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Grid/GridManager.cs",
+    "startLine": 67,
+    "endLine": 90,
+    "sourceSha256": "9af5000a8d8f06bc80782bb7592861cb4a7cfbb83068abe4e51a5292ab15052c"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-machine-queue",
+    "snippet": "timer",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Areas/Machines/MortarMachine.cs",
+    "startLine": 351,
+    "endLine": 381,
+    "sourceSha256": "47f37a6c585054fb3048e854081f7646f35ebe5245f68ede5534480bc3a2b45c"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-machine-queue",
+    "snippet": "slot",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/UI/QueueSlot.cs",
+    "startLine": 79,
+    "endLine": 88,
+    "sourceSha256": "06e26a43fe1f3d0958178be14e35839d19e570dfe0405feb2295f85c5dd6a315"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-machine-queue",
+    "snippet": "claim",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/UI/QueueSlot.cs",
+    "startLine": 40,
+    "endLine": 44,
+    "sourceSha256": "06e26a43fe1f3d0958178be14e35839d19e570dfe0405feb2295f85c5dd6a315"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-treasure-timing",
+    "snippet": "motion",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Grid/ChestOpen.cs",
+    "startLine": 268,
+    "endLine": 289,
+    "sourceSha256": "75ab453bbe19e3015b8ab2c1ee85c4ce37525f8447c7290fe7875954fcf325a9"
+  },
+  {
+    "project": "digging-game",
+    "block": "dig-treasure-timing",
+    "snippet": "success",
+    "sourcePath": "DiggingGame/DiggingGame/Assets/Scripts/Grid/ChestOpen.cs",
+    "startLine": 239,
+    "endLine": 266,
+    "sourceSha256": "75ab453bbe19e3015b8ab2c1ee85c4ce37525f8447c7290fe7875954fcf325a9"
+  },
+  {
+    "project": "lost-trance",
+    "block": "trance-realm-collision",
+    "snippet": "data",
+    "sourcePath": "mask-project/mask-project/Assets/Scripts/_1/RealmData.cs",
+    "startLine": 3,
+    "endLine": 10,
+    "sourceSha256": "78a49b242f07b6c096616499b6a773abd229d9b11ae90f06295ee7fd83716089"
+  },
+  {
+    "project": "lost-trance",
+    "block": "trance-realm-collision",
+    "snippet": "request",
+    "sourcePath": "mask-project/mask-project/Assets/Scripts/_1/RealmGameManager.cs",
+    "startLine": 399,
+    "endLine": 404,
+    "sourceSha256": "885885fe0a2a41195dec634e44eeb950d3de8b68ad3db1a62dfc6813ce929ae9"
+  },
+  {
+    "project": "lost-trance",
+    "block": "trance-realm-collision",
+    "snippet": "collision",
+    "sourcePath": "mask-project/mask-project/Assets/Scripts/_1/RealmGameManager.cs",
+    "startLine": 269,
+    "endLine": 301,
+    "sourceSha256": "885885fe0a2a41195dec634e44eeb950d3de8b68ad3db1a62dfc6813ce929ae9"
+  },
+  {
+    "project": "lost-trance",
+    "block": "trance-local-slow",
+    "snippet": "toggle",
+    "sourcePath": "mask-project/mask-project/Assets/Scripts/_1/RealmGameManager.cs",
+    "startLine": 369,
+    "endLine": 397,
+    "sourceSha256": "885885fe0a2a41195dec634e44eeb950d3de8b68ad3db1a62dfc6813ce929ae9"
+  },
+  {
+    "project": "lost-trance",
+    "block": "trance-local-slow",
+    "snippet": "fall",
+    "sourcePath": "mask-project/mask-project/Assets/Scripts/_1/FallingBlock.cs",
+    "startLine": 38,
+    "endLine": 44,
+    "sourceSha256": "f7fa280f07a40ee0a8ea5d868ea770aeedfedee6494572987efaece61477cb06"
+  },
+  {
+    "project": "lost-trance",
+    "block": "trance-traversal",
+    "snippet": "dash",
+    "sourcePath": "mask-project/mask-project/Assets/Scripts/_1/RealmPlayer.cs",
+    "startLine": 886,
+    "endLine": 918,
+    "sourceSha256": "4d3b3301bc7277e28d2bbc1be15428dda441cc417286acdb468cf027691bcc5e"
+  },
+  {
+    "project": "lost-trance",
+    "block": "trance-traversal",
+    "snippet": "wall",
+    "sourcePath": "mask-project/mask-project/Assets/Scripts/_1/RealmPlayer.cs",
+    "startLine": 584,
+    "endLine": 604,
+    "sourceSha256": "4d3b3301bc7277e28d2bbc1be15428dda441cc417286acdb468cf027691bcc5e"
+  },
+  {
+    "project": "lost-trance",
+    "block": "trance-swing",
+    "snippet": "approach",
+    "sourcePath": "mask-project/mask-project/Assets/Scripts/_1/RealmPlayer.cs",
+    "startLine": 963,
+    "endLine": 982,
+    "sourceSha256": "4d3b3301bc7277e28d2bbc1be15428dda441cc417286acdb468cf027691bcc5e"
+  },
+  {
+    "project": "lost-trance",
+    "block": "trance-swing",
+    "snippet": "joint",
+    "sourcePath": "mask-project/mask-project/Assets/Scripts/_1/RealmPlayer.cs",
+    "startLine": 983,
+    "endLine": 998,
+    "sourceSha256": "4d3b3301bc7277e28d2bbc1be15428dda441cc417286acdb468cf027691bcc5e"
+  },
+  {
+    "project": "ruin-runners",
+    "block": "rr-network-ticks",
+    "snippet": "client",
+    "sourcePath": "2PMultiplayer/2PMultiplayer/Assets/Scripts/Network/RR_Movement.cs",
+    "startLine": 214,
+    "endLine": 240,
+    "sourceSha256": "a9bd865d6b7a382fc13d03cf749620f4dd13f9ff77c59f8b7c47fb3998fe67e6"
+  },
+  {
+    "project": "ruin-runners",
+    "block": "rr-network-ticks",
+    "snippet": "queue",
+    "sourcePath": "2PMultiplayer/2PMultiplayer/Assets/Scripts/Network/RR_Movement.cs",
+    "startLine": 300,
+    "endLine": 319,
+    "sourceSha256": "a9bd865d6b7a382fc13d03cf749620f4dd13f9ff77c59f8b7c47fb3998fe67e6"
+  },
+  {
+    "project": "ruin-runners",
+    "block": "rr-network-ticks",
+    "snippet": "server",
+    "sourcePath": "2PMultiplayer/2PMultiplayer/Assets/Scripts/Network/RR_Movement.cs",
+    "startLine": 187,
+    "endLine": 212,
+    "sourceSha256": "a9bd865d6b7a382fc13d03cf749620f4dd13f9ff77c59f8b7c47fb3998fe67e6"
+  },
+  {
+    "project": "ruin-runners",
+    "block": "rr-relay-session",
+    "snippet": "host",
+    "sourcePath": "2PMultiplayer/2PMultiplayer/Assets/Scripts/Network/RelayManager.cs",
+    "startLine": 99,
+    "endLine": 121,
+    "sourceSha256": "d8462be8bb6934e634429eee6c654dfae93c401b85ec32afe75a1e3807849609"
+  },
+  {
+    "project": "ruin-runners",
+    "block": "rr-relay-session",
+    "snippet": "join",
+    "sourcePath": "2PMultiplayer/2PMultiplayer/Assets/Scripts/Network/RelayManager.cs",
+    "startLine": 133,
+    "endLine": 159,
+    "sourceSha256": "d8462be8bb6934e634429eee6c654dfae93c401b85ec32afe75a1e3807849609"
+  },
+  {
+    "project": "ruin-runners",
+    "block": "rr-network-hazards",
+    "snippet": "timing",
+    "sourcePath": "2PMultiplayer/2PMultiplayer/Assets/Scripts/ZigZagSpike.cs",
+    "startLine": 64,
+    "endLine": 81,
+    "sourceSha256": "79782346dcc679aef83489c8a18d41f7006df4dc4f50080ac99279961a4349e3"
+  },
+  {
+    "project": "ruin-runners",
+    "block": "rr-network-hazards",
+    "snippet": "listen",
+    "sourcePath": "2PMultiplayer/2PMultiplayer/Assets/Scripts/ZigZagSpike.cs",
+    "startLine": 21,
+    "endLine": 42,
+    "sourceSha256": "79782346dcc679aef83489c8a18d41f7006df4dc4f50080ac99279961a4349e3"
+  },
+  {
+    "project": "ruin-runners",
+    "block": "rr-network-hazards",
+    "snippet": "visuals",
+    "sourcePath": "2PMultiplayer/2PMultiplayer/Assets/Scripts/ZigZagSpike.cs",
+    "startLine": 58,
+    "endLine": 62,
+    "sourceSha256": "79782346dcc679aef83489c8a18d41f7006df4dc4f50080ac99279961a4349e3"
+  },
+  {
+    "project": "tower-of-hanoi",
+    "block": "hanoi-valid-moves",
+    "snippet": "drop",
+    "sourcePath": "TOH/TOH/Assets/Scripts/GameManager.cs",
+    "startLine": 252,
+    "endLine": 282,
+    "sourceSha256": "adc6cec5f6cd3e0ddaeba3f5e002387f27adb59f73320533c9d365dca1b2a25a"
+  },
+  {
+    "project": "tower-of-hanoi",
+    "block": "hanoi-valid-moves",
+    "snippet": "ui",
+    "sourcePath": "TOH/TOH/Assets/Scripts/UIManager.cs",
+    "startLine": 56,
+    "endLine": 64,
+    "sourceSha256": "29a0d6b00da1ad49081fcb60005f5185dcb4dc808fdca5256d21ce9fb47170bb"
+  },
+  {
+    "project": "tower-of-hanoi",
+    "block": "hanoi-scramble",
+    "snippet": "source",
+    "sourcePath": "TOH/TOH/Assets/Scripts/GameManager.cs",
+    "startLine": 394,
+    "endLine": 428,
+    "sourceSha256": "adc6cec5f6cd3e0ddaeba3f5e002387f27adb59f73320533c9d365dca1b2a25a"
+  },
+  {
+    "project": "tower-of-hanoi",
+    "block": "hanoi-scramble",
+    "snippet": "destination",
+    "sourcePath": "TOH/TOH/Assets/Scripts/GameManager.cs",
+    "startLine": 429,
+    "endLine": 451,
+    "sourceSha256": "adc6cec5f6cd3e0ddaeba3f5e002387f27adb59f73320533c9d365dca1b2a25a"
+  },
+  {
+    "project": "two-player-tag",
+    "block": "tag-transfer",
+    "snippet": "touch",
+    "sourcePath": "c_3/c_3/Assets/Snow_Game/Scripts/Tag_Player.cs",
+    "startLine": 239,
+    "endLine": 252,
+    "sourceSha256": "eb87a73b14c3fd8d4d9e16b964dd5edbbebf914faa453fb79c35950b75408e96"
+  },
+  {
+    "project": "two-player-tag",
+    "block": "tag-transfer",
+    "snippet": "leave",
+    "sourcePath": "c_3/c_3/Assets/Snow_Game/Scripts/Tag_Player.cs",
+    "startLine": 265,
+    "endLine": 281,
+    "sourceSha256": "eb87a73b14c3fd8d4d9e16b964dd5edbbebf914faa453fb79c35950b75408e96"
+  },
+  {
+    "project": "two-player-tag",
+    "block": "tag-shared-camera",
+    "snippet": "midpoint",
+    "sourcePath": "c_3/c_3/Assets/Snow_Game/Scripts/TagGameManager.cs",
+    "startLine": 257,
+    "endLine": 271,
+    "sourceSha256": "cd0a3e3cc056211a1dcb53f3a877582929546a0fab0893b0e8b091749a31526b"
+  },
+  {
+    "project": "two-player-tag",
+    "block": "tag-shared-camera",
+    "snippet": "zoom",
+    "sourcePath": "c_3/c_3/Assets/Snow_Game/Scripts/TagGameManager.cs",
+    "startLine": 273,
+    "endLine": 279,
+    "sourceSha256": "cd0a3e3cc056211a1dcb53f3a877582929546a0fab0893b0e8b091749a31526b"
+  },
+  {
+    "project": "word-search",
+    "block": "ws-placement",
+    "snippet": "choose",
+    "sourcePath": "WordSearch/word_search_2d/Assets/Scripts/GameManager.cs",
+    "startLine": 389,
+    "endLine": 407,
+    "sourceSha256": "e82fc2203e22e497211e38738093cfb38ddf842321095997d8e11e3941eabebb"
+  },
+  {
+    "project": "word-search",
+    "block": "ws-placement",
+    "snippet": "check",
+    "sourcePath": "WordSearch/word_search_2d/Assets/Scripts/GameManager.cs",
+    "startLine": 440,
+    "endLine": 474,
+    "sourceSha256": "e82fc2203e22e497211e38738093cfb38ddf842321095997d8e11e3941eabebb"
+  },
+  {
+    "project": "word-search",
+    "block": "ws-placement",
+    "snippet": "write",
+    "sourcePath": "WordSearch/word_search_2d/Assets/Scripts/GameManager.cs",
+    "startLine": 493,
+    "endLine": 502,
+    "sourceSha256": "e82fc2203e22e497211e38738093cfb38ddf842321095997d8e11e3941eabebb"
+  },
+  {
+    "project": "word-search",
+    "block": "ws-selection",
+    "snippet": "direction",
+    "sourcePath": "WordSearch/word_search_2d/Assets/Scripts/GameManager.cs",
+    "startLine": 676,
+    "endLine": 704,
+    "sourceSha256": "e82fc2203e22e497211e38738093cfb38ddf842321095997d8e11e3941eabebb"
+  },
+  {
+    "project": "word-search",
+    "block": "ws-selection",
+    "snippet": "match",
+    "sourcePath": "WordSearch/word_search_2d/Assets/Scripts/GameManager.cs",
+    "startLine": 590,
+    "endLine": 625,
+    "sourceSha256": "e82fc2203e22e497211e38738093cfb38ddf842321095997d8e11e3941eabebb"
+  },
+  {
+    "project": "word-search",
+    "block": "ws-levels",
+    "snippet": "data",
+    "sourcePath": "WordSearch/word_search_2d/Assets/Scripts/GameManager.cs",
+    "startLine": 23,
+    "endLine": 29,
+    "sourceSha256": "e82fc2203e22e497211e38738093cfb38ddf842321095997d8e11e3941eabebb"
+  },
+  {
+    "project": "word-search",
+    "block": "ws-levels",
+    "snippet": "select",
+    "sourcePath": "WordSearch/word_search_2d/Assets/Scripts/GameManager.cs",
+    "startLine": 283,
+    "endLine": 309,
+    "sourceSha256": "e82fc2203e22e497211e38738093cfb38ddf842321095997d8e11e3941eabebb"
+  },
+  {
+    "project": "word-search",
+    "block": "ws-levels",
+    "snippet": "timer",
+    "sourcePath": "WordSearch/word_search_2d/Assets/Scripts/GameManager.cs",
+    "startLine": 740,
+    "endLine": 760,
+    "sourceSha256": "e82fc2203e22e497211e38738093cfb38ddf842321095997d8e11e3941eabebb"
+  }
+]

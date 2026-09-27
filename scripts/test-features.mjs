@@ -11,7 +11,8 @@ for(const count of [1,2,9,14,15,16]){
 }
 assert.deepEqual(fillCollageSources([],3,3),[]);
 const example=structuredClone(projectCodeSnippets['digging-game'][0]);
-assert.equal(normalizeGroup(example).connections.length,3);
+assert.equal(normalizeGroup(example).connections.length,example.connections.length);
+for(const groups of Object.values(projectCodeSnippets)) for(const group of groups){assert.equal(group.placeholder,false);normalizeGroup(group);}
 const invalid=structuredClone(example);invalid.connections[0].to.end=1000;
 assert.throws(()=>normalizeGroup(invalid),/Invalid connection/);
 const duplicate=structuredClone(example);duplicate.snippets[1].id=duplicate.snippets[0].id;

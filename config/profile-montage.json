@@ -1,0 +1,77 @@
+{
+  "transitionSeconds": 0.3,
+  "shots": [
+    {
+      "project": "ren-path-of-destiny",
+      "source": "Previously supplied Ren gameplay / ren-gameplay-01.mp4",
+      "start": 17,
+      "duration": 4,
+      "crop": null
+    },
+    {
+      "project": "digging-game",
+      "source": "DiggingGame.zip / Recordings/Movie_003.mp4",
+      "start": 29,
+      "duration": 5,
+      "crop": null
+    },
+    {
+      "project": "ball-bashers",
+      "source": "Previously supplied Ball Bashers gameplay / bb-gameplay-01.mp4",
+      "start": 20,
+      "duration": 3,
+      "crop": null
+    },
+    {
+      "project": "tower-of-hanoi",
+      "source": "Previously supplied Tower of Hanoi gameplay / toh-gameplay-01.mp4",
+      "start": 6,
+      "duration": 3,
+      "crop": "crop=1852:1040:0:40"
+    },
+    {
+      "project": "word-search",
+      "source": "word_search_2d.rar / Recordings/Movie_005.mp4",
+      "start": 400,
+      "duration": 4,
+      "crop": null
+    },
+    {
+      "project": "lost-trance",
+      "source": "mask-project.zip / Recordings/Movie_019.mp4",
+      "start": 0.1,
+      "duration": 3.2,
+      "crop": null
+    },
+    {
+      "project": "lost-trance",
+      "source": "mask-project.zip / Recordings/Movie_020.mp4",
+      "start": 1,
+      "duration": 3.2,
+      "crop": null
+    },
+    {
+      "project": "lost-trance",
+      "source": "mask-project.zip / Recordings/Movie_024.mp4",
+      "start": 0.6,
+      "duration": 3.2,
+      "crop": null
+    }
+  ],
+  "variants": {
+    "desktop": [
+      1600,
+      900
+    ],
+    "tablet": [
+      960,
+      960
+    ],
+    "mobile": [
+      720,
+      1280
+    ]
+  },
+  "note": "Editing this recipe requires re-rendering. Runtime video paths and playback controls are in experience.js.",
+  "renderedDurationSeconds": 26.2
+}

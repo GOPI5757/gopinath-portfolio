@@ -10,13 +10,19 @@ import { siteSettings } from "../config/site.js";
 import { portfolioThemes } from "../config/theme.js";
 import { introWidgets } from "../config/intro.js";
 import { profileWidgets } from "../config/profile.js";
-import { projectCategories, projectItems, projectSectionWidgets } from "../config/projects.js";
+import { projectCategories, projectItems as originalProjectItems, projectSectionWidgets } from "../config/projects.js";
+import { sourceAdditions } from "../config/source-additions.js";
 import { skillGroups } from "../config/skills.js";
 import { certificateWidgets } from "../config/certificates.js";
 import { contactWidgets } from "../config/contact.js";
 import { announce, applyTextStyle, byId, el, enabled, first, hasValue, isInternalTarget, scrollToTarget, textElement, visible } from "./utils.js";
 import { eyebrow, renderCarousel, renderChip, renderDocumentGroup, renderImage, renderTechnicalBlock, renderVideo, renderDocumentSection, sectionHeading } from "./renderers.js";
 
+// Keep the owner's existing project content intact; prepend the source-backed additions.
+const projectItems=originalProjectItems.map(p=>({...p,
+  technicalBlocks:[...(sourceAdditions[p.id]?.technicalBlocks || []),...(p.technicalBlocks || [])],
+  images:[...(sourceAdditions[p.id]?.images || []),...(p.images || [])],
+}));
 const site = first(siteSettings) || {};
 const root = document.querySelector("#site-shell");
 let projectQuickBarCollapsed = site.projectQuickBar?.initiallyCollapsed !== false;

@@ -9,7 +9,7 @@ import {blocks as project7} from "./code-projects/think-try-treasure.js";
 import {blocks as project8} from "./code-projects/lost-trance.js";
 import {blocks as project9} from "./code-projects/ben-3.js";
 import {blocks as project10} from "./code-projects/bubble-parkour.js";
-// Replace these illustrative examples with your own code. See CUSTOMIZATION-UPDATES.md.
+// Source excerpts live in config/code-projects. See SOURCE-CONTENT-GUIDE.md.
 export const codeSnippetSettings = {
   enabled: true,
   title: "Code walkthroughs",
@@ -25,6 +25,7 @@ export const codeSnippetSettings = {
   highlightColor: "#efbc6126",
   showConnections: true,
   arrowClearance: 10, arrowBendPenalty: 4,
+  avoidArrowOverlap: true, arrowLaneSpacing: 6, arrowMaxDetour: 48, arrowPortSpread: 6,
 };
 
 // Every project has its own editable block array.

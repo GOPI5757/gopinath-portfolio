@@ -69,9 +69,11 @@ function renderGroup(source) {
     svg.setAttribute("viewBox",`0 0 ${bounds.width} ${bounds.height}`);
     svg.setAttribute("width",bounds.width); svg.setAttribute("height",bounds.height);
     const geometry=new Map([...cards].map(([id,card])=>{const box=card.getBoundingClientRect();return [id,{left:box.left-bounds.left,right:box.right-bounds.left,top:box.top-bounds.top,bottom:box.bottom-bounds.top}]}));
+    const occupied=[];
     connections.forEach((c,i) => {
-      const center=r=>{const first=lines.get(`${r.snippet}:${r.start}`).getBoundingClientRect(),last=lines.get(`${r.snippet}:${r.end ?? r.start}`).getBoundingClientRect();return (first.top+last.bottom)/2-bounds.top};
-      const points=routeConnection({from:{rect:geometry.get(c.from.snippet),y:center(c.from)},to:{rect:geometry.get(c.to.snippet),y:center(c.to)},rects:[...geometry.values()],width:bounds.width,height:bounds.height,mobile,lane:Math.max(8,Math.min(20,Number(settings.arrowClearance)||10))+(i%3)*2,bendPenalty:Number(settings.arrowBendPenalty)||4});
+      const port=r=>{const first=lines.get(`${r.snippet}:${r.start}`).getBoundingClientRect(),last=lines.get(`${r.snippet}:${r.end ?? r.start}`).getBoundingClientRect();return {rect:geometry.get(r.snippet),y:(first.top+last.bottom)/2-bounds.top,minY:first.top-bounds.top+3,maxY:last.bottom-bounds.top-3}};
+      const points=routeConnection({from:port(c.from),to:port(c.to),rects:[...geometry.values()],width:bounds.width,height:bounds.height,mobile,lane:Math.max(8,Math.min(20,Number(settings.arrowClearance)||10)),bendPenalty:Number(settings.arrowBendPenalty)||4,occupied:settings.avoidArrowOverlap===false?[]:occupied,spacing:Math.max(3,Math.min(12,Number(settings.arrowLaneSpacing)||6)),maxDetour:Math.max(12,Number(settings.arrowMaxDetour)||48),portSpread:Math.max(0,Number(settings.arrowPortSpread)||6)});
+      occupied.push(points);
       paths[i].setAttribute("d",pathData(points));
     });
   }

@@ -1,79 +1,127 @@
-// Each object in this array is an independent block with its own files, highlights, arrows and explanations.
-// Replace these clearly labelled placeholders. Duplicate a block and give it a unique id to add another.
+// Exact source excerpts; original line numbers, leading indentation removed.
 export const blocks = [
-{
-  id: "chunk-example", enabled: true, placeholder: true,
-  title: "From declaration to mesh generation",
-  description: "Illustrative placeholder code — replace with your own implementation and explanation.",
-  explanationPosition: "right",
-  snippets: [
-    {
-      id: "header", fileName: "ChunkManager.h", language: "C++", startLine: 1,
-      code: `#pragma once
-#include "MeshBuilder.h"
-
-class ChunkManager {
-public:
-    Mesh GenerateChunkMesh(const Chunk& chunk);
-};`,
-      highlights: [{ start: 6, end: 6 }],
-      explanation: { title: "01 / Declaration", text: "This header declares the entry point. Replace this explanation with the purpose and design decisions behind your actual code." },
-    },
-    {
-      id: "implementation", fileName: "ChunkManager.cpp", language: "C++", startLine: 1,
-      code: `#include "ChunkManager.h"
-
-Mesh ChunkManager::GenerateChunkMesh(
-    const Chunk& chunk)
-{
-    Mesh mesh = MeshBuilder::Build(chunk);
-    return mesh;
-}`,
-      highlights: [{ start: 3, end: 4 }, { start: 6, end: 6 }],
-      explanation: { title: "02 / Implementation", text: "The implementation delegates mesh creation to a helper. The highlighted ranges and every connection are editable independently." },
-    },
-    {
-      id: "builder", fileName: "MeshBuilder.cpp", language: "C++", startLine: 1,
-      code: `#include "MeshBuilder.h"
-
-Mesh MeshBuilder::Build(const Chunk& chunk)
-{
-    Mesh mesh;
-    for (const auto& voxel : chunk.voxels) {
-        if (voxel.IsExposed()) {
-            mesh.AddFaces(voxel);
+  {
+    "id": "hanoi-valid-moves",
+    "enabled": true,
+    "placeholder": false,
+    "title": "Validate disc placement before counting a move",
+    "description": "The drop handler checks the destination stack and restores invalid placements.",
+    "explanationPosition": "right",
+    "snippets": [
+      {
+        "id": "drop",
+        "fileName": "GameManager.cs",
+        "language": "C#",
+        "startLine": 252,
+        "sourcePath": "TOH/TOH/Assets/Scripts/GameManager.cs",
+        "code": "if(isMouseUp && !is_moving)\n{\n    currentDiscNo = -1;\n    int currentDisc_value = currentDisc.gameObject.name[1] - '0';\n    int index = Mathf.RoundToInt((currentDisc.transform.position.x + 5f) / 5f);\n    if (t_datas[index].t_index.Count > 0)\n    {\n        int nextDisc_value = t_datas[index].t_index[t_datas[index].t_index.Count - 1];\n        if (currentDisc_value < nextDisc_value)\n        {\n            moves++;\n            UIManager.Instance.UpdateMovesText();\n            Physics2D.SyncTransforms();\n            AssignLists();\n        }\n        else\n        {\n            currentDisc.transform.position = cd_startPos;\n        }\n    }\n    else\n    {\n        moves++;\n        UIManager.Instance.UpdateMovesText();\n        Physics2D.SyncTransforms();\n        AssignLists();\n    }\n\n    currentDisc = null;\n    isMouseUp = false;\n}",
+        "highlights": [
+          {
+            "start": 257,
+            "end": 269
+          },
+          {
+            "start": 272,
+            "end": 277
+          }
+        ],
+        "explanation": {
+          "title": "1 / Check the destination",
+          "text": "A disc may be placed on an empty tower or a larger top disc. Valid drops increment the move count, sync transforms and rebuild tower lists; invalid drops return to the pickup position."
         }
-    }
-    return mesh;
-}`,
-      highlights: [{ start: 3, end: 4 }, { start: 6, end: 9 }],
-      explanation: { title: "03 / Called function", text: "Illustrative pseudocode for building exposed voxel faces. This is a layout demonstration, not this project's production code." },
-    },
-  ],
-  connections: [
-    { id: "declaration", label: "Declaration → implementation", from: { snippet: "header", start: 6, end: 6 }, to: { snippet: "implementation", start: 3, end: 4 } },
-    { id: "call", label: "Call → mesh builder", from: { snippet: "implementation", start: 6, end: 6 }, to: { snippet: "builder", start: 3, end: 4 } },
-    { id: "flow", label: "Entry point → voxel loop", from: { snippet: "header", start: 6, end: 6 }, to: { snippet: "builder", start: 6, end: 9 } },
-  ],
-},
-{
-  id: "second-example", enabled: true, placeholder: true,
-  title: "Second independent walkthrough block",
-  description: "Replace this independent example with another system from this game.",
-  explanationPosition: "left",
-  snippets: [
-    { id: "request", fileName: "InputFlow.txt", language: "Pseudocode", startLine: 1,
-      code: `when interact is pressed:
-    request interaction with target`,
-      highlights: [{start: 1, end: 2}],
-      explanation: {title: "Input request", text: "Explain how this part of your system starts an interaction."} },
-    { id: "handler", fileName: "InteractionFlow.txt", language: "Pseudocode", startLine: 1,
-      code: `handle interaction request:
-    if target is available:
-        perform interaction`,
-      highlights: [{start: 1, end: 3}],
-      explanation: {title: "Interaction handling", text: "Explain the checks and behavior in your implementation. This is placeholder pseudocode."} },
-  ],
-  connections: [{ id: "input-to-handler", label: "Input → handler", from: {snippet: "request", start: 2}, to: {snippet: "handler", start: 1, end: 3} }],
-}
+      },
+      {
+        "id": "ui",
+        "fileName": "UIManager.cs",
+        "language": "C#",
+        "startLine": 56,
+        "sourcePath": "TOH/TOH/Assets/Scripts/UIManager.cs",
+        "code": "public void UpdateMovesText()\n{\n    moves_text.text = \"Moves\\n\" + GameManager.instance.moves.ToString();\n}\n\npublic void UpdateTimerText()\n{\n    Timer_Text.text = \"Timer\\n\" + GameManager.instance.Timer.ToString(\"F0\");\n}",
+        "highlights": [
+          {
+            "start": 56,
+            "end": 63
+          }
+        ],
+        "explanation": {
+          "title": "2 / Reflect moves and time",
+          "text": "Dedicated UI methods update the displayed move count and timer from GameManager state."
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "hanoi-count",
+        "from": {
+          "snippet": "drop",
+          "start": 263
+        },
+        "to": {
+          "snippet": "ui",
+          "start": 56
+        },
+        "label": "Refresh the move counter"
+      }
+    ]
+  },
+  {
+    "id": "hanoi-scramble",
+    "enabled": true,
+    "placeholder": false,
+    "title": "Generate puzzles with legal disc moves",
+    "description": "The board setup sorts discs and then scrambles the tower using valid transfers.",
+    "explanationPosition": "right",
+    "snippets": [
+      {
+        "id": "source",
+        "fileName": "GameManager.cs",
+        "language": "C#",
+        "startLine": 394,
+        "sourcePath": "TOH/TOH/Assets/Scripts/GameManager.cs",
+        "code": "void RandomAlgorithm()\n{\n    for(int i = 0; i < reverseMoves; i++)\n    {\n        bool main_flag = true;\n        GameObject currentDisc = null;\n        int rand = -1;\n        do\n        {\n            rand = Random.Range(0, 3);\n            if (t_datas[rand].t_index.Count > 0)\n            {\n                currentDisc = rev_discs[t_datas[rand].t_index[t_datas[rand].t_index.Count - 1] - 1];\n                for(int j = 0; j < 3; j++)\n                {\n                    if(j != rand)\n                    {\n                        if (t_datas[j].t_index.Count > 0)\n                        {\n                            if(t_datas[j].t_index[t_datas[j].t_index.Count - 1] > currentDisc.gameObject.name[1] - '0')\n                            {\n                                main_flag = false;\n                            }\n                        } else\n                        {\n                            main_flag = false;\n                        }\n                    }\n                }\n                if(!main_flag)\n                {\n                    break;\n                }\n            }\n        } while (true);",
+        "highlights": [
+          {
+            "start": 403,
+            "end": 419
+          }
+        ],
+        "explanation": {
+          "title": "1 / Choose a movable top disc",
+          "text": "The scramble selects a nonempty source tower and checks that another tower can receive its top disc."
+        }
+      },
+      {
+        "id": "destination",
+        "fileName": "GameManager.cs",
+        "language": "C#",
+        "startLine": 429,
+        "sourcePath": "TOH/TOH/Assets/Scripts/GameManager.cs",
+        "code": "    int rand_1 = -1;\n    bool can_changePos = false;\n    do\n    {\n        rand_1 = Random.Range(0, 3);\n        if(t_datas[rand_1].t_index.Count > 0)\n        {\n            can_changePos = t_datas[rand_1].t_index[t_datas[rand_1].t_index.Count - 1] > currentDisc.gameObject.name[1] - '0';\n        } else\n        {\n            can_changePos = true;\n        }\n        if (rand_1 != rand && can_changePos)\n        {\n            break;\n        }\n    } while (true);\n    float new_y = -3.55f + (t_datas[rand_1].t_index.Count > 0 ?\n        (t_datas[rand_1].t_index.Count) : 0);\n    currentDisc.transform.position = new Vector3(column_values[rand_1], new_y, 0f);\n    Physics2D.SyncTransforms();\n    AssignLists();\n}",
+        "highlights": [
+          {
+            "start": 433,
+            "end": 450
+          }
+        ],
+        "explanation": {
+          "title": "2 / Select a legal destination",
+          "text": "A different destination must be empty or topped by a larger disc. After moving, the tower data is rebuilt before the next iteration."
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "scramble-step",
+        "from": {
+          "snippet": "source",
+          "start": 425
+        },
+        "to": {
+          "snippet": "destination",
+          "start": 429
+        },
+        "label": "Continue with a legal destination"
+      }
+    ]
+  }
 ];

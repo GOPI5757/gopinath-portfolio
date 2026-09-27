@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {routeConnection,pathData} from '../js/code-routing.js';
+import {routeConnection,pathData,overlapLength} from '../js/code-routing.js';
 const a={left:34,right:300,top:42,bottom:310},b={left:336,right:602,top:42,bottom:340},c={left:34,right:300,top:390,bottom:670};
 const rects=[a,b,c];
 const route=(from,to,mobile=false)=>routeConnection({from,to,rects,width:636,height:710,mobile});
@@ -16,3 +16,15 @@ const middle={left:336,right:602,top:42,bottom:340},last={left:638,right:904,top
 const across=routeConnection({from:{rect:a,y:200},to:{rect:last,y:200},rects:[a,middle,last],width:940,height:400});
 assert(across.length>0);assert(across.some(p=>p.y<42||p.y>340));
 console.log('PASS: minimal cross-row path, orthogonal segments, mobile gutters, same-file and obstacle avoidance.');
+const first=route({rect:a,y:240},{rect:b,y:180});
+const second=routeConnection({from:{rect:b,y:240},to:{rect:c,y:500},rects,width:636,height:710,occupied:[first]});
+function overlap(p,q){return p.slice(1).reduce((sum,x,i)=>sum+q.slice(1).reduce((s,y,j)=>s+overlapLength(p[i],x,q[j],y),0),0)}
+assert.equal(overlap(first,second),0,'Parallel endpoints must not share an arrow segment');
+assert(second.every(p=>p.y>=234&&p.y<=506),'Keep the cross-row route local');
+const shared=routeConnection({from:{rect:a,y:240},to:{rect:c,y:500},rects,width:636,height:710,occupied:[first,second]});
+assert.equal(overlap(first,shared)+overlap(second,shared),0,'Fan-out routes need separate lanes');
+assert(second.slice(1).every((p,i)=>p.x===second[i].x||p.y===second[i].y));
+const stackedSecond=routeConnection({from:{rect:a,y:220},to:{rect:c,y:560},rects,width:636,height:710,mobile:true,occupied:[stacked]});
+assert.equal(overlap(stacked,stackedSecond),0,'Mobile fan-out routes must separate');
+assert(stackedSecond.slice(1,-1).every(p=>p.x<a.left));
+console.log('PASS: parallel-endpoint overlap, shared-source fan-out, local detours and separate mobile lanes.');
