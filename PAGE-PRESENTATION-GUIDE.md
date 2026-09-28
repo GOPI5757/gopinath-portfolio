@@ -1,3 +1,5 @@
+> **Configuration moved:** This is a historical guide. All project content and project-related controls now live in `config/projects.js`; code snippets remain separate. Use [PROJECT-CONFIG-GUIDE.md](PROJECT-CONFIG-GUIDE.md) for current paths and settings. Technical blocks now start expanded.
+
 # Project backgrounds and counts
 
 This update adds only the project-page background images, the right-arrow hidden-project badge, and the total-project badge beside the home Projects section label. Existing project content, videos, thumbnails, code walkthroughs and other settings are preserved.

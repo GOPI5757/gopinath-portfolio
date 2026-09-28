@@ -1,3 +1,5 @@
+> **Configuration moved:** This is a historical guide. All project content and project-related controls now live in `config/projects.js`; code snippets remain separate. Use [PROJECT-CONFIG-GUIDE.md](PROJECT-CONFIG-GUIDE.md) for current paths and settings. Technical blocks now start expanded.
+
 # Update 3 — layout controls
 
 This update contains only the seven requested layout changes. It supersedes the earlier guides where the defaults below differ. Edit the configuration files, save them and refresh the page. After publishing, a hard refresh may be needed to clear the browser cache.

@@ -1,5 +1,6 @@
 import { imageManifest } from "../config/image-manifest.js";
-import { videoPresentation } from "../config/discovery.js";
+import {projectSettings} from "../config/projects.js";
+const videoPresentation=projectSettings.detail.videos.presentation;
 import { experience } from "../config/experience.js";
 import { onRouteDispose } from "./experience.js";
 import { applyTextStyle, el, hasValue, makeId, textElement, visible } from "./utils.js";

@@ -1,3 +1,5 @@
+> **Configuration moved:** This is a historical guide. All project content and project-related controls now live in `config/projects.js`; code snippets remain separate. Use [PROJECT-CONFIG-GUIDE.md](PROJECT-CONFIG-GUIDE.md) for current paths and settings. Technical blocks now start expanded.
+
 # Requested navigation and intro revision
 
 This revision uses your supplied Portfolio/7 ZIP as its starting point. Project content, media files, profile styling, contact positioning rules and all other site features are preserved.

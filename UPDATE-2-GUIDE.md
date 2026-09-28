@@ -1,3 +1,5 @@
+> **Configuration moved:** This is a historical guide. All project content and project-related controls now live in `config/projects.js`; code snippets remain separate. Use [PROJECT-CONFIG-GUIDE.md](PROJECT-CONFIG-GUIDE.md) for current paths and settings. Technical blocks now start expanded.
+
 # Portfolio update 2 — customization
 
 These settings are for the changes in this ZIP. Existing media and project descriptions are preserved. The two code examples in **every game** are visibly labelled placeholders; replace them with real code before presenting them as your implementation.

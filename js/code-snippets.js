@@ -1,3 +1,4 @@
+import { collapsible, collapseOptions } from "./collapsible-content.js";
 import { codeSnippetSettings as settings, projectCodeSnippets } from "../config/code-snippets.js";
 import { el, announce } from "./utils.js";
 import { onRouteDispose } from "./experience.js";
@@ -12,7 +13,7 @@ function tokens(line) {
   return line.split(/(\/\/.*|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:class|public|private|protected|const|auto|return|for|if|else|void|int|float|bool|static|using|namespace|new|struct|include|pragma|once)\b|\b\d+\b)/g).filter(Boolean).map(t => el("span", { text:t, className: t.startsWith("//") ? "token-comment" : /^["']/.test(t) ? "token-string" : /^(class|public|private|protected|const|auto|return|for|if|else|void|int|float|bool|static|using|namespace|new|struct|include|pragma|once)$/.test(t) ? "token-keyword" : /^\d+$/.test(t) ? "token-number" : "" }));
 }
 
-function renderGroup(source) {
+function renderGroup(source, projectId) {
   let group;
   try { group = normalizeGroup(source); } catch(error) { console.warn("Code walkthrough configuration:", error.message); return null; }
   if (!group.snippets.length) return null;
@@ -57,7 +58,7 @@ function renderGroup(source) {
   const article = el("article", {className:"code-walkthrough"}, [group.placeholder ? el("p", {className:"code-placeholder",text:"PLACEHOLDER EXAMPLE — replace with your own code"}) : null, el("h3",{text:group.title || "Code walkthrough"}), group.description ? el("p", {className:"code-group-description",text:group.description}) : null, layout, connections.length ? el("p", {className:"code-connection-hint",text:"Follow the arrows, or select a connection below to jump to its highlighted lines."}) : null, connectionList]);
   let frame, disposed=false;
   function draw() {
-    if (disposed || !board.isConnected) return;
+    if (disposed || !board.isConnected || !board.getClientRects().length) return;
     const stacked=layout.getBoundingClientRect().width < (Number(settings.explanationStackBelow)||780);
     layout.classList.toggle("is-stacked",stacked);
     let bounds=board.getBoundingClientRect();
@@ -81,14 +82,14 @@ function renderGroup(source) {
   const observer=new ResizeObserver(schedule); observer.observe(layout); observer.observe(board); cards.forEach(card=>observer.observe(card));
   window.addEventListener("resize",schedule); document.fonts?.ready.then(schedule); schedule();
   onRouteDispose(()=>{disposed=true;cancelAnimationFrame(frame);observer.disconnect();window.removeEventListener("resize",schedule)});
-  return article;
+  return collapsible(article,article.querySelector("h3"),collapseOptions(projectId,"codeBlocks",group.id));
 }
 
 export function renderCodeSnippets(project) {
   if (!settings.enabled) return null;
-  const groups=(projectCodeSnippets[project.id] || []).filter(g=>g.enabled!==false).map(renderGroup).filter(Boolean);
+  const groups=(projectCodeSnippets[project.id] || []).filter(g=>g.enabled!==false).map(group=>renderGroup(group,project.id)).filter(Boolean);
   if (!groups.length) return null;
   const section=el("section", {className:"detail-section code-section",attrs:{"aria-labelledby":"code-snippets-title"}}, [el("h2",{className:"detail-heading",text:settings.title,attrs:{id:"code-snippets-title"}}),...groups]);
   for (const [key,value] of Object.entries({"--code-font-size":settings.fontSize,"--code-line-height":settings.lineHeight,"--code-arrow":settings.arrowColor,"--code-highlight":settings.highlightColor,"--code-explanation-width":settings.explanationWidth})) section.style.setProperty(key,value);
-  return section;
+  return collapsible(section,section.querySelector(".detail-heading"),collapseOptions(project.id,"sections","code"));
 }

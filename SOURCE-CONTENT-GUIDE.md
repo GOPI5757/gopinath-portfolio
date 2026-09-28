@@ -1,3 +1,5 @@
+> **Configuration moved:** This is a historical guide. All project content and project-related controls now live in `config/projects.js`; code snippets remain separate. Use [PROJECT-CONFIG-GUIDE.md](PROJECT-CONFIG-GUIDE.md) for current paths and settings. Technical blocks now start expanded.
+
 # Source-backed portfolio update
 
 This version starts from your supplied `gopinath-portfolio.zip`. Existing project descriptions, facts, links and technical work are retained. New technical blocks and screenshots appear before the existing items. All placeholder code blocks have been removed.

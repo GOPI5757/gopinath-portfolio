@@ -1,3 +1,6 @@
+import { applyProjectDescriptionStyle } from "./project-descriptions.js";
+import { collapsible, collapseOptions } from "./collapsible-content.js";
+import { withContactCollage } from "./contact-collage.js";
 import { resumeLinks, renderLiveProject } from "./discovery.js";
 import { withProjectPageBackground, withProjectTotal, attachProjectHiddenCount } from "./project-presentation.js";
 import { resumeSettings } from "../config/discovery.js";
@@ -11,28 +14,22 @@ import { siteSettings } from "../config/site.js";
 import { portfolioThemes } from "../config/theme.js";
 import { introWidgets } from "../config/intro.js";
 import { profileWidgets } from "../config/profile.js";
-import { projectCategories, projectItems as originalProjectItems, projectSectionWidgets } from "../config/projects.js";
-import { sourceAdditions } from "../config/source-additions.js";
+import { projectCategories, projectItems, projectSectionWidgets, projectSettings } from "../config/projects.js";
 import { skillGroups } from "../config/skills.js";
 import { certificateWidgets } from "../config/certificates.js";
 import { contactWidgets } from "../config/contact.js";
 import { announce, applyTextStyle, byId, el, enabled, first, hasValue, isInternalTarget, scrollToTarget, textElement, visible } from "./utils.js";
 import { eyebrow, renderCarousel, renderChip, renderDocumentGroup, renderImage, renderTechnicalBlock, renderVideo, renderDocumentSection, sectionHeading } from "./renderers.js";
 
-// Keep the owner's existing project content intact; prepend the source-backed additions.
-const projectItems=originalProjectItems.map(p=>({...p,
-  technicalBlocks:[...(sourceAdditions[p.id]?.technicalBlocks || []),...(p.technicalBlocks || [])],
-  images:[...(sourceAdditions[p.id]?.images || []),...(p.images || [])],
-}));
 const site = first(siteSettings) || {};
 const root = document.querySelector("#site-shell");
-let projectQuickBarCollapsed = site.projectQuickBar?.initiallyCollapsed !== false;
+let projectQuickBarCollapsed = projectSettings.navigation.quickBar?.initiallyCollapsed !== false;
 let contactRailCollapsed = experience.contact.initiallyCollapsed;
-let projectBrowserMode = site.projectQuickBar?.mode === "bar" ? "bar" : "drawer";
-if(site.projectQuickBar?.allowVisitorModeSwitch && site.projectQuickBar?.rememberVisitorMode){try{const saved=localStorage.getItem("portfolio-project-browser-mode");if(["bar","drawer"].includes(saved))projectBrowserMode=saved;}catch{}}
+let projectBrowserMode = projectSettings.navigation.quickBar?.mode === "bar" ? "bar" : "drawer";
+if(projectSettings.navigation.quickBar?.allowVisitorModeSwitch && projectSettings.navigation.quickBar?.rememberVisitorMode){try{const saved=localStorage.getItem("portfolio-project-browser-mode");if(["bar","drawer"].includes(saved))projectBrowserMode=saved;}catch{}}
 let chromeCleanup=()=>{};
 function renderBrowserModeSwitch(){
-  const config=site.projectQuickBar || {};if(!config.enabled||!config.allowVisitorModeSwitch)return null;
+  const config=projectSettings.navigation.quickBar || {};if(!config.enabled||!config.allowVisitorModeSwitch)return null;
   const group=el("div",{className:"project-mode-switch",attrs:{role:"group","aria-label":config.modeSwitchLabel || "Project navigation"}});
   for(const mode of ["bar","drawer"]){group.append(el("button",{text:mode==="bar"?config.barModeLabel:config.drawerModeLabel,attrs:{type:"button","aria-pressed":String(projectBrowserMode===mode),"aria-label":`Use project ${mode}`},on:{click:()=>{
     if(projectBrowserMode===mode)return;
@@ -100,11 +97,11 @@ function renderHeader() {
     text: "Menu",
     attrs: { type: "button", "aria-expanded": "false", "aria-controls": navId },
   });
-  const header = el("header", { className: "site-header" }, [brand(), el("div", {className:"header-actions"}, [site.projectQuickBar?.enabled !== false && projectBrowserMode === "drawer" ? el("button", {className:"browse-projects-button",text:site.projectQuickBar.buttonLabel || "Browse projects",attrs:{type:"button","aria-haspopup":"dialog","data-mobile-label":site.projectQuickBar.mobileButtonLabel || "Projects"},on:{click:()=>document.querySelector("#projects-drawer")?.showModal()}}) : null, menuButton, nav])]);
-  if (site.projectQuickBar?.enabled !== false && projectBrowserMode === "bar") {
+  const header = el("header", { className: "site-header" }, [brand(), el("div", {className:"header-actions"}, [projectSettings.navigation.quickBar?.enabled !== false && projectBrowserMode === "drawer" ? el("button", {className:"browse-projects-button",text:projectSettings.navigation.quickBar.buttonLabel || "Browse projects",attrs:{type:"button","aria-haspopup":"dialog","data-mobile-label":projectSettings.navigation.quickBar.mobileButtonLabel || "Projects"},on:{click:()=>document.querySelector("#projects-drawer")?.showModal()}}) : null, menuButton, nav])]);
+  if (projectSettings.navigation.quickBar?.enabled !== false && projectBrowserMode === "bar") {
     const restore = el("button", {
       className: "project-quickbar-restore",
-      text: `⌄ ${site.projectQuickBar.restoreLabel || "Projects"}`,
+      text: `⌄ ${projectSettings.navigation.quickBar.restoreLabel || "Projects"}`,
       attrs: {type: "button", "aria-expanded": String(!projectQuickBarCollapsed), "aria-controls": "project-quickbar"},
       on: {click: () => document.querySelector(".project-quickbar-toggle")?.click()},
     });
@@ -125,7 +122,7 @@ function renderHeader() {
 }
 
 function renderProjectQuickBar() {
-  const config=site.projectQuickBar || {};
+  const config=projectSettings.navigation.quickBar || {};
   if(config.enabled===false)return null;
   if(projectBrowserMode!=="drawer")return renderLegacyProjectQuickBar();
   const dialog=el("dialog",{className:"projects-drawer",attrs:{id:"projects-drawer","aria-labelledby":"drawer-title"}});
@@ -137,7 +134,7 @@ function renderProjectQuickBar() {
 }
 
 function renderLegacyProjectQuickBar() {
-  const config = site.projectQuickBar || {};
+  const config = projectSettings.navigation.quickBar || {};
   const projects = visible(projectItems).filter((project) => hasValue(project.title));
   if (config.enabled === false || !projects.length) return null;
 
@@ -480,7 +477,7 @@ function renderProjectNode(project, index) {
     el("span", { className: "node-label", text: project.nodeLabel || project.title }),
     el("span", { className: "node-title", text: project.title }),
     el("span", { className: "node-meta", text: [project.engine, project.language, project.platform].filter(Boolean).join(" · ") }),
-    experience.projectGrid.showStatus && project.status ? el("span", {className:"node-status",text:project.status}) : null,
+    projectSettings.home.grid.showStatus && project.status ? el("span", {className:"node-status",text:project.status}) : null,
     el("span", { className: "node-open", text: "Open project ↗" }),
   );
   return node;
@@ -637,7 +634,7 @@ function renderContactSection() {
   const form = renderContactForm(widget.form);
   if (!form) return null;
   const email=widget.form?.recipientEmail || visible(widget.directDetails).find(detail=>detail.id==="email")?.value;
-  return el("section", { className: "contact-section section-shell", attrs: { id: "contact-form", "aria-labelledby": "contact-title" } }, [sectionHeading(widget), email ? el("a",{className:"contact-direct-inline",text:email,attrs:{href:`mailto:${email}`}}) : null, widget.form?.enabled && widget.form?.deliveryMode === "mailto" ? el("p",{className:"contact-form-note",text:widget.form.explanation || ""}) : null, form]);
+  return el("section", { className: "contact-section section-shell", attrs: { id: "contact-form", "aria-labelledby": "contact-title" } }, [sectionHeading(widget), email ? el("a",{className:"contact-direct-inline",text:email,attrs:{href:`mailto:${email}`}}) : null, widget.form?.enabled && widget.form?.deliveryMode === "mailto" ? el("p",{className:"contact-form-note",text:widget.form.explanation || ""}) : null, withContactCollage(form, projectItems)]);
 }
 
 function renderHome() {
@@ -786,8 +783,8 @@ function seededRandom(seed) {
 function renderProjectBackground(project) {
   const uniqueSources = projectBackdropSources(project).slice(0, 16);
   if (!uniqueSources.length) return null;
-  if(!experience.performance.decorativeProjectImages)return null;
-  const overlayCount = Math.max(0,Math.min(15,experience.performance.maxDecorativeImages));
+  if(!projectSettings.detail.decorativeImages.enabled)return null;
+  const overlayCount = Math.max(0,Math.min(15,projectSettings.detail.decorativeImages.maxImages));
   const sources = Array.from({ length: overlayCount }, (_, index) => uniqueSources[index % uniqueSources.length]);
 
   const random = seededRandom(project.id || project.title || "project");
@@ -842,7 +839,10 @@ function projectThemeStyle(theme = {}) {
 }
 
 function renderProjectDetail(project) {
-  const technical = visible(project.technicalBlocks).map(renderTechnicalBlock).filter(Boolean);
+  const technical = visible(project.technicalBlocks).map(block => {
+    const node=renderTechnicalBlock(block);
+    return collapsible(node,node?.querySelector(".technical-title"),collapseOptions(project.id,"technicalBlocks",block.id,block));
+  }).filter(Boolean);
   const documentSections = visible(project.documentSections).map(renderDocumentSection).filter(Boolean);
   const docs = visible(project.documentGroups).map(renderDocumentGroup).filter(Boolean);
   const images = visible(project.images).filter((image) => hasValue(image.src));
@@ -868,6 +868,9 @@ function renderProjectDetail(project) {
     engineVideosSection,
   ].filter(Boolean);
 
+  const technicalSection = detailSections.find(section => section.getAttribute("aria-labelledby") === "technical-title");
+  if (technicalSection) collapsible(technicalSection,technicalSection.querySelector(".detail-heading"),collapseOptions(project.id,"sections","technical"));
+
   const documentContent = documentSections.length
     ? documentSections
     : docs.length
@@ -886,14 +889,14 @@ function renderProjectDetail(project) {
       }, documentContent)
     : null;
   
-  if (documentsSidebar && experience.projectDetail.documents?.compact) {
+  if (documentsSidebar && projectSettings.detail.documents?.compact) {
     const links = [...documentsSidebar.querySelectorAll("a")];
     for (const link of links) {
       const groupTitle = link.closest(".document-group")?.querySelector("h3")?.textContent;
       if (groupTitle) link.title = groupTitle;
     }
     documentsSidebar.replaceChildren(
-      el("h2", {className: "documents-toolbar-title", text: experience.projectDetail.documents.label, attrs: {id: "documents-title"}}),
+      el("h2", {className: "documents-toolbar-title", text: projectSettings.detail.documents.label, attrs: {id: "documents-title"}}),
       el("div", {className: "documents-toolbar-links"}, links)
     );
     documentsSidebar.classList.add("documents-toolbar");
@@ -911,11 +914,11 @@ function renderProjectDetail(project) {
   const main = el("main", { 
     className: "project-detail project-detail--enter", 
     attrs: { id: "main-content", tabindex: "-1" },
-  }, [renderProjectBackground(project), ...(experience.projectDetail.documents?.compact && documentsSidebar ? [documentsSidebar] : []), withProjectPageBackground(intro, project), ...(() => {
+  }, [renderProjectBackground(project), ...(projectSettings.detail.documents?.compact && documentsSidebar ? [documentsSidebar] : []), withProjectPageBackground(intro, project), ...(() => {
     const sections = new Map(detailSections.map(section => [section.getAttribute("aria-labelledby").replace(/-title$/, ""),section]));
-    if(documentsSidebar && !experience.projectDetail.documents?.compact) sections.set("documents",documentsSidebar);
+    if(documentsSidebar && !projectSettings.detail.documents?.compact) sections.set("documents",documentsSidebar);
     const result=[];
-    for(const key of experience.projectDetail.sectionOrder || []){if(sections.has(key)){result.push(sections.get(key));sections.delete(key)}}
+    for(const key of projectSettings.detail.sectionOrder || []){if(sections.has(key)){result.push(sections.get(key));sections.delete(key)}}
     return [...result,...sections.values()];
   })()]);
 
@@ -926,6 +929,7 @@ function renderProjectDetail(project) {
   jumpToTopImmediately();
   root.replaceChildren(...[renderHeader(), renderProjectQuickBar(), main, renderFooter()].filter(Boolean));
   mountContactRail();
+  applyProjectDescriptionStyle(main, project);
   document.title = `${project.title} | ${site.name || "Portfolio"}`;
   requestAnimationFrame(() => main.focus({ preventScroll: true }));
 }

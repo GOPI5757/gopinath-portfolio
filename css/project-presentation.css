@@ -13,6 +13,15 @@
 .project-hidden-count {position:absolute;right:-.25rem;top:-.45rem;min-width:1.15rem;height:1.15rem;padding:0 .2rem;display:grid;place-items:center;border-radius:999px;background:var(--accent);color:var(--background);font:600 .65rem var(--font-mono),monospace;box-shadow:0 0 0 2px var(--background);}
 .project-hidden-count[hidden] {display:none;}
 .project-quickbar-scroll:disabled {opacity:.4;cursor:default;}
+.project-readable-description {
+  background:var(--description-panel);
+  box-sizing:border-box;
+  padding:var(--description-padding);
+  border:1px solid var(--description-border);
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  border-radius:var(--description-radius);
+  text-shadow:none;
+}
 
 /* Subtle separation from the project-page image; no layout changes. */
 .project-detail-title {

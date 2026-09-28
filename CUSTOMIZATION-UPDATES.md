@@ -1,3 +1,5 @@
+> **Configuration moved:** This is a historical guide. All project content and project-related controls now live in `config/projects.js`; code snippets remain separate. Use [PROJECT-CONFIG-GUIDE.md](PROJECT-CONFIG-GUIDE.md) for current paths and settings. Technical blocks now start expanded.
+
 # Controls for this update
 
 All existing project content and media remain in their original locations. Open the site through a local web server or GitHub Pages, not by double-clicking index.html (JavaScript modules require HTTP).

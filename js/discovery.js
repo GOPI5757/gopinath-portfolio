@@ -1,4 +1,6 @@
-import {resumeSettings as resume,liveProjectSettings as live} from '../config/discovery.js';
+import {resumeSettings as resume} from '../config/discovery.js';
+import {projectSettings} from '../config/projects.js';
+const live=projectSettings.home.featured;
 import {el} from './utils.js';
 import {renderImage} from './renderers.js';
 

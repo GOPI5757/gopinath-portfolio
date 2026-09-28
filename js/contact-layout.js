@@ -1,4 +1,5 @@
-import {liveProjectSettings} from '../config/discovery.js';
+import {projectSettings} from '../config/projects.js';
+const liveProjectSettings=projectSettings.home.featured;
 import {experience} from '../config/experience.js';
 import {onRouteDispose} from './experience.js';
 

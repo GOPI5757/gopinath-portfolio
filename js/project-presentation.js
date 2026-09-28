@@ -1,12 +1,11 @@
-import { projectPresentation as settings } from "../config/project-presentation.js";
-import { projectPageImages } from "../config/project-page-images.js";
+import {projectSettings} from "../config/projects.js";
 import { el } from "./utils.js";
 
 const labelFor = (config, count) => (count === 1 ? config.singleLabel : config.label).replaceAll("{count}", String(count));
 
 export function withProjectPageBackground(intro, project) {
-  const config = settings.pageBackground;
-  const image = projectPageImages[project.id];
+  const config = projectSettings.detail.pageBackground;
+  const image = project.pageBackground;
   if (!config.enabled || !image?.src || image.enabled === false) return intro;
   const stage = el("div", {className:"project-hero-stage"});
   const backdrop = el("div", {className:"project-page-backdrop", attrs:{"aria-hidden":"true"}});
@@ -30,7 +29,7 @@ export function withProjectPageBackground(intro, project) {
 }
 
 export function withProjectTotal(heading, projects) {
-  const config = settings.totalProjects;
+  const config = projectSettings.home.totalProjects;
   if (!config.enabled) return heading;
   // Count each enabled project once, regardless of category membership or active filter.
   const count = new Set(projects.filter(p=>p.enabled && p.title).map(p=>p.id)).size;
@@ -42,7 +41,7 @@ export function withProjectTotal(heading, projects) {
 }
 
 export function attachProjectHiddenCount(bar) {
-  const config = settings.hiddenProjects;
+  const config = projectSettings.navigation.quickBar.hiddenProjects;
   if (!config.enabled || !bar) return () => {};
   const track = bar.querySelector(".project-quickbar-track");
   const next = bar.querySelector(".project-quickbar-scroll--next");
