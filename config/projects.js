@@ -1206,7 +1206,14 @@ export const projectItems = [
       }
     ],
     "images": [],
-    "gameplayVideos": [],
+    "gameplayVideos": [
+      {
+        "id": "rr-gameplay-01",
+        "enabled": true,
+        "youtube": "https://youtu.be/sZXb1ajNQcU",
+        "title": "Ruin Runners Gameplay"
+      }
+    ],
     "engineWorkVideos": [],
     "documentGroups": [],
     "pageBackground": {
