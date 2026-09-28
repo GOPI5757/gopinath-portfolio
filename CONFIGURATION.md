@@ -1,6 +1,6 @@
 > **Configuration moved:** This is a historical guide. All project content and project-related controls now live in `config/projects.js`; code snippets remain separate. Use [PROJECT-CONFIG-GUIDE.md](PROJECT-CONFIG-GUIDE.md) for current paths and settings. Technical blocks now start expanded.
 
-# Configuration guide
+# Configuration guide 
 
 Edit the files in config/, save and refresh. No rebuild is needed. Keep quotes and commas valid. Content items with `enabled: false` are hidden.
 
