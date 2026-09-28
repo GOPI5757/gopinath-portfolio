@@ -6,7 +6,7 @@ All existing project content and media remain in their original locations. Open 
 
 ## Intro
 
-Edit `config/intro.js`:
+Edit `config/intro.js`:   
 - `titleGap`: space between the name, subtitle and intro label.
 - `collageColumns` and `collageMinRows`: collage dimensions.
 - `backgroundAssets`: your images, in their original order. Only the extra cells needed to complete the grid repeat images. For example, 14 images in 3 columns produces 15 cells, repeating the first image once.
