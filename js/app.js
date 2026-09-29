@@ -215,7 +215,7 @@ function renderProfileSection() {
   if (!enabled(profile)) return null;
   const tags = visible(profile.tags).map((tag) => renderChip(tag.label));
   const copy = el("div", { className: "profile-copy" }, [
-    eyebrow(profile.eyebrow),
+    site.showSectionEyebrows !== false ? eyebrow(profile.eyebrow) : null,
     textElement("h1", profile.title || "", "hero-title", profile.style?.title),
     hasValue(profile.role || site.role) ? el("p", { className: "hero-role", text: profile.role || site.role }) : null,
     hasValue(profile.description) ? textElement("p", profile.description, "profile-description", profile.style?.description) : null,
@@ -230,6 +230,8 @@ function renderProfileSection() {
   ]);
   copy.querySelector("h1").id = "profile-title";
   const section=el("section", { className: "profile-section section-shell", attrs: { id: "profile", "aria-labelledby": "profile-title" } }, [el("div", { className: "profile-grid" }, [copy, signal])]);
+  section.classList.toggle("profile-centered", profile.centered === true);
+  section.classList.toggle("profile-viewport-fit", profile.fitViewport === true);
   attachProfileVideo(section);
   return section;
 }
@@ -251,7 +253,7 @@ function renderProfileActions() {
       if (hasValue(action.hoverColor)) style["--profile-action-hover-color"] = action.hoverColor;
       if (hasValue(action.hoverBorderColor)) style["--profile-action-hover-border"] = action.hoverBorderColor;
       const link = el("a", {
-        className: "profile-action",
+        className: action.id === "projects" ? "profile-action profile-action--explore" : "profile-action",
         text: action.label,
         attrs: {
           href: action.href,
@@ -260,6 +262,7 @@ function renderProfileActions() {
           rel: action.newTab ? "noreferrer" : undefined,
         },
       });
+      if(action.id === "projects")link.append(el("span", {className:"profile-action-arrow",text:"→",attrs:{"aria-hidden":"true"}}));
       Object.entries(style).forEach(([property, value]) => link.style.setProperty(property, value));
       return link;
     });
@@ -469,16 +472,26 @@ function renderProjectNode(project, index) {
     on: { click: () => { location.hash = `#project/${project.id}`; } },
   });
   const cover = renderImage(project.coverImage, `${project.title} cover`, "project-node-image");
-  if (cover) node.append(el("span", { className: "project-node-cover", attrs: { "aria-hidden": "true" } }, cover));
+  const badgeConfig=projectSettings.home.grid.statusBadge;
+  let badge=null;
+  if(projectSettings.home.grid.showStatus && badgeConfig?.enabled !== false && project.status){
+    const status=project.status.toLowerCase();
+    const type=/completed|finished/.test(status)?"completed":/progress|development/.test(status)?"inProgress":"other";
+    const colors=badgeConfig?.[type] || {};
+    badge=el("span",{className:"project-status-badge",text:colors.label || project.status,
+      style:{background:colors.background || "#24334d",color:colors.textColor || "#ffffff",borderRadius:badgeConfig?.radius || ".45rem"}});
+    node.setAttribute("aria-label",`Open ${project.title} — ${project.status}`);
+  }
+  if (cover) node.append(el("span", { className: "project-node-cover" }, [cover,badge]));
+  else if(badge)node.append(badge);
+  const border=projectSettings.home.grid.cardBorder;
+  if(border?.enabled!==false){node.style.border=`${border?.width || "1px"} solid ${border?.color || "#62738d"}`;}
   node.append(
     el("span", { className: "node-pin node-pin--in", attrs: { "aria-hidden": "true" } }),
     el("span", { className: "node-pin node-pin--out", attrs: { "aria-hidden": "true" } }),
     el("span", { className: "node-index", text: String(index + 1).padStart(2, "0") }),
-    el("span", { className: "node-label", text: project.nodeLabel || project.title }),
     el("span", { className: "node-title", text: project.title }),
     el("span", { className: "node-meta", text: [project.engine, project.language, project.platform].filter(Boolean).join(" · ") }),
-    projectSettings.home.grid.showStatus && project.status ? el("span", {className:"node-status",text:project.status}) : null,
-    el("span", { className: "node-open", text: "Open project ↗" }),
   );
   return node;
 }
@@ -963,17 +976,34 @@ function syncPageChrome() {
   const header = document.querySelector(".site-header");
   const bar = document.querySelector(".project-quickbar");
   const documents = document.querySelector(".documents-toolbar");
+  const profile = document.querySelector('#profile.profile-viewport-fit');
+  const live = document.querySelector('.live-project');
+  const contact = document.querySelector('#contact-rail-root');
   const measure = () => {
+    if(profile){
+      const bottom=html.classList.contains('contact-bottom') ? contact?.getBoundingClientRect().height || 0 : 0;
+      const viewport=window.visualViewport?.height || window.innerHeight;
+      const available=Math.max(1,viewport-(header?.getBoundingClientRect().height || 0)-(bar?.getBoundingClientRect().height || 0)-(live?.getBoundingClientRect().height || 0)-bottom);
+      profile.style.setProperty('--profile-available-height',`${available}px`);
+      profile.classList.toggle('profile-compact',available<360);
+      profile.classList.toggle('profile-short',available<230);
+      const grid=profile.querySelector('.profile-grid');
+      // Preserve all copy on exceptionally short screens after compact spacing is applied.
+      profile.style.setProperty('--profile-copy-scale',String(Math.min(1,available/Math.max(1,grid.offsetHeight))));
+    }
     html.style.setProperty("--header-height", `${header?.offsetHeight || 0}px`);
     html.style.setProperty("--project-bar-height", `${bar?.offsetHeight || 0}px`);
     html.style.setProperty("--documents-height", documents && getComputedStyle(documents).position === "sticky" ? `${documents.offsetHeight}px` : "0px");
     window.dispatchEvent(new Event("contactlayoutchange"));
   };
   const observer = new ResizeObserver(measure);
-  [header, bar, documents].filter(Boolean).forEach(node => observer.observe(node));
+  [header, bar, documents, live, contact, profile?.querySelector(".profile-grid")].filter(Boolean).forEach(node => observer.observe(node));
+  window.addEventListener("resize",measure);
+  window.visualViewport?.addEventListener("resize",measure);
+  window.addEventListener("contactplacementchange",measure);
   measure();
   const disposeCount = attachProjectHiddenCount(bar);
-  chromeCleanup=()=>{observer.disconnect();disposeCount();};
+  chromeCleanup=()=>{observer.disconnect();disposeCount();window.removeEventListener("resize",measure);window.visualViewport?.removeEventListener("resize",measure);window.removeEventListener("contactplacementchange",measure);};
   onRouteDispose(chromeCleanup);
 }
 

@@ -8,6 +8,7 @@ export const siteSettings = [
     "role": "Gameplay Programmer",
     "shortRole": "Gameplay systems · technical problem solving",
     "metaDescription": "Game Programmer portfolio",
+    "showSectionEyebrows": false,
     "navigation": [
       {
         "id": "profile",
@@ -46,10 +47,11 @@ export const siteSettings = [
         "enabled": true,
         "label": "Explore projects",
         "href": "#projects",
-        "background": "var(--accent)",
-        "textColor": "#061020",
+        "background": "linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--signal) 12%, var(--surface)))",
+        "textColor": "var(--text)",
         "borderColor": "var(--accent)",
-        "hoverBackground": "var(--signal)",
+        "hoverBackground": "linear-gradient(135deg, var(--surface-raised), color-mix(in srgb, var(--signal) 20%, var(--surface)))",
+        "hoverColor": "var(--text)",
         "hoverBorderColor": "var(--signal)"
       },
       {

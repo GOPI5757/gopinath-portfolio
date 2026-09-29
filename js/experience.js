@@ -55,9 +55,39 @@ export function attachProfileVideo(section){
   const config=settings.profileVideo;
   if(!config.enabled)return;
   section.classList.add('has-video');
+  const overlay=config.overlay;
+  if(overlay){
+    const colors=(Array.isArray(overlay.background)?overlay.background:[]).filter(color=>typeof color==='string' && CSS.supports('color',color));
+    const angle=Number.isFinite(Number(overlay.angle))?Number(overlay.angle):90;
+    const background=colors.length>1?`linear-gradient(${angle}deg,${colors.join(',')})`:colors[0] || 'transparent';
+    const opacity=overlay.enabled===false?0:Number.isFinite(Number(overlay.opacity))?Math.max(0,Math.min(1,Number(overlay.opacity))):.58;
+    section.style.setProperty('--hero-overlay',background);
+    section.style.setProperty('--hero-portrait-overlay',background);
+    section.style.setProperty('--hero-overlay-opacity',String(opacity));
+  }
   const media=el('div',{className:'profile-video-layer','attrs':{'aria-hidden':'true'}});
   const video=el('video',{className:'profile-background-video',attrs:{muted:'',playsinline:'',loop:'',preload:'none',tabindex:'-1'}});
   video.muted=true;media.append(video);section.prepend(media);
+  const blend=config.edgeBlend;
+  const posterImage=new Image();
+  let posterWidth=0,posterHeight=0;
+  if(blend?.enabled){
+    section.classList.add('profile-video-edge-blend');
+    section.style.setProperty('--video-blend-background',blend.background || 'var(--background)');
+  }
+  function updateBlend(){
+    if(!blend?.enabled)return;
+    const w=video.clientWidth,h=video.clientHeight;
+    const iw=video.videoWidth || posterWidth,ih=video.videoHeight || posterHeight;
+    const contain=getComputedStyle(video).objectFit==='contain';
+    const pictureWidth=contain && iw && ih?Math.min(w,h*iw/ih):w;
+    const inset=Math.max(0,(w-pictureWidth)/2);
+    const fraction=Number.isFinite(Number(blend.width))?Math.max(0,Math.min(.5,Number(blend.width))):.12;
+    const fade=pictureWidth*fraction;
+    video.style.setProperty('--video-edge-mask',`linear-gradient(90deg,transparent ${inset}px,#000 ${inset+fade}px,#000 ${w-inset-fade}px,transparent ${w-inset}px)`);
+  }
+  posterImage.onload=()=>{posterWidth=posterImage.naturalWidth;posterHeight=posterImage.naturalHeight;updateBlend()};
+  video.addEventListener('loadedmetadata',updateBlend);
   const button=el('button',{className:'profile-video-toggle',text:config.pauseLabel,attrs:{type:'button'}});
   if(config.showPauseButton)section.append(button);
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -70,14 +100,15 @@ export function attachProfileVideo(section){
     const next=ratio<config.portraitMaxRatio?'mobile':ratio<config.squareMaxRatio?'tablet':'desktop';
     if(next===variant)return;variant=next;ready=false;section.dataset.videoShape=next;
     video.pause();video.removeAttribute('src');video.poster=config.sources[next].poster;video.load();
+    if(blend?.enabled){posterWidth=posterHeight=0;posterImage.src=video.poster;updateBlend();}
     clearTimeout(timer);timer=setTimeout(()=>{ready=true;play()},config.loadDelayMs);state();
   }
   button.addEventListener('click',()=>{userPaused=!video.paused;ready=true;play()});
   video.addEventListener('play',state);video.addEventListener('pause',state);
   const onError=()=>{media.classList.add('video-unavailable');video.removeAttribute('src');video.load();state()};video.addEventListener('error',onError,{once:true});
-  const resize=new ResizeObserver(choose);resize.observe(section);
+  const resize=new ResizeObserver(()=>{choose();updateBlend()});resize.observe(section);
   const intersection=new IntersectionObserver(([entry])=>{inView=!config.pauseWhenOffscreen||entry.isIntersecting;play()},{threshold:.08});intersection.observe(section);
   const motionChange=()=>{if(config.respectReducedMotion){userPaused=motion.matches;play()}};
   document.addEventListener('visibilitychange',play);motion.addEventListener('change',motionChange);
-  onRouteDispose(()=>{disposed=true;clearTimeout(timer);resize.disconnect();intersection.disconnect();document.removeEventListener('visibilitychange',play);motion.removeEventListener('change',motionChange);video.pause();video.removeAttribute('src');video.load()});
+  onRouteDispose(()=>{disposed=true;clearTimeout(timer);resize.disconnect();intersection.disconnect();posterImage.onload=null;video.removeEventListener('loadedmetadata',updateBlend);document.removeEventListener('visibilitychange',play);motion.removeEventListener('change',motionChange);video.pause();video.removeAttribute('src');video.load()});
 }

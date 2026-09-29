@@ -1,3 +1,4 @@
+import { siteSettings } from "../config/site.js";
 import { imageManifest } from "../config/image-manifest.js";
 import {projectSettings} from "../config/projects.js";
 const videoPresentation=projectSettings.detail.videos.presentation;
@@ -16,7 +17,7 @@ export function sectionHeading(widget, options = {}) {
   const description = hasValue(widget.description)
     ? textElement("p", widget.description, "section-description", widget.style?.description)
     : null;
-  return el("div", { className: "section-heading" }, [eyebrow(widget.eyebrow), title, description]);
+  return el("div", { className: "section-heading" }, [siteSettings.find(item=>item.id === "site")?.showSectionEyebrows !== false ? eyebrow(widget.eyebrow) : null, title, description]);
 }
 
 export function renderChip(label, className = "chip") {

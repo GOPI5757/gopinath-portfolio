@@ -11,7 +11,9 @@ export const experience = {
     "mobileMaxWidth": 760,
     "shortMaxHeight": 520,
     "panelWidth": "13rem",
-    "topOffset": "6.25rem",
+    "topOffset": "7.25rem",
+    "avoidLiveProject": true,
+    "liveProjectGap": 12,
     "initiallyCollapsed": false,
     "alwaysOpenOnMobile": true,
     "reserveContentSpace": false,
@@ -25,7 +27,18 @@ export const experience = {
   "profileVideo": {
     "enabled": true,
     "autoplay": true,
-    "showPauseButton": true,
+    "showPauseButton": false,
+    "edgeBlend": {
+      "enabled": true,
+      "width": 0.12,
+      "background": "var(--background)"
+    },
+    "overlay": {
+      "enabled": true,
+      "background": ["#070d18", "#070e18", "#070d18"],
+      "opacity": 0.85,
+      "angle": 45
+    },
     "pauseLabel": "Pause background",
     "playLabel": "Play background",
     "respectReducedMotion": true,

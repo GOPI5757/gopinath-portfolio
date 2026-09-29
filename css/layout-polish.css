@@ -28,3 +28,41 @@ html.mobile-single-header .browse-projects-button{font-size:0!important;padding:
 html.mobile-single-header .browse-projects-button::after{content:attr(data-mobile-label);font-size:.75rem}
 html.mobile-single-header .project-quickbar-restore{font-size:.75rem;padding:.4rem .45rem}
 html.mobile-single-header .project-mode-switch button{font-size:.65rem;padding:.35rem .4rem}
+
+/* Centered profile and quieter project cards. Controls live in the existing configs. */
+.profile-section.profile-centered .profile-grid{display:flex;justify-content:center;align-items:center;align-self:center;padding:3rem clamp(1rem,5vw,5rem)}
+.profile-section.profile-centered .profile-copy{width:100%;max-width:58rem;text-align:center;margin-inline:auto}
+.profile-section.profile-centered .hero-title{margin-inline:auto}
+.profile-section.profile-centered .profile-signal{display:none}
+.profile-section.profile-centered .profile-description{margin-inline:auto}
+.profile-section.profile-centered .chip-row{display:flex;justify-content:center}
+.profile-section.profile-centered .action-row{justify-content:center}
+.profile-section.has-video::before{opacity:var(--hero-overlay-opacity,1)}
+.visual-project-cards .project-node-cover{opacity:1}
+.visual-project-cards .project-node-image{opacity:var(--cover-opacity)}
+.project-status-badge{position:absolute;z-index:2;top:.55rem;right:.55rem;max-width:calc(100% - 1.1rem);padding:.35rem .55rem;font-size:.65rem;font-weight:700;line-height:1.25;overflow-wrap:anywhere;box-shadow:0 2px 8px #0005}
+.visual-project-cards .project-node .node-title{margin-top:.9rem}
+@media(max-width:760px){.project-status-badge{top:.35rem;right:.35rem;max-width:calc(100% - .7rem);padding:.3rem .4rem;font-size:.6rem}}
+
+/* Fit the complete profile between the measured header/live strip and mobile contacts. */
+#profile.profile-viewport-fit{height:var(--profile-available-height,calc(100svh - var(--header-height) - var(--project-bar-height)));min-height:0;aspect-ratio:auto;padding:0;overflow:hidden;grid-template-rows:minmax(0,1fr)}
+#profile.profile-viewport-fit .profile-grid{align-self:center;padding-block:clamp(.5rem,3vh,2rem);transform:scale(var(--profile-copy-scale,1));transform-origin:center}
+#profile.profile-viewport-fit .profile-background-video{object-fit:contain}
+#profile.profile-viewport-fit.profile-compact .hero-title{font-size:clamp(2rem,5vw,3.5rem)!important;margin-bottom:.65rem}
+#profile.profile-viewport-fit.profile-compact .hero-role{font-size:clamp(.75rem,1.6vw,1.1rem);margin:0 0 .75rem}
+#profile.profile-viewport-fit.profile-compact .chip-row{margin-bottom:.85rem;gap:.35rem}
+#profile.profile-viewport-fit.profile-short .profile-grid{padding-block:.3rem}
+#profile.profile-viewport-fit.profile-short .hero-title{font-size:clamp(1.4rem,4vw,2rem)!important;margin-bottom:.3rem}
+#profile.profile-viewport-fit.profile-short .hero-role{font-size:.7rem;margin-bottom:.35rem}
+#profile.profile-viewport-fit.profile-short .chip-row{margin-bottom:.4rem;gap:.25rem}
+#profile.profile-viewport-fit.profile-short .chip{font-size:.6rem;padding:.2rem .4rem}
+.profile-action--explore{gap:1rem;min-height:3.25rem;padding:.85rem 1.5rem;border-radius:.55rem;font-size:.9rem;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent),0 .6rem 1.5rem #0004}
+.profile-action--explore .profile-action-arrow{font-size:1.3rem;line-height:1;color:var(--signal);transition:transform 160ms ease}
+.profile-action--explore:hover .profile-action-arrow{transform:translateX(3px)}
+.profile-action--explore:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
+#profile.profile-viewport-fit.profile-short .profile-action--explore{min-height:44px;padding:.5rem 1rem;font-size:.75rem}
+@media(prefers-reduced-motion:reduce){.profile-action--explore,.profile-action--explore .profile-action-arrow{transition:none}.profile-action--explore:hover,.profile-action--explore:hover .profile-action-arrow{transform:none}}
+
+/* Fade the actual contained picture edges, including at letterboxed sizes. */
+.profile-section.has-video.profile-video-edge-blend{background:var(--video-blend-background,var(--background))}
+.profile-video-edge-blend .profile-background-video{background:transparent;-webkit-mask-image:var(--video-edge-mask);mask-image:var(--video-edge-mask)}

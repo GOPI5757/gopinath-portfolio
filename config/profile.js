@@ -5,7 +5,9 @@ export const profileWidgets = [
     eyebrow: "PROFILE / 01",
     title: "Gopinath S",
     role: "Gameplay Programmer",
-    description: "I build playable systems across Unreal Engine and Unity, with a focus on combat, multiplayer synchronization, progression, and performance-minded world building.",
+    description: "",
+    centered: true,
+    fitViewport: true,
     tags: [
       { id: "unreal", enabled: true, label: "Unreal Engine · C++" },
       { id: "unity", enabled: true, label: "Unity · C#" },

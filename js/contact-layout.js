@@ -16,6 +16,11 @@ export function attachContactLayout(rail) {
     frame=0;
     if(disposed)return;
     const active=document.documentElement.classList.contains('contact-right') && !rail.classList.contains('is-collapsed');
+    // Clear the live strip at its actual rendered height, including wrapping and bar mode.
+    const live=config.avoidLiveProject!==false?document.querySelector('.live-project'):null;
+    const liveBottom=live?Math.max(0,live.getBoundingClientRect().bottom):0;
+    const gap=Number.isFinite(Number(config.liveProjectGap))?Math.max(0,Number(config.liveProjectGap)):12;
+    rail.style.setProperty('--contact-effective-top',`max(var(--contact-top),calc(var(--header-height) + var(--project-bar-height) + .5rem),${liveBottom>0?liveBottom+gap:0}px)`);
     const panel=rail.getBoundingClientRect();
     for(const node of targets){
       const box=node.getBoundingClientRect();

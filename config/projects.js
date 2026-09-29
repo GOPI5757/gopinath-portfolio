@@ -52,6 +52,14 @@ export const projectSettings = {
       "coverOpacity": 0.85,
       "visualCards": true,
       "showStatus": true,
+      "statusBadge": {
+        "enabled": true,
+        "radius": "0.45rem",
+        "inProgress": {"label": "In progress", "background": "#873c16", "textColor": "#fff4df"},
+        "completed": {"label": "Completed", "background": "#155a40", "textColor": "#eafff3"},
+        "other": {"background": "#24334d", "textColor": "#ffffff"}
+      },
+      "cardBorder": {"enabled": true, "color": "#62738d", "width": "1px"},
       "thumbnailRatio": "16 / 10",
       "showGraphConnectors": false,
       "showCategoryCode": false
@@ -208,8 +216,8 @@ export const projectSectionWidgets = [
     "id": "projects-section",
     "enabled": true,
     "eyebrow": "PROJECT GRAPH / 02",
-    "title": "Playable ideas, connected through systems.",
-    "description": "Explore the gameplay, implementation and development work behind each project.",
+    "title": "Projects",
+    "description": "",
     "style": {
       "title": {
         "fontSize": "clamp(2rem, 4vw, 4rem)",
