@@ -1103,7 +1103,7 @@ export const projectItems = [
     ],
     "title": "Ruin Runners",
     "nodeLabel": "RUIN",
-    "status": "Finished",
+    "status": "Completed",
     "engine": "Unity",
     "language": "C#",
     "platform": "2D",
