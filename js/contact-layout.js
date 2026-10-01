@@ -8,7 +8,7 @@ import {onRouteDispose} from './experience.js';
 export function attachContactLayout(rail) {
   if (!rail) return;
   const config=experience.contact;
-  const selector='.live-project,.profile-copy,.project-detail-hero,.documents-toolbar,.section-heading,.project-category-panel,.project-category-tabs,.detail-section,.skills-grid,.contact-form';
+  const selector='.live-project,.profile-copy,.welcome-dock,.project-detail-hero,.documents-toolbar,.section-heading,.project-category-panel,.project-category-tabs,.detail-section,.skills-grid,.contact-form';
   const targets=[...document.querySelectorAll(selector)];
   const original=new Map(targets.map(node=>[node,getComputedStyle(node).paddingRight]));
   let frame=0,disposed=false;

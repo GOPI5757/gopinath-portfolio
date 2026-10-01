@@ -9,6 +9,7 @@ import { attachContactLayout } from "./contact-layout.js";
 import { fillCollageSources } from "./intro-layout.js";
 import { renderCodeSnippets } from "./code-snippets.js";
 import { experience } from "../config/experience.js";
+import { attachWelcome } from "./welcome.js";
 import { applyExperience, attachProfileVideo, disposeRoute, onRouteDispose } from "./experience.js";
 import { siteSettings } from "../config/site.js";
 import { portfolioThemes } from "../config/theme.js";
@@ -233,6 +234,7 @@ function renderProfileSection() {
   section.classList.toggle("profile-centered", profile.centered === true);
   section.classList.toggle("profile-viewport-fit", profile.fitViewport === true);
   attachProfileVideo(section);
+  attachWelcome(section, profile, projectItems);
   return section;
 }
 
@@ -987,9 +989,10 @@ function syncPageChrome() {
       profile.style.setProperty('--profile-available-height',`${available}px`);
       profile.classList.toggle('profile-compact',available<360);
       profile.classList.toggle('profile-short',available<230);
+      profile.classList.toggle('welcome-condensed',available<470);
       const grid=profile.querySelector('.profile-grid');
       // Preserve all copy on exceptionally short screens after compact spacing is applied.
-      profile.style.setProperty('--profile-copy-scale',String(Math.min(1,available/Math.max(1,grid.offsetHeight))));
+      profile.style.setProperty('--profile-copy-scale',String(profile.classList.contains('welcome-section') ? 1 : Math.min(1,available/Math.max(1,grid.offsetHeight))));
     }
     html.style.setProperty("--header-height", `${header?.offsetHeight || 0}px`);
     html.style.setProperty("--project-bar-height", `${bar?.offsetHeight || 0}px`);

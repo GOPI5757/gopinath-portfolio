@@ -39,6 +39,21 @@ export const projectSettings = {
     }
   },
   "home": {
+    "welcomeFeatured": {
+      "enabled": true,
+      "title": "Featured games",
+      "maxVisible": 3,
+      "maxWidth": "22rem",
+      "rowHeight": "3.2rem",
+      "mobileRowHeight": "2.55rem",
+      "compactRowHeight": "2.4rem",
+      "imageFit": "cover",
+      "items": [
+        { "enabled": true, "projectId": "ren-path-of-destiny" },
+        { "enabled": true, "projectId": "digging-game" },
+        { "enabled": true, "projectId": "ruin-runners" }
+      ]
+    },
     "grid": {
       "mobileMaxWidth": 760,
       "mobileColumns": 2,

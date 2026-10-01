@@ -168,3 +168,34 @@ edgeBlend: {
 ```
 
 `width` is the fraction of the visible video width faded on each side (0.12 = 12%; valid range 0–0.5). `background` follows the page theme by default. Set `enabled: false` to restore hard edges. The fade follows the actual contained video/poster edges even when there is empty space beside the video; it does not crop, stretch or resize the video or affect the profile text, overlay or button.
+
+## Welcome/profile design, quick links and featured games
+
+This design applies to the main profile section beneath the navigation and live-project strip. The separate timed intro is unchanged.
+
+### Appearance and quick links — config/profile.js
+
+Edit `profileWidgets[0].welcome`:
+- `enabled`: enable or remove the entire new welcome design and its panels.
+- `background`, `accent`, `panelBackground`, `panelBorder`: CSS colors (including alpha where needed).
+- `decorations.enabled` and `decorations.opacity`: turn the corner/grid decorations off or adjust their visibility.
+- `quickLinks.enabled`, `title`, `maxWidth`: panel visibility, label and desktop maximum width.
+- `quickLinks.items`: add, remove or reorder any number of links. Each item has `enabled`, `label`, `url`, and `icon`. Built-in icons: `github`, `linkedin`, `itch`, `email`; other icon strings appear as text. Add `iconImage: "assets/path/to/icon.svg"` to use your own image instead. Web links open in a new tab; mailto/tel links use the visitor's configured email/phone handler. Invalid or empty URLs are skipped.
+- `scrollCue.enabled`, `label`, `target`: configure the desktop scroll hint.
+
+Quick links scroll when they exceed the panel space; compact screens use a two-column link grid. The original name, role, tags and Explore projects button remain configured in their existing fields.
+
+### Featured games — config/projects.js
+
+Edit `projectSettings.home.welcomeFeatured`:
+- `enabled`, `title`, `maxWidth`: visibility, heading and desktop maximum width.
+- `maxVisible`: number of visible rows (1 to 3; values above 3 are limited to 3).
+- `rowHeight`, `mobileRowHeight`, `compactRowHeight`: row height at desktop, phone and short-screen layouts. Very shallow screens adapt further to preserve access.
+- `imageFit`: `cover` crops thumbnails to fill; `contain` shows the complete image.
+- `items`: ordered list of any number of `{ enabled: true, projectId: "digging-game" }` entries. Titles and images follow the matching enabled project automatically. Optional `title` and `image` fields override these only in the welcome panel.
+
+Ren, Digging Game and Ruin Runners are selected initially. Additional games remain accessible through the scrollable list. Unknown or disabled projects are omitted. Each row opens its existing project page. Disable either panel independently without removing its settings.
+
+### Background video — config/experience.js
+
+`experience.profileVideo.enabled` is now `false`, as requested. Set it to `true` to show the existing video again. The original sources, full-video fitting, edge blending and overlay controls are preserved. Your current overlay opacity is `0.98`, so lower `profileVideo.overlay.opacity` if you want the re-enabled video to be more visible. The media file has not been replaced or removed.

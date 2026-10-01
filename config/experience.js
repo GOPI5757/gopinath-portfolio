@@ -36,7 +36,7 @@ export const experience = {
     "overlay": {
       "enabled": true,
       "background": ["#070d18", "#070e18", "#070d18"],
-      "opacity": 0.85,
+      "opacity": 0.99,
       "angle": 45
     },
     "pauseLabel": "Pause background",
