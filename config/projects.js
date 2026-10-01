@@ -51,7 +51,7 @@ export const projectSettings = {
       "items": [
         { "enabled": true, "projectId": "ren-path-of-destiny" },
         { "enabled": true, "projectId": "digging-game" },
-        { "enabled": true, "projectId": "ruin-runners" }
+        { "enabled": true, "projectId": "ruin-runners" },
       ]
     },
     "grid": {
