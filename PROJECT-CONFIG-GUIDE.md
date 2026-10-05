@@ -199,3 +199,73 @@ Ren, Digging Game and Ruin Runners are selected initially. Additional games rema
 ### Background video — config/experience.js
 
 `experience.profileVideo.enabled` is now `false`, as requested. Set it to `true` to show the existing video again. The original sources, full-video fitting, edge blending and overlay controls are preserved. Your current overlay opacity is `0.98`, so lower `profileVideo.overlay.opacity` if you want the re-enabled video to be more visible. The media file has not been replaced or removed.
+
+## Wider project pages and stacked code panels
+
+Project page width is controlled by `projectSettings.detail.layout` in `config/projects.js`:
+- `enabled: true` applies the wider project-page layout. Set `false` to restore the previous width.
+- `sideGutter: "clamp(0.75rem, 2.5vw, 3rem)"` leaves small responsive margins.
+- `maxWidth: "none"` uses the available page width. Set a CSS length such as `"1600px"` to cap it.
+
+The existing contact-panel reflow setting still applies while the desktop contact panel is open.
+
+### Two code styles, selectable per group
+
+In `config/code-projects/<project-id>.js`, each object in `blocks` can set:
+- `layout: "walkthrough"` (or omit it): original cards, connections and side explanations.
+- `layout: "stacked"`: full-width code panels, one below another, each with its own explanation beneath. No connector arrows are displayed in this reading layout; saved connections remain available if you switch back.
+
+Digging Game's five existing groups now use `"stacked"`. All 13 excerpts, their explanations, line numbers and highlights are preserved. Other games retain their original code layouts. Both types can coexist in any project's `blocks` array.
+
+### Individual panel height and shared settings
+
+Each snippet has a `maxHeight` field, e.g. `"24rem"` or `"320px"`. It limits only the code area; the file header and explanation stay outside the scrolling region. Short code uses only the space it needs. The whole group still supports its existing collapse controls in `config/projects.js`.
+
+Shared defaults live in `codeSnippetSettings.stacked` in `config/code-snippets.js`:
+- `enabled`: turn the new renderer on/off. `false` restores the original renderer for groups marked stacked without removing content.
+- `maxHeight`: default code height if a snippet does not specify one.
+- `maxViewportHeight`: additional screen-relative height limit, default `"60svh"`. Use `"none"` to disable this limit.
+- `fontSize`, `lineHeight`, `gap`: typography and space between panels. Font size has a `0.875rem` minimum to avoid shrinking code to fit.
+- `showLineNumbers`, `showCopyButton`, `showLanguage`: visibility switches.
+
+Optional `stacked: { ... }` on a group or individual snippet overrides these shared settings (snippet overrides group). A snippet's direct `maxHeight` takes priority. Digging Game currently has explicit `maxHeight: "24rem"` fields so each can be adjusted directly; remove an individual field to inherit the shared setting.
+
+Long lines wrap automatically, including long identifiers. Source line numbers stay with the original line, and Copy uses the original unwrapped source. Wrapping never edits your code. Vertical scrolling works with touch, mouse and keyboard.
+
+### Add another group or more stacked snippets
+
+Add a new group to the project's `blocks` array, or append as many snippet objects as needed inside `snippets`. Use a unique group ID and unique snippet IDs within each group. Example (replace code and explanation with your own):
+
+```js
+{
+  id: "my-system",
+  enabled: true,
+  layout: "stacked",
+  title: "My gameplay system",
+  stacked: { gap: "1.5rem" },
+  snippets: [
+    {
+      id: "controller",
+      enabled: true,
+      fileName: "PlayerController.cs",
+      language: "C#",
+      startLine: 1,
+      maxHeight: "20rem",
+      code: "// Add your source here",
+      explanation: { title: "How it works", text: "Explain this code here." }
+    },
+    {
+      id: "movement",
+      enabled: true,
+      fileName: "Movement.cs",
+      language: "C#",
+      maxHeight: "28rem",
+      code: "// Add another source excerpt here",
+      explanation: { title: "Movement", text: "Explain this second excerpt here." }
+    }
+  ],
+  connections: []
+}
+```
+
+Set a group or snippet `enabled: false` to hide it. Set `explanation.enabled: false` to hide just its explanation. These examples are documentation only and are not published as game code.

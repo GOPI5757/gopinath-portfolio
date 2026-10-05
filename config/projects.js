@@ -108,6 +108,11 @@ export const projectSettings = {
     }
   },
   "detail": {
+    "layout": {
+      "enabled": true,
+      "sideGutter": "clamp(0.75rem, 20.5vw, 10rem)",
+      "maxWidth": "none"
+    },
     "sectionOrder": [
       "documents",
       "gameplay-videos",

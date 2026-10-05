@@ -1,0 +1,40 @@
+/* Only project-page content gets the wider margins. Home and navigation are unchanged. */
+.project-detail-wide .project-detail-hero,
+.project-detail-wide .detail-section {
+  width: calc(100% - 2 * var(--detail-side-gutter));
+  max-width: var(--detail-max-width, none);
+}
+
+.code-stack {display:grid;grid-template-columns:minmax(0,1fr);gap:var(--stack-gap,1.5rem);min-width:0}
+.code-stack-item {min-width:0;margin:0}
+.code-stack-item .code-file-header {gap:.5rem .8rem;padding:.8rem 1rem}
+.code-stack-item .code-file-header h4 {flex:1 1 12rem;font-size:.9rem;min-width:0}
+.code-stack-item .code-file-header>span {font-size:.8rem}
+.code-stack-item .code-copy {min-height:40px;padding:.4rem .7rem}
+.code-stack-item .code-scroll {
+  max-height:var(--stack-max-height,24rem);
+  max-height:min(var(--stack-max-height,24rem),var(--stack-viewport-height,60svh));
+  overflow-y:auto;
+  overflow-x:hidden;
+  white-space:pre-wrap;
+  font-size:max(.875rem,var(--stack-font-size,.875rem));
+  line-height:var(--stack-line-height,1.7);
+  scrollbar-gutter:stable;
+  scrollbar-color:#798797 #0b111b;
+}
+.code-stack-item .code-lines {min-width:0;width:100%;white-space:pre-wrap}
+.code-stack-item.without-viewport-cap .code-scroll {max-height:var(--stack-max-height,24rem)}
+.code-stack-item .code-line {min-width:0;min-height:0;align-items:baseline;padding-right:.75rem}
+.code-stack-item .code-line-text {flex:1;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal}
+.code-stack-item .code-line-number {min-width:4.5em;font-variant-numeric:tabular-nums}
+.code-stack-item.without-line-numbers .code-line {padding-left:.85rem}
+.code-stack-item .code-scroll:focus-visible {outline:2px solid var(--code-arrow);outline-offset:-2px}
+.code-stack-item .code-explanation {margin-top:.65rem;padding:.8rem 1rem}
+.code-stack-item .code-explanation p {font-size:1rem;line-height:1.65;white-space:pre-line}
+.code-stack-item .code-explanation h4 {font-size:1rem}
+@media(max-width:600px){
+  .code-stack-item .code-file-header {padding:.65rem}
+  .code-stack-item .code-line-number {min-width:3.75em;padding:0 .5em}
+  .code-stack-item .code-line {padding-right:.4rem}
+  .code-stack-item .code-explanation {padding:.65rem .75rem}
+}

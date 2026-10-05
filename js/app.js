@@ -937,6 +937,12 @@ function renderProjectDetail(project) {
     return [...result,...sections.values()];
   })()]);
 
+  const detailLayout = projectSettings.detail.layout;
+  if (detailLayout?.enabled) {
+    main.classList.add("project-detail-wide");
+    main.style.setProperty("--detail-side-gutter", detailLayout.sideGutter || "2.5vw");
+    main.style.setProperty("--detail-max-width", detailLayout.maxWidth || "none");
+  }
   Object.entries(themeStyle).forEach(([property, value]) => {
     main.style.setProperty(property, value);
   });

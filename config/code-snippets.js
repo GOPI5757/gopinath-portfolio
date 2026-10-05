@@ -13,6 +13,18 @@ import {blocks as project10} from "./code-projects/bubble-parkour.js";
 export const codeSnippetSettings = {
   enabled: true,
   title: "Code walkthroughs",
+  // Per group: layout: "walkthrough" (original) or "stacked" (code, then explanation).
+  stacked: {
+    enabled: true, // false temporarily restores the original walkthrough for stacked groups
+    maxHeight: "24rem", // maximum code area height; short excerpts shrink to fit
+    maxViewportHeight: "60svh", // also cap height to the screen; use "none" to disable
+    fontSize: "0.875rem", // minimum 0.875rem is enforced for readability
+    lineHeight: "1.7",
+    gap: "1.5rem",
+    showLineNumbers: true,
+    showCopyButton: true,
+    showLanguage: true
+  },
   columns: 3,
   minCardWidth: 260, // Fewer columns are used when needed to keep code readable.
   mobileMaxWidth: 760,

@@ -13,10 +13,55 @@ function tokens(line) {
   return line.split(/(\/\/.*|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:class|public|private|protected|const|auto|return|for|if|else|void|int|float|bool|static|using|namespace|new|struct|include|pragma|once)\b|\b\d+\b)/g).filter(Boolean).map(t => el("span", { text:t, className: t.startsWith("//") ? "token-comment" : /^["']/.test(t) ? "token-string" : /^(class|public|private|protected|const|auto|return|for|if|else|void|int|float|bool|static|using|namespace|new|struct|include|pragma|once)$/.test(t) ? "token-keyword" : /^\d+$/.test(t) ? "token-number" : "" }));
 }
 
+// Independent reading layout: one full-width code panel and its explanation per item.
+// Original walkthrough routing and source text are left intact.
+function renderStackedGroup(group, projectId) {
+  const defaults = {...settings.stacked, ...group.stacked};
+  const list = el("div", {className:"code-stack"});
+  list.style.setProperty("--stack-gap", defaults.gap || "1.5rem");
+  for (const s of group.snippets) {
+    const options = {...defaults, ...s.stacked};
+    const code = el("code", {className:"code-lines"});
+    s.lines.forEach((text,index) => {
+      const number = s.startLine + index;
+      const line = el("span", {className:"code-line"}, [
+        options.showLineNumbers !== false ? el("span", {className:"code-line-number",text:number,attrs:{"aria-hidden":"true"}}) : null,
+        el("span", {className:"code-line-text"}, tokens(text || " "))
+      ]);
+      line.classList.toggle("is-highlighted", (s.highlights || []).some(h=>number>=h.start && number<=(h.end ?? h.start)));
+      code.append(line);
+    });
+    const filename = s.fileName || s.id;
+    const copy = el("button", {className:"code-copy",text:"Copy",attrs:{type:"button","aria-label":`Copy ${filename}`}});
+    copy.addEventListener("click",async()=>{
+      try {await copyText(s.lines.join("\n"));announce(`${filename} copied`)}
+      catch {announce("Copy unavailable. Select the code and copy it manually.")}
+    });
+    const scroll = el("pre", {className:"code-scroll",attrs:{tabindex:"0",role:"region","aria-label":`${filename}, ${s.language || "code"}. Long lines wrap; scroll vertically for more code.`}}, [code]);
+    const card = el("article", {className:"code-card"}, [
+      el("header", {className:"code-file-header"}, [el("h4",{text:filename}),options.showLanguage!==false ? el("span",{text:s.language || "Text"}) : null,options.showCopyButton!==false ? copy : null]),scroll
+    ]);
+    const explanation = s.explanation?.enabled !== false && (s.explanation?.title || s.explanation?.text)
+      ? el("div", {className:"code-explanation"}, [s.explanation.title ? el("h4",{text:s.explanation.title}) : null,s.explanation.text ? el("p",{text:s.explanation.text}) : null]) : null;
+    const item = el("div", {className:"code-stack-item"}, [card,explanation]);
+    item.classList.toggle("without-line-numbers",options.showLineNumbers===false);
+    item.classList.toggle("without-viewport-cap",options.maxViewportHeight==="none");
+    for (const [key,value] of Object.entries({"--stack-max-height":s.maxHeight || options.maxHeight || "24rem","--stack-viewport-height":options.maxViewportHeight || "60svh","--stack-font-size":options.fontSize || ".875rem","--stack-line-height":options.lineHeight || "1.7"})) item.style.setProperty(key,String(value));
+    list.append(item);
+  }
+  const article = el("article", {className:"code-walkthrough code-walkthrough-stacked"}, [
+    group.placeholder ? el("p",{className:"code-placeholder",text:"PLACEHOLDER EXAMPLE — replace with your own code"}) : null,
+    el("h3",{text:group.title || "Code walkthrough"}),
+    group.description ? el("p",{className:"code-group-description",text:group.description}) : null,list
+  ]);
+  return collapsible(article,article.querySelector("h3"),collapseOptions(projectId,"codeBlocks",group.id));
+}
+
 function renderGroup(source, projectId) {
   let group;
   try { group = normalizeGroup(source); } catch(error) { console.warn("Code walkthrough configuration:", error.message); return null; }
   if (!group.snippets.length) return null;
+  if (group.layout === "stacked" && settings.stacked?.enabled !== false) return renderStackedGroup(group, projectId);
   const prefix = `walkthrough-${++serial}`;
   const board = el("div", { className:"code-board" });
   const columns = Math.max(1, Math.min(5, Number(group.columns || settings.columns) || 3));
